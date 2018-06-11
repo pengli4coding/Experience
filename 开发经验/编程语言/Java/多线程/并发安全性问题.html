@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>并发安全性问题</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>一、并发安全性问题产生的原因</h1>
+    <h3>通俗来说就是多个线程访问同一个共享资源的时候没有使用合适的同步，就会造成操作的不正确性发生</h3>
+    <h1>二、并发安全性问题的简单样例</h1>
+    <pre>
+package com.pl.thread;
+
+public class ThreadSafe implements Runnable {
+	public static void main(String[] args) {
+		ThreadSafe s1 = new ThreadSafe();
+		Thread t1 = new Thread(s1, "窗口一");
+
+		ThreadSafe s2 = new ThreadSafe();
+		Thread t2 = new Thread(s2, "窗口二");
+
+		t1.start();
+		t2.start();
+
+	}
+
+	private static int tickets = 100;//tickets这个变量会被多个线程访问，是共享资源
+	@Override
+	public void run() {
+		while (true) {
+			try {
+				Thread.sleep(50);// 暂停50毫秒，只是为了效果更明显
+			} catch (InterruptedException e) {
+			}
+			if (tickets > 0) {
+				System.out.println(Thread.currentThread().getName() + "正在卖第" + tickets-- + "张票");
+			} else {
+				System.out.println("票已售完");
+				break;
+			}
+		}
+	}
+}
+    </pre>
+    <h3>上面这个样例中主要是模拟“火车站卖票”的过程，tickets是总共的票数，有两个窗口在卖票（即两个线程），由于没有加上合适的同步，所以会造成并发安全性问题，即有可能会出现两个窗口在卖同一张票的情况。</h3>
+</body>
+</html>

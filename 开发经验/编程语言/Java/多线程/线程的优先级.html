@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>线程的优先级</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>一、设置线程优先级的方法setPriority(int newPriority)</h1>
+	<h3>样例如下：</h3>
+	<pre>
+package com.pl.thread;
+
+public class MyThread extends Thread {
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 1000; i++) {
+			System.out.println(Thread.currentThread().getName()+"在运行，i=" + (i + 1));
+		}
+	}
+
+	public static void main(String[] args) {
+
+		MyThread t = new MyThread();
+		t.setPriority(10);
+		t.setName("线程一");
+		t.start();
+		MyThread t1 = new MyThread();
+		t1.setPriority(1);
+		t1.setName("线程二");
+		t1.start();
+	}
+}
+    </pre>
+    <h3>从运行结果来看线程一的优先级比较高，所以在抢占CPU资源的时候，线程一会抢得比较快，所以线程一在很大的概率上比线程二要早运行完</h3>
+    <h3>注意：线程优先级的取值范围（也就是newPriority）为1至10，传入不在这个范围里面的优先级参数会报错</h3>
+    <h1>二、线程优先级常量</h1>
+    <h3>Thread.MAX_PRIORITY=10</h3>
+    <h3>Thread.MIN_PRIORITY=1</h3>
+    <h3>Thread.NORM_PRIORITY=5</h3>
+</body>
+</html>

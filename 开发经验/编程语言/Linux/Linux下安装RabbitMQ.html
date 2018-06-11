@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Linux下安装RabbitMQ</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <strong style="font-size: 50px;">环境安装</strong>
+    <h1>第一步：安装预环境</h1>
+    <h3>yum -y install make gcc gcc-c++ kernel-devel m4 ncurses-devel openssl-devel</h3>
+    <h1>第二步：下载erlang的源代码文件并解压缩</h1>
+    <h3>下载网址：http://www.erlang.org/downloads</h3>
+    <h3>网盘地址：https://pan.baidu.com/s/1mj9m7XBVX3MyCUzZLDp4_Q&nbsp;&nbsp;&nbsp;密码：8ave</h3>
+    <h3>解压安装包：tar zxvf otp_src_19.3.tar.gz</h3>
+    <h1>第三步：编译源码并安装erlang</h1>
+    <h3>分别运行以下几条命令</h3>
+    <h4>./configure --prefix=/usr/software/erlang</h4>
+    <h4>make</h4>
+    <h4>make install</h4>
+    <h1>第四步：配置erlang环境变量并重启服务器</h1>
+    <h3>在/etc/profile文件下追加以下内容</h3>
+    <pre>
+export ERLANG_HOME=/usr/software/erlang
+export PATH=$PATH:$ERLANG_HOME/bin
+    </pre>
+    <h1>第五步：测试erlang是否安装成功</h1>
+    <h3>输入erl命令，如果没有出现类似命名找不到的提示的话一般情况下就意味着安装erlang成功了</h3>
+    <h1>第六步：运行以下命令安装rabbitmq，并重启服务器</h1>
+<pre>
+rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+# this example assumes the CentOS 7 version of the package
+yum install rabbitmq-server-3.7.5-1.el7.noarch.rpm
+</pre>
+    <h3>配置rabbitmq的环境变量：在/etc/profile文件下追加以下内容</h3>
+    <pre>   
+export PATH=$PATH:/usr/lib/rabbitmq/bin
+    </pre>
+    <strong style="font-size: 50px;">启动rabbitmq</strong>
+    <h1>第一步：将rabbitmq设置为开机启动</h1>
+    <h3>输入命令：chkconfig rabbitmq-server on</h3>
+    <h1>第二步：启动rabbitmq</h1>
+    <h3>输入命令：/sbin/service rabbitmq-server start</h3>
+</body>
+</html>

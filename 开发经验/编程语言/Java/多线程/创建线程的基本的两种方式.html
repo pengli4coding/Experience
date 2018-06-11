@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>创建线程的基本的两种方式</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+	<h1>第一种方式：继承java.lang.Thread</h1>
+	<h3>具体步骤：</h3>
+	<h3>第一步：创建一个类继承java.lang.Thread</h3>
+	<h3>第二步：重写父类的run方法</h3>
+	<h3>第三步：创建类的实例</h3>
+	<h3>第四步：调用start方法开启线程</h3>
+	<h3>样例如下：</h3>
+	<pre>
+package com.pl.thread;
+
+public class MyThread extends Thread{
+	public static void main(String[] args) {
+		MyThread t=new MyThread();
+		t.start();//注意：这里调用的是start方法，而不是run方法
+		for(int i=0;i<50;i++) {
+			System.out.println(Thread.currentThread().getName()+i);
+		}
+	}
+
+	@Override
+	public void run() {//重写run方法
+		for(int i=0;i<50;i++) {
+			System.out.println(Thread.currentThread().getName()+i);
+		}
+	}
+}
+	</pre>
+	<h1>第二种方式：实现java.lang.Runnable接口</h1>
+	<h3>具体步骤：</h3>
+	<h3>第一步：创建一个类实现java.lang.Runnable接口</h3>
+	<h3>第二步：实现接口的run方法</h3>
+	<h3>第三步：创建类的实例</h3>
+	<h3>第四步：创建一个java.lang.Thread类的实例（传入上一步类的实例作为构造方法的参数）</h3>
+	<h3>第五步：调用start方法开启线程</h3>
+	<h3>样例如下：</h3>
+	<pre>
+package com.pl.thread;
+
+public class MyThread implements Runnable{
+	public static void main(String[] args) {
+		MyThread my=new MyThread();//创建自定义类的实例
+		Thread t=new Thread(my);//创建Thread类（构造方法中传入自定义类的实例作为参数）
+		t.start();//注意：这里调用的是start方法，而不是run方法
+		for(int i=0;i<50;i++) {
+			System.out.println(Thread.currentThread().getName()+i);
+		}
+	}
+	@Override
+	public void run() {//重写run方法
+		for(int i=0;i<50;i++) {
+			System.out.println(Thread.currentThread().getName()+i);
+		}
+	}
+}
+	</pre>
+</body>
+
+</html>
