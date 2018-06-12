@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>abstract关键字的用法</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <strong style="font-size: 40px;color:red;">abstract关键字可以用来修饰类或者方法</strong>
+    <h1>abstract修饰类的时候</h1>
+    <h3>当abstract修饰类的时候，这个类就变为抽象类，抽象类不能实例化（也就是不能够new出来），抽象类必须作为父类被子类继承使用。</h3>
+    <h3>如下例所示：Parent类前面加上了abstract关键字来修饰，Parent类变成了抽象类，此时Parent类就不能被实例化了（也就是不能够new出来了），必须作为父类被子类（例子中的Child类）继承使用</h3>
+    <pre>
+public abstract class Parent {
+
+	public void doSomething() {
+		System.out.println("干点事情");
+	}
+}
+public class Child extends Parent{
+
+	public static void main(String[] args) {
+		System.out.println("抽象类必须作为父类被子类继承使用");
+	}
+}        
+    </pre>
+    <h1>abstract修饰方法的时候</h1>
+    <h3>注意以下两点：</h3>
+    <h3>第一点：父类中的抽象方法子类必须重写</h3>
+    <h3>如下例中Parent类中的抽象方法doSomething方法自身无须实现，而继承自Parent类的子类Child里面必须重新doSomething方法</h3>
+    <pre>
+public abstract class Parent {
+
+	public abstract void doSomething();
+}
+
+public class Child extends Parent {
+
+	@Override
+	public void doSomething() {
+		System.out.println("父类中的抽象方法子类必须重写");
+	}
+}
+    </pre>
+    <h3>第二点：抽象方法所在的类必须为抽象类</h3>
+</body>
+
+</html>
