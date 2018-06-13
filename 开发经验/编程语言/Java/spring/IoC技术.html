@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IoC技术</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">这篇文章主要参考了spring官方文档的第七章</h1>
+    <h1>一、IoC简介</h1>
+    <h3>IoC的全称是Inversion of Control（控制反转），“控制反转”这个词理解起来有点别扭，所以后来人们就换了一个词DI（dependency injection依赖注入）来描述了。说白了就是用一个“大工厂”把所有的bean都管理起来，要用的时候就从这个“大工厂”里面拿出来。</h3>
+    <h1>二、整体流程</h1>
+    <img src="./img/QQ截图20180613143601.png" alt="">
+    <h2>编写bean的配置信息</h2>
+    <h3>参考spring官方文档的7.2.1 Configuration metadata章节</h3>
+    <h3>创建XML文件放到classpath下，文件名可以随意指定（ApplicationContext.xml这个名称比较常用），文件的格式如官网所示：</h3>
+    <img src="./img/QQ截图20180613145318.png" alt="">
+    <h2>创建“大工厂”</h2>
+    <h3>参考spring官方文档的7.2.2 Instantiating a container章节</h3>
+    <h3>直接上官方的代码</h3>
+    <img src="./img/QQ截图20180613150011.png" alt="">
+    <h2>从“大工厂”中取出bean来使用</h2>
+    <h3>参考spring官方文档的7.2.3 Using the container章节</h3>
+    <h3>直接上官方的代码</h3>
+    <img src="./img/QQ截图20180613150318.png" alt="">
+    <h1>三、bean配置信息（主要用XML文件）详解</h1>
+</body>
+</html>
