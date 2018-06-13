@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>为什么要用spring</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>一、为什么要用IoC</h1>
+    <h3>以我们通常的service和dao层之间的交互为例子说明，我们以前一般是像下面这么做的：</h3>
+    <pre>       
+---------------------------------------------------------------------------        
+public interface UserDao {
+	public void save();
+}
+
+public class UserDaoImpl implements UserDao{
+
+	@Override                                                      //dao层 
+	public void save() {
+		System.out.println("用户保存成功！！！");		
+	}
+}
+---------------------------------------------------------------------------       
+public interface UserService {
+	public void save();
+}
+
+public class UserServiceImpl implements UserService{
+	UserDao userDao=new UserDaoImpl();//问题出现在这里，耦合度太高了
+	
+	@Override                                                      //service层
+	public void save() {
+		userDao.save();
+	}
+}
+---------------------------------------------------------------------------        
+    </pre>
+    <h3>上面的这种做法耦合度太高了，如果我们需要修改UserDaoImpl（修改类名或者改变构造函数）的时候，必须同步修改UserServiceImpl里面的内容，不然会直接报错。那么我们可以用下面这种方法来降低耦合度：</h3>
+    <pre>       
+---------------------------------------------------------------------------        
+public interface UserDao {
+	public void save();
+}
+
+public class UserDaoImpl implements UserDao{
+
+	@Override                                                      //dao层 
+	public void save() {
+		System.out.println("用户保存成功！！！");		
+	}
+}
+---------------------------------------------------------------------------       
+public interface UserService {
+	public void save();
+}
+
+public class UserServiceImpl implements UserService{
+	UserDao userDao;//就修改了这个地方，不用手动new
+	
+	@Override                                                      //service层
+	public void save() {
+		userDao.save();
+	}
+}
+---------------------------------------------------------------------------        
+    </pre>
+    <h3>修改后的做法就是比较理想的做法了，dao层的改变无法影响到service层，解决了耦合度高的问题。那么既然我们不需要手动new对象，而对象是在哪里new的呢？这时候我们就需要使用spring框架来帮我们统一管理对象的创建了。</h3>
+    <h1>二、为什么要用AOP</h1>
+    <h1>三、为什么要用spring“全家桶”</h1>
+</body>
+</html> 
