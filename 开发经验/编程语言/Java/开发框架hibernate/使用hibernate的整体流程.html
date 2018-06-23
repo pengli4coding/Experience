@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用hibernate的整体流程</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>整体流程图</h1>
+    <img src="./img/QQ截图20180623125022.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第一步：创建映射类</h1>
+    <h2>参考官方文档1.1.2. The first class</h2>
+    <h2>假设在mysql数据库hibernate_db中存在数据表如下：</h2>
+    <img src="./img/QQ截图20180623134314.png" alt="">
+    <h2>则创建的映射类如下：</h2>
+    <img src="./img/QQ截图20180623134729.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第二步：创建映射文件</h1>
+    <h2>参考官方文档1.1.3. The mapping file</h2>
+    <h2>创建映射文件如下：</h2>
+    <img src="./img/QQ截图20180623135450.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第三步：创建hibernate的配置文件</h1>
+    <h2>参考官方文档1.1.4. Hibernate configuration</h2>
+    <h2>创建hibernate的配置文件如下：</h2>
+    <img src="./img/QQ截图20180623135713.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第四步：创建获取SessionFactory的Helper类</h1>
+    <h2>参考官方文档1.1.6. Startup and helpers</h2>
+    <h2>创建获取SessionFactory的Helper类如下：</h2>
+    <img src="./img/QQ截图20180623141836.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第五步：获取session进行数据库操作</h1>
+    <h2>参考官方文档1.1.7. Loading and storing objects</h2>
+    <img src="./img/QQ截图20180623142328.png" alt="">
+    <h2>代码执行完毕后看到数据库里面已经存在对应的记录了：</h2>
+    <img src="./img/QQ截图20180623142548.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+</html>
