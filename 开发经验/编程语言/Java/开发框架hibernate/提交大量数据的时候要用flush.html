@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>提交大量数据的时候要用flush</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>提交大量数据的时候要用flush</h1>
+    <h2>当我们需要提交大批量的数据的时候，如果不使用flush来清理session，那么很有可能就会造成内存溢出，如下所示：</h2>
+    <img src="./img/QQ截图20180624192229.png" alt="">
+    <h2>提交大批量的数据的时候，需要使用flush来清理session，如下所示：</h2>
+    <img src="./img/QQ截图20180624192511.png" alt="">
+</body>
+</html>
