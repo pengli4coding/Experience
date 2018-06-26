@@ -9,21 +9,73 @@
 </head>
 <body>
     <h1>HQL简介</h1>
+    <h3>参考官方文档Chapter 16. HQL: The Hibernate Query Language</h3>
     <h3>HQL是hibernate定义的一种跟SQL语言很类似的查询语言，HQL与SQL相比,HQL更加贴近面向对象编程</h3>
     <br>
     <br>
     <br>
     <h1>数据准备</h1>
-    <h3>Person类与数据库中的PERSON表已经建立关联关系</h3>
-    
+    <h3>Person类与数据库中的PERSON表已经建立关联关系，Person类的属性和PERSON表的数据如下：</h3>
+    <img src="./img/QQ截图20180626182508.png" alt=""><br>
+    <img src="./img/QQ截图20180626183515.png" alt=""><br>
     <br>
     <br>
     <br>
     <h1>大小写敏感</h1>
-    <h3>HQL是hibernate定义的一种跟SQL语言很类似的查询语言，HQL与SQL相比,HQL更加贴近面向对象编程</h3>
+    <h3>参考官方文档16.1. Case Sensitivity</h3>
+    <img src="./img/QQ截图20180626154234.png" alt="">
+    <h3>因此，下面这三条语句是等价的</h3>
+    <img src="./img/QQ截图20180626165117.png" alt="">
     <br>
     <br>
     <br>
-    <h1>数据准备</h1>
+    <h1>基本查询</h1>
+    <h2>查询出映射类的所有属性</h2>
+    <h3>下面的p是Person类的别名</h3>
+    <img src="./img/QQ截图20180626170501.png" alt="">
+    <br>
+    <h2>查询出映射类的单一属性</h2>
+    <img src="./img/QQ截图20180626171244.png" alt="">
+    <br>
+    <h2>查询出映射类的多个属性</h2>
+    <img src="./img/QQ截图20180626171712.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>分页查询</h1>
+    <img src="./img/QQ截图20180626174639.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>限定查询</h1>
+    <h2>第一种（指定传参顺序）</h2>
+    <img src="./img/QQ截图20180626180612.png" alt=""><br>
+    <h2>第二种（指定传参名称）</h2>
+    <img src="./img/QQ截图20180626180928.png" alt=""><br>
+    <br>
+    <br>
+    <br>
+    <h1>分组统计查询</h1>
+    <h2>查询记录总数</h2>
+    <img src="./img/QQ截图20180626184937.png" alt="">
+    <img src="./img/QQ截图20180626185009.png" alt="">
+    <br>
+    <h2>查询最大值</h2>
+    <img src="./img/QQ截图20180626183320.png" alt="">
+    <img src="./img/QQ截图20180626183649.png" alt="">
+    <br>
+    <h2>查询最小值</h2>
+    <img src="./img/QQ截图20180626183830.png" alt="">
+    <img src="./img/QQ截图20180626183900.png" alt="">
+    <br>
+    <br>
+    <h2>分组查询平均值</h2>
+    <img src="./img/QQ截图20180626184441.png" alt="">
+    <img src="./img/QQ截图20180626184526.png" alt="">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>投影查询</h1>
 </body>
 </html>
