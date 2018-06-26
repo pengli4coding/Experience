@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置Git参数</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>显示Git配置信息</h1>
+    <h2>查看用户级别配置信息的时候使用命令（先切换到用户目录~下）：git config --list</h2>
+    <h2>查看项目级别配置信息的时候使用命令（先切换到项目的目录下）：git config --list</h2>
+    <br>
+    <br>
+    <br>
+    <h1>设置提交仓库时的用户名信息</h1>
+    <h2>设置用户级别的时候使用命令：git config --global user.name '你的用户名'</h2>
+    <h2>设置项目级别的时候使用命令（要先切换到项目目录下）：git config --global user.name '你的用户名'</h2>
+    <br>
+    <br>
+    <br>
+    <h1>设置提交仓库时的邮箱信息</h1>
+    <h2>设置用户级别的时候使用命令：git config --global user.email '你的邮箱'</h2>
+    <h2>设置项目级别的时候使用命令（要先切换到项目目录下）：git config user.email '你的邮箱'</h2>
+    <br>
+    <br>
+    <br>
+    <h1>用户级别的配置文件和项目级别的配置文件</h1>
+    <h2>用户级别的配置文件位置：~/.gitconfig</h2>
+    <h3>若使用 git config 时用 --global 选项，读写的就是这个用户级别的配置文件</h3>
+    <br><br>
+    <h2>项目级别的配置文件位置：项目位置/.git/config</h2>
+    <h3>这里的配置仅仅针对当前项目有效，每一个级别的配置都会覆盖上层的相同配置，所以项目级别的配置文件会覆盖用户级别的配置文件中的同名变量</h3>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
