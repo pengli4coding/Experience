@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注入的详解</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>容易混淆的概念：bean的实例化和属性（依赖）的注入</h1>
+    <h3>bean的实例化和属性（依赖）的注入是不同的两个过程，spring在实例化bean之后随之将属性（依赖）注入到bean的实例中。在使用者调用bean之前，这两步都已经完成了，所以会造成初学者以为bean的实例化一定会伴随着属性（依赖）的注入，其实不然，有bean的实例化不一定有属性（依赖）的注入。如下面这个例子，spring只是进行了bean的实例化，但是并没有进行属性（依赖）的注入操作。</h3>
+    <img src="./img/QQ截图20180630134038.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>注入的两种方法：基于构造器方式的注入、基于setter方式的注入</h1>
+    <h2>基于构造器方式的注入</h2>
+    <img src="./img/QQ截图20180630144112.png" alt="">
+    <img src="./img/QQ截图20180630144435.png" alt="">
+    <br>
+    <h2>基于setter方式的注入</h2>
+    <img src="./img/QQ截图20180630145236.png" alt="">
+    <img src="./img/QQ截图20180630145111.png" alt="">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>可以注入的东西</h1>
+    <h3>可以注入的东西有bean、多种集合、字符串常量、null值、empty值等</h3>
+    <img src="./img/QQ截图20180630160807.png" alt="">
+    <img src="./img/QQ截图20180630161208.png" alt="">
+    <img src="./img/QQ截图20180630161234.png" alt="">
+</body>
+</html>
