@@ -20,9 +20,21 @@ h2{
 h3{
     color:blue;
 }
+h4{
+    color:sandybrown;
+}
 a{
     font-size: 30px;
 }
 img{
     border: 1px solid black;
+    display:block;
+}
+ul{
+    padding-left: 25px;
+    list-style: square;
+    color: crimson;
+}
+li{
+    list-style: square;
 }

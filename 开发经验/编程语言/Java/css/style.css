@@ -30,3 +30,11 @@ img{
     border: 1px solid black;
     display:block;
 }
+ul{
+    padding-left: 25px;
+    list-style: square;
+    color: crimson;
+}
+li{
+    list-style: square;
+}
