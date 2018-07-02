@@ -13,7 +13,7 @@
     <h3>只需要在ApplicationContext.xml文件中加入&lt;context:annotation-config/&gt;元素,<font style="color:red;">注意一点的是，这种方式依然需要在ApplicationContext.xml文件中配置bean的id和类的全名以供spring实例化bean</font></h3>
     <img src="./img/QQ截图20180701174606.png" alt="">
     <br><br>
-    <h2>不仅需要注入依赖的相关操作，而且需要扫包实例化bean的时候</h2>
+    <h2>不仅需要注入依赖的相关操作，而且需要扫包实例化bean的时候（参考官方文档7.10.3 Automatically detecting classes and registering bean definitions）</h2>
     <h3>只需要在ApplicationContext.xml文件中加入&lt;context:component-scan/&gt;元素,<font style="color:red;">注意一点的是，开启&lt;context:component-scan/&gt;元素的时候以及隐式开启了&lt;context:annotation-config/&gt;元素的相关操作，因此无需再显式调用&lt;context:annotation-config/&gt;元素了</font></h3>
     <img src="./img/QQ截图20180701180107.png" alt="">
     <br><br>
@@ -23,13 +23,32 @@
     <h1>注入依赖操作的相关注解（@Resource和@Autowired）</h1>
     <h2>@Resource注解</h2>
     <h3>@Resource并不是spring框架本身提供的注解，而是JSR-250标准的注解，这个注解本身已经包含在javase6及以上版本中，因此使用这个注解的时候不需要额外去导包</h3>
+    <h3>@Resource注解可以加在属性上也可以加在setter方法上（如果是加在属性上的话则不需要提供setter方法）</h3>
+    <img src="./img/QQ截图20180702134721.png" alt=""><br>
+    <img src="./img/QQ截图20180702140516.png" alt=""><br>
+    <h3>示例一：@Resource加在属性上</h3>
+    <img src="./img/QQ截图20180702134521.png" alt="">
+    <img src="./img/QQ截图20180702134916.png" alt="">
+    <br>
+    <h3>示例二：@Resource加在setter方法上</h3>
+    <img src="./img/QQ截图20180702141411.png" alt="">
+    <img src="./img/QQ截图20180702141433.png" alt="">
+    <br>
     <br><br>
     <h2>@Autowired注解</h2>
+    <h3>@Autowired注解是spring框架本身提供的注解，使用方法与@Resource注解基本一致。<font style="color:red;">注意一点的是，@Autowired注解没有name属性，它通过@Qualifier("要注入的bean的id号")这种方式来指定要注入的bean</font></h3>
+    <img src="./img/QQ截图20180702144710.png" alt="">
     <br><br>
     <br>
     <br>
     <br>
     <h1>bean实例化操作的相关注解（扫包）</h1>
+    <ul>
+        <li>@Component</li>
+        <li>@Controller</li>
+        <li>@Service</li>
+        <li>@Repository</li>
+    </ul>
     <br>
     <br>
     <br>
