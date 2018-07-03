@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AOP开发(基于注解形式)</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>第一步：定义切面bean</h1>
+    <h3>当启动了@AspectJ支持后，只要在spring容器中配置一个带@Aspect注解的bean，spring将会自动识别该bean作为一个切面</h3>
+    <img src="./img/QQ截图20180703225936.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第二步：定义增强处理</h1>
+    <h2>@Before增强</h2>
+    <h3>@Before增强是在被代理方法执行之前织入增强，<font style="color: red;">注意一点的是，如果@Before增强处理没有经过特殊处理，则被代理方法总是会执行</font></h3>
+    <br><br>
+    <h2>@AfterReturning增强</h2>
+    <br><br>
+    <h2>@AfterThrowing增强</h2>
+    <br><br>
+    <h2>@After增强</h2>
+    <br><br>
+    <h2>@Around增强</h2>
+    <br><br>
+
+    <br>
+    <br>
+    <br>
+</body>
+</html>
