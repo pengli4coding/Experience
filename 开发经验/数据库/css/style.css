@@ -38,3 +38,6 @@ ul{
 li{
     list-style: square;
 }
+u{
+    text-decoration: underline;
+}
