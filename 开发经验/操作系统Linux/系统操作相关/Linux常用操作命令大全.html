@@ -12,6 +12,7 @@
     <hr>
     <u>命令 --help</u>&nbsp;&nbsp;显示命令的详细帮助信息<br>
     <hr>
+    <h2>文件操作相关命令</h2>
     <u>cd /etc</u>&nbsp;&nbsp;切换到/etc目录<br>
     <u>cd ..</u>&nbsp;&nbsp;切换到上一级目录<br>
     <u>cd test</u>&nbsp;&nbsp;切换到当前目录的test文件夹下<br>
@@ -57,6 +58,7 @@
     <u>ln Test.java test.hard</u>&nbsp;&nbsp;为当前目录下的Test.java文件创建名为test.hard的硬连接（硬连接就是文件的备份，当原文件内容发生变化的时候，硬连接文件同步发生变化，原文件与硬连接文件的文件大小始终保持一致的）<br>
     <u>ln -s Test.java test.soft</u>&nbsp;&nbsp;为当前目录下的Test.java文件创建名为test.soft的软连接（软连接就相等于window下的快捷方式的意思），-s表示创建软连接的意思<br>
     <hr>
+    <h2>文件权限相关命令</h2>
     <u>chmod o+r Test.java</u>&nbsp;&nbsp;为当前目录下的Test.java文件赋予其他用户读权限（+代表赋予权限；u代表文件所属用户、g代表文件所属用户所在的组、o代表其他用户；r代表读权限、w代表写权限、x代表可执行权限）<br>
     <u>chmod o-r Test.java</u>&nbsp;&nbsp;为当前目录下的Test.java文件剥夺其他用户读权限（-代表剥夺权限；u代表文件所属用户、g代表文件所属用户所在的组、o代表其他用户；r代表读权限、w代表写权限、x代表可执行权限）<br>
     <hr>
@@ -64,6 +66,7 @@
     <hr>
     <u>chgrp xiaolili Test.java</u>&nbsp;&nbsp;改变当前目录下的Test.java文件的所属组为xiaolili<br>
     <hr>
+    <h2>查找相关命令</h2>
     <u>which ls</u>&nbsp;&nbsp;查找ls命令所在的目录<br>
     <hr>
     <u>find /etc -name init</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件名为init的文件<br>
@@ -74,5 +77,9 @@
     <u>find /etc -user root</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件所属者是root的文件<br>
     <hr>
     <u>grep ftp /etc/services</u>&nbsp;&nbsp;对/etc/services文件内容进行查找，找出包含ftp字样的行并输出<br>
+    <hr>
+    <h2>压缩相关命令</h2>
+    <u>gzip Test.java</u>&nbsp;&nbsp;对当前目录下的Test.java文件进行压缩操作，最终生成Test.java.gz文件，并且不保留原文件<br>
+    <u>gzip -c Test.java>Test.gz</u>&nbsp;&nbsp;对当前目录下的Test.java文件进行压缩操作，最终生成Test.gz文件，并且保留原文件Test.java，-c参数可以保留原文件<br>
 </body>
 </html>
