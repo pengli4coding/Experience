@@ -32,6 +32,7 @@
     <hr>
     <u>cp test.java test</u>&nbsp;&nbsp;拷贝当前目录下的test.java文件到当前目录下的test文件夹下面<br>
     <u>cp -r /etc /home/test</u>&nbsp;&nbsp;拷贝/etc目录到/home/test目录下，-r表示拷贝的是目录<br>
+    <u>cp -r test test1</u>&nbsp;&nbsp;拷贝当前目录下的test文件夹到当前目录下的test1文件夹下面（注意一点的是，如果当前目录下没有test1文件夹，则会创建一个test1文件夹，然后将test文件夹下的所有文件/文件夹拷贝到test1文件夹下面）<br>
     <hr>
     <u>mv test.java test</u>&nbsp;&nbsp;剪切当前目录下的test.java文件到当前目录下的test文件夹下面<br>
     <u>mv test1 test</u>&nbsp;&nbsp;剪切当前目录下的test1文件夹到当前目录下的test文件夹下面<br>
@@ -78,8 +79,22 @@
     <hr>
     <u>grep ftp /etc/services</u>&nbsp;&nbsp;对/etc/services文件内容进行查找，找出包含ftp字样的行并输出<br>
     <hr>
-    <h2>压缩相关命令</h2>
+    <h2>单个文件压缩相关命令</h2>
     <u>gzip Test.java</u>&nbsp;&nbsp;对当前目录下的Test.java文件进行压缩操作，最终生成Test.java.gz文件，并且不保留原文件<br>
-    <u>gzip -c Test.java>Test.gz</u>&nbsp;&nbsp;对当前目录下的Test.java文件进行压缩操作，最终生成Test.gz文件，并且保留原文件Test.java，-c参数可以保留原文件<br>
+    <u>gzip -c Test.java>Test.java.gz</u>&nbsp;&nbsp;对当前目录下的Test.java文件进行压缩操作，最终生成Test.java.gz文件，并且保留原文件Test.java，-c参数可以保留原文件<br>
+    <hr>
+    <u>gunzip Test.java.gz</u>&nbsp;&nbsp;对当前目录下的Test.java.gz文件进行解压缩操作，最终解压出来Test.java文件（注意，最终解压出来的文件名是去掉.gz后缀后的文件名，而不是压缩文件里面包含的真实文件名），并且不保留原文件<br>
+    <u>gunzip -c test.gz>Test.java</u>&nbsp;&nbsp;对当前目录下的test.gz文件进行解压缩操作，最终解压到Test.java文件，并且保留原文件test.gz，-c参数可以保留原文件<br>
+    <hr>
+    <h2>多个文件（目录）打包压缩相关命令</h2>
+    <u>tar -zcvf test.tar.gz test</u>&nbsp;&nbsp;对当前目录下的test文件夹进行打包并压缩操作，最终生成test.tar.gz文件，test文件夹也保留下来，-c表示产生.tar打包文件，-v表示显示详细信息，-f是指定文件名，-z表示打包同时压缩<br>
+    <u>tar -cvf test.tar test</u>&nbsp;&nbsp;对当前目录下的test文件夹进行打包，最终生成test.tar文件，test文件夹也保留下来，-c表示打包，-v表示显示详细信息，-f是指定文件名<br>
+    <u>tar -zxvf 1.tar.gz</u>&nbsp;&nbsp;对当前目录下的test文件夹进行解包并解压缩操作，最终解压出来etc文件（压缩的就是etc文件夹），1.tar.gz文件也保留下来，-x表示解包，-v表示显示详细信息，-f是指定要解压的文件名，-z表示打包同时压缩<br>
+    <hr>
+    <h2>输出重定向</h2>
+    <u>ls -al /etc > result.txt</u>&nbsp;&nbsp;把执行ls -al /etc命令的结果输出到当前目录下的result.txt文件中，&gt;会覆盖原文件的内容，如果当前文件夹中不存在resutl.txt文件的话，则会创建result.txt文件<br>
+    <u>ls -al /etc >> result.txt</u>&nbsp;&nbsp;把执行ls -al /etc命令的结果追加到当前目录下的result.txt文件中，&gt;&gt;不会覆盖原文件的内容，会在原文件的基础上追加内容，如果当前文件夹中不存在resutl.txt文件的话，则会创建result.txt文件<br>
+    <hr>
+    <h2>管道</h2>
 </body>
 </html>
