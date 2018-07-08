@@ -40,4 +40,9 @@ li{
 }
 u{
     text-decoration: underline;
+    color: red;
+}
+hr{
+    height:5px;
+    background-color:#000;
 }

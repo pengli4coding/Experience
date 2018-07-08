@@ -8,7 +8,71 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <u>ls -al</u>&nbsp;&nbsp;列出当前目录下的所有文件<br>
-    <u>ls -al</u>&nbsp;&nbsp;列出当前目录下的所有文件<br>
+    <u>man 命令</u>&nbsp;&nbsp;显示命令的帮助手册<br>
+    <hr>
+    <u>命令 --help</u>&nbsp;&nbsp;显示命令的详细帮助信息<br>
+    <hr>
+    <u>cd /etc</u>&nbsp;&nbsp;切换到/etc目录<br>
+    <u>cd ..</u>&nbsp;&nbsp;切换到上一级目录<br>
+    <u>cd test</u>&nbsp;&nbsp;切换到当前目录的test文件夹下<br>
+    <hr>
+    <u>pwd</u>&nbsp;&nbsp;显示当前目录的全路径名<br>
+    <hr>
+    <u>clear</u>&nbsp;&nbsp;清屏<br>
+    <hr>
+    <u>ls</u>&nbsp;&nbsp;列出当前目录下的所有文件（不显示隐藏文件，不显示详细信息）<br>
+    <u>ls -al</u>&nbsp;&nbsp;列出当前目录下的所有文件（显示隐藏文件，显示详细信息）,-a表示显示包括隐藏文件在内的所有文件，-l表示显示文件的详细信息<br>
+    <u>ls -al test</u>&nbsp;&nbsp;列出当前目录的test目录下的所有文件（显示隐藏文件，显示详细信息）,-a表示显示包括隐藏文件在内的所有文件，-l表示显示文件的详细信息<br>
+    <u>ls -al /etc</u>&nbsp;&nbsp;列出/etc目录下的所有文件（显示隐藏文件，显示详细信息）,-a表示显示包括隐藏文件在内的所有文件，-l表示显示文件的详细信息<br>
+    <hr>
+    <u>touch test.java</u>&nbsp;&nbsp;在当前目录下创建一个名为test.java的空文件<br>
+    <hr>
+    <u>mkdir test</u>&nbsp;&nbsp;在当前目录下创建一个名为test的目录<br>
+    <hr>
+    <u>cp test.java test</u>&nbsp;&nbsp;拷贝当前目录下的test.java文件到当前目录下的test文件夹下面<br>
+    <u>cp -r /etc /home/test</u>&nbsp;&nbsp;拷贝/etc目录到/home/test目录下，-r表示拷贝的是目录<br>
+    <hr>
+    <u>mv test.java test</u>&nbsp;&nbsp;剪切当前目录下的test.java文件到当前目录下的test文件夹下面<br>
+    <u>mv test1 test</u>&nbsp;&nbsp;剪切当前目录下的test1文件夹到当前目录下的test文件夹下面<br>
+    <u>mv /home/test.java /home/test</u>&nbsp;&nbsp;剪切/home/test.java文件到/home/test文件夹下面<br>
+    <u>mv test.java test1.java</u>&nbsp;&nbsp;修改当前目录下的test.java文件的文件名为test1.java<br>
+    <hr>
+    <u>rm Test.java</u>&nbsp;&nbsp;删除当前目录下的Test.java文件（系统会弹出确认信息）<br>
+    <u>rm -f Test.java</u>&nbsp;&nbsp;删除当前目录下的Test.java文件（强制删除，系统不会弹出确认信息），-f表示强制删除<br>
+    <u>rm -r test</u>&nbsp;&nbsp;删除当前目录下的test文件夹（系统会弹出确认信息），-r表示删除的是文件夹<br>
+    <u>rm -rf test</u>&nbsp;&nbsp;删除当前目录下的test文件夹（强制删除，系统不会弹出确认信息），-r表示删除的是文件夹，-f表示强制删除<br>
+    <u>rm -rf /home/test</u>&nbsp;&nbsp;删除/home/test文件夹（强制删除，系统不会弹出确认信息），-r表示删除的是文件夹，-f表示强制删除<br>
+    <hr>
+    <u>cat Test.java</u>&nbsp;&nbsp;显示当前目录下Test.java文件的内容（cat命令的缺点是当文件内容非常长的时候，会被滚屏过去，无法看全内容）<br>
+    <u>cat /home/test/Test.java</u>&nbsp;&nbsp;显示/home/test/Test.java文件的内容（cat命令的缺点是当文件内容非常长的时候，会被滚屏过去，无法看全内容）<br>
+    <hr>
+    <u>more Test.java</u>&nbsp;&nbsp;显示当前目录下Test.java文件的内容（more命令相比cat命令是使用分页的方式查看文件的内容，遇到内容非常长的文件的时候也可以看全，回车是翻下一行，空格是翻下一页，q是退出）<br>
+    <u>more /home/test/Test.java</u>&nbsp;&nbsp;显示/home/test/Test.java文件的内容（more命令相比cat命令是使用分页的方式查看文件的内容，遇到内容非常长的文件的时候也可以看全，回车是翻下一行，空格是翻下一页，q是退出）<br>
+    <hr>
+    <u>head -10 Test.java</u>&nbsp;&nbsp;显示当前目录下Test.java文件的前10行内容<br>
+    <hr>
+    <u>tail -10 Test.java</u>&nbsp;&nbsp;显示当前目录下Test.java文件的最后10行内容<br>
+    <u>tail -f Test.java</u>&nbsp;&nbsp;动态显示当前目录下Test.java文件的末尾的内容，这种用法常用于动态查看控制台文件<br>
+    <hr>
+    <u>ln Test.java test.hard</u>&nbsp;&nbsp;为当前目录下的Test.java文件创建名为test.hard的硬连接（硬连接就是文件的备份，当原文件内容发生变化的时候，硬连接文件同步发生变化，原文件与硬连接文件的文件大小始终保持一致的）<br>
+    <u>ln -s Test.java test.soft</u>&nbsp;&nbsp;为当前目录下的Test.java文件创建名为test.soft的软连接（软连接就相等于window下的快捷方式的意思），-s表示创建软连接的意思<br>
+    <hr>
+    <u>chmod o+r Test.java</u>&nbsp;&nbsp;为当前目录下的Test.java文件赋予其他用户读权限（+代表赋予权限；u代表文件所属用户、g代表文件所属用户所在的组、o代表其他用户；r代表读权限、w代表写权限、x代表可执行权限）<br>
+    <u>chmod o-r Test.java</u>&nbsp;&nbsp;为当前目录下的Test.java文件剥夺其他用户读权限（-代表剥夺权限；u代表文件所属用户、g代表文件所属用户所在的组、o代表其他用户；r代表读权限、w代表写权限、x代表可执行权限）<br>
+    <hr>
+    <u>chown xiaolili Test.java</u>&nbsp;&nbsp;改变当前目录下的Test.java文件的所有者为xiaolili<br>
+    <hr>
+    <u>chgrp xiaolili Test.java</u>&nbsp;&nbsp;改变当前目录下的Test.java文件的所属组为xiaolili<br>
+    <hr>
+    <u>which ls</u>&nbsp;&nbsp;查找ls命令所在的目录<br>
+    <hr>
+    <u>find /etc -name init</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件名为init的文件<br>
+    <u>find /etc -name *init</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件名以init为结尾的文件<br>
+    <u>find /etc -name init*</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件名以init为开头的文件<br>
+    <u>find /etc -name *init*</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件名包含init的文件<br>
+    <u>find /etc -size +1024</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件大小大于1024数据块的文件（一个数据块等于512字节）<br>
+    <u>find /etc -user root</u>&nbsp;&nbsp;在/etc目录下（包括子目录）查找文件所属者是root的文件<br>
+    <hr>
+    <u>grep ftp /etc/services</u>&nbsp;&nbsp;对/etc/services文件内容进行查找，找出包含ftp字样的行并输出<br>
 </body>
 </html>
