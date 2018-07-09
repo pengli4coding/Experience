@@ -95,6 +95,9 @@
     <u>ls -al /etc > result.txt</u>&nbsp;&nbsp;把执行ls -al /etc命令的结果输出到当前目录下的result.txt文件中，&gt;会覆盖原文件的内容，如果当前文件夹中不存在resutl.txt文件的话，则会创建result.txt文件<br>
     <u>ls -al /etc >> result.txt</u>&nbsp;&nbsp;把执行ls -al /etc命令的结果追加到当前目录下的result.txt文件中，&gt;&gt;不会覆盖原文件的内容，会在原文件的基础上追加内容，如果当前文件夹中不存在resutl.txt文件的话，则会创建result.txt文件<br>
     <hr>
-    <h2>管道</h2>
+    <h2>管道（管道就是将一个命令的输出传送给另一个命令）</h2>
+    <u>ls -l /etc | more</u>&nbsp;&nbsp;将ls -l /etc命令的输出传送给more命令分页显示<br>
+    <u>ls -l /etc | grep init</u>&nbsp;&nbsp;将ls -l /etc命令的输出传送给grep命令查找包含有init字样的行<br>
+    <u>ls -l /etc | grep init | wc -l</u>&nbsp;&nbsp;将ls -l /etc命令的输出传送给grep命令查找包含有init字样的行再输出到wc命令统计一共有多少包含init字样的行<br>
 </body>
 </html>

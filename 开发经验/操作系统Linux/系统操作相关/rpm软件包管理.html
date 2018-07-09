@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rpm软件包管理</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>什么是rpm包</h1>
+    <h3>rpm包是一种已编译的二进制程序包，linux下可以用rpm命令管理软件包</h3>
+    <br>
+    <br>
+    <br>
+    <h1>用rpm命令来安装rpm包</h1>
+    <u>rpm -q sudo</u>&nbsp;&nbsp;查询sudo软件是否被安装<br>
+    <u>rpm -qa | grep samba</u>&nbsp;&nbsp;查询和samba相关的软件包<br>
+    <u>rpm -ivh --test sudo-1.8.19p2-13.el7.x86_64.rpm</u>&nbsp;&nbsp;测试安装sudo-1.8.19p2-13.el7.x86_64.rpm包，如果这个包已经安装过了，则会提示“is already installed”类似的信息<br>
+    <u>rpm -ivh sudo-1.8.19p2-13.el7.x86_64.rpm</u>&nbsp;&nbsp;正式安装sudo-1.8.19p2-13.el7.x86_64.rpm包<br>
+    <br>
+    <br>
+    <br>
+    <h1>用rpm命令来卸载软件</h1>
+    <u>rpm -e sudo</u>&nbsp;&nbsp;卸载sudo软件<br>
+    <br>
+    <br>
+    <br>
+    <h1>用rpm命令来安装软件的缺点</h1>
+    <h3>用rpm命令来安装软件最大的缺点就是不能够自动解决依赖关系，因此用yum的方式可以自动解决依赖的关系</h3>
+</body>
+</html>
