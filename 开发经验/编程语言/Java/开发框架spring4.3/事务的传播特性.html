@@ -5,25 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>事务的传播特性</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1>REQUIRED（@Transactional注解的默认传播特性），</h1>
+    <h1>REQUIRED（@Transactional注解的默认传播特性），如果调用方法的事务存在，则加入到调用方法的事务中，如果调用方法不存在事务，则开启一个事务范围是本业务方法的事务</h1>
+    <img src="./img/QQ截图20180710151713.png" alt="">
+    <img src="./img/QQ截图20180710152734.png" alt="">
     <br>
     <br>
     <br>
-    <h1></h1>
+    <h1>NEVER，业务方法必须在非事务环境中执行，如果在事务环境中执行的话会报错</h1>
+    <img src="./img/QQ截图20180710144558.png" alt="">
+    <img src="./img/QQ截图20180710144850.png" alt="">
     <br>
     <br>
     <br>
-    <h1></h1>
+    <h1>MANDATORY，业务方法必须在事务环境中执行，如果在非事务环境中执行的话会报错</h1>
+    <img src="./img/QQ截图20180710145029.png" alt="">
+    <img src="./img/QQ截图20180710145146.png" alt="">
     <br>
     <br>
     <br>
-    <h1></h1>
+    <h1>SUPPORTS，如果调用方法的事务存在，则被调用方法加入到调用方法的事务中去，不会单独开事务；如果调用方法的事务不存在，被调用方法也不会单独开事务</h1>
+    <img src="./img/QQ截图20180710155915.png" alt="">
+    <img src="./img/QQ截图20180710160023.png" alt="">
     <br>
     <br>
     <br>
-    <h1></h1>
+    <h1>NOT_SUPPORTED，如果调用方法的事务存在，当调用被调用方法的时候，调用方法的事务会被挂起，等被调用方法执行完毕后再唤醒调用方法的事务；如果调用方法不存在事务，则被调用方法也不开事务</h1>
+    <img src="./img/QQ截图20180710161050.png" alt="">
+    <img src="./img/QQ截图20180710161147.png" alt="">
     <br>
     <br>
     <br>
