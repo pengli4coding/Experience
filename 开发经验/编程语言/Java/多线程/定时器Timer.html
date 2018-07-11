@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定时器Timer</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>定时器Timer简介</h1>
+    <h3>定时器Timer是JDK提供的用于执行定时任务的一个类，定时器Timer类要配合TimerTask这个抽象类来使用，Timer类的主要作用是设置定时计划任务，TimerTask类的主要作用是设置定时计划任务的具体内容</h3>
+    <br>
+    <br>
+    <br>
+    <h1>执行定时计划任务的大体步骤</h1>
+    <h3>具体步骤：</h3>
+	<h3>第一步：创建一个类继承自TimerTask，并重写run方法，在run方法中写入定时任务具体要做什么</h3>
+	<h3>第二步：创建一个Timer对象</h3>
+    <h3>第三步：调用Timer的schedule方法或scheduleAtFixedRate方法（传入第一步中TimerTask子类的实例、定时任务开始时间等参数）开启定时任务执行</h3>
+    <h3>样例如下：</h3>
+    <img src="./img/QQ截图20180711212139.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>定时器Timer的定时方法总览</h1>
+    <img src="./img/QQ截图20180711220808.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>定时任务执行时间晚于当前时间：以定时任务执行时间执行定时任务</h1>
+    <img src="./img/QQ截图20180711212423.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>定时任务执行时间早于当前时间：以当前时间执行定时任务（即马上执行）</h1>
+    <img src="./img/QQ截图20180711212600.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>未完待续</h1>
+</body>
+</html>
