@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>创建线程的基本的三种方式</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+	<h1>第一种方式：继承java.lang.Thread</h1>
+	<h3>具体步骤：</h3>
+	<h3>第一步：创建一个类继承java.lang.Thread</h3>
+	<h3>第二步：重写父类的run方法</h3>
+	<h3>第三步：创建类的实例</h3>
+	<h3>第四步：调用start方法开启线程</h3>
+	<h3>样例如下：</h3>
+	<img src="./img/QQ截图20180711135508.png" alt="">
+	<img src="./img/QQ截图20180711135547.png" alt="">
+	<br>
+	<br>
+	<br>
+	<h1>第二种方式（推荐）：实现java.lang.Runnable接口</h1>
+	<h2>如果使用继承Thread的方式来创建线程，那么就不能够再继承其它类了（Java的单继承特性决定），这样就不灵活。所以推荐用实现Runnable接口的方式来创建线程。</h2>
+	<h3>具体步骤：</h3>
+	<h3>第一步：创建一个类实现java.lang.Runnable接口</h3>
+	<h3>第二步：实现接口的run方法</h3>
+	<h3>第三步：创建类的实例</h3>
+	<h3>第四步：创建一个java.lang.Thread类的实例（传入上一步类的实例作为构造方法的参数）</h3>
+	<h3>第五步：调用start方法开启线程</h3>
+	<h3>标准样例如下：</h3>
+	<img src="./img/QQ截图20180711140037.png" alt="">
+	<img src="./img/QQ截图20180711135934.png" alt="">
+	<br>
+	<h3>或者用更简略的方式如下：</h3>
+	<img src="./img/QQ截图20180711141222.png" alt="">
+	<br>
+	<br>
+	<br>
+	<h1>第三种方式：</h1>
+	<br>
+	<br>
+	<br>
+</body>
+
+</html>
