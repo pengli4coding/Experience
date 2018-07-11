@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>整合hibernate框架(xml配置文件方式)</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>第一步：导包</h1>
+    <h3>除了IoC、AOP、事务模块的等核心包以外，还需要导入spring中的orm框架整合模块</h3>
+    <img src="./img/QQ截图20180711131712.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第二步：配置数据源（这里使用c3p0，也可以用DBCP）</h1>
+    <h3>参考
+        <a href="c3p0数据源的配置.html" target="_blank">c3p0数据源的配置链接</a>
+    </h3>
+    <h3>ApplicationContext.xml中的c3p0数据源bean如下所示：</h3>
+    <img src="./img/QQ截图20180711132528.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第三步：配置SessionFactory的bean</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第四步：事务的配置</h1>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
