@@ -40,4 +40,17 @@ li{
 }
 u{
     text-decoration: underline;
+    color: red;
 }
+hr{
+    height:5px;
+    background-color:#000;
+}
+table{
+    border:2px solid black;
+    border-collapse:collapse;
+}
+tr,th,td{
+    border:2px solid black;
+}
+
