@@ -58,10 +58,17 @@
                         <dt>
                             <a href="#2.3.1">2.3.1生命周期图示</a>
                         </dt>
-                        <dt></dt>
-                        <dt></dt>
+                        <dt>
+                            <a href="#2.3.2">2.3.2load-on-startup参数配置（servlet随项目启动而创建）</a>
+                        </dt>
                     </dl>
                 </dd>
+                <dt>
+                    <a href="#2.4">2.4设置并获取servlet的配置信息（ServletConfig）</a>
+                </dt>
+                <dt>
+                    <a href="#2.5">2.5设置并获取servlet配置信息</a>
+                </dt>
             </dl>
         </dd>
     </dl>
@@ -87,7 +94,19 @@
     <img src="./img/QQ截图20180714163133.png" alt="">
     <h1 id="2.3">2.3生命周期</h1>
     <h1 id="2.3.1">2.3.1生命周期图示</h1>
-
+    <h3>不设置servlet随web项目启动而创建的时候（即默认设置，不设置load-on-startup参数的时候）</h3>
+    <img src="./img/QQ截图20180714181223.png" alt="">
+    <h3>设置servlet随web项目启动而创建的时候（即设置load-on-startup大于0的时候）</h3>
+    <img src="./img/QQ截图20180714180909.png" alt="">
+    <h1 id="2.3.2">2.3.2load-on-startup参数配置（servlet随项目启动而创建）</h1>
+    <h3>在web.xml文件中可以配置load-on-startup参数使得servlet随着web项目的启动而创建，而不是在默认情况下第一次request请求过来的时候再去创建servlet</h3>
+    <h3>注意：load-on-startup参数一定要设置为大于0的整数</h3>
+    <h3>多个servlet都配置了load-on-startup参数的时候，servlet的创建顺序由load-on-startup参数的大小来决定，参数值越小，越早创建</h3>
+    <img src="./img/QQ截图20180714183144.png" alt="">
+    <h1 id="2.4">2.4设置并获取servlet的配置信息（ServletConfig）</h1>
+    <img src="./img/QQ截图20180714185956.png" alt="">
+    <img src="./img/QQ截图20180714185804.png" alt="">
+    <h1 id="2.5">2.5设置并获取servlet配置信息</h1>
 </body>
 
 </html>
