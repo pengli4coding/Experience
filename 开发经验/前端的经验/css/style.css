@@ -60,9 +60,6 @@ dd {
 dt{
     color:  #4183c4;
 }
-dt>a{
-    color:  #4183c4;
-}
 dl>dt{/*一级标题*/
     font-weight: 700;
     font-size:32px;

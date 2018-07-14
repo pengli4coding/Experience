@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Servlet详细讲解</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <dl>
+        <!--dt和dd必须是同级的，不能够相互嵌套-->
+        <dt>
+            <a href="#1">1.Servlet介绍</a>
+        </dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#1.1">1.1什么是Servlet？</a>
+                </dt>
+                <dt>
+                    <a href="#1.2">1.2Servlet接口以及它的实现类</a>
+                </dt>
+                <dt>
+                    <a href="#1.3">1.3最通用的创建Servlet的方法（一般不用）：创建Servlet接口的实现类</a>
+                </dt>
+                <dd>
+                    <dl>
+                        <dt>
+                            <a href="#1.3.1">1.3.1流程图</a>
+                        </dt>
+                        <dt>
+                            <a href="#1.3.2">1.3.2示例</a>
+                        </dt>
+                    </dl>
+                </dd>
+            </dl>
+        </dd>
+        <dt>
+            <a href="#2">2.最常用的创建Servlet的方法：创建HttpServlet类的子类</a>
+        </dt>
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#2.1">2.1HttpServlet类的介绍</a>
+                </dt>
+                <dt>
+                    <a href="#2.2">2.2如何创建HttpServlet类的子类</a>
+                </dt>
+                <dt>
+                    <a href="#2.3">2.3生命周期</a>
+                </dt>
+                <dd>
+                    <dl>
+                        <dt>
+                            <a href="#2.3.1">2.3.1生命周期图示</a>
+                        </dt>
+                        <dt></dt>
+                        <dt></dt>
+                    </dl>
+                </dd>
+            </dl>
+        </dd>
+    </dl>
+    <br>
+    <h1 id="1">1.Servlet介绍</h1>
+    <h1 id="1.1">1.1什么是Servlet？</h1>
+    <h3>Servlet是JavaWeb三大组件（Servlet、Filter、Listener）之一，通常被称为服务器端小程序，主要用来响应客户端的请求，并将结果返回到客户端</h3>
+    <h1 id="1.2">1.2Servlet接口以及它的实现类</h1>
+    <img src="./img/QQ截图20180714152413.png" alt="">
+    <h1 id="1.3">1.3最通用的创建Servlet的方法（一般不用）：创建Servlet接口的实现类</h1>
+    <h1 id="1.3.1">1.3.1流程图</h1>
+    <img src="./img/QQ截图20180714154948.png" alt="">
+    <h1 id="1.3.2">1.3.2示例</h1>
+    <img src="./img/QQ截图20180714154015.png" alt="">
+    <h3>部署项目到Tomcat然后在浏览器上访问结果如下：</h3>
+    <img src="./img/QQ截图20180714155148.png" alt="">
+    <h1 id="2">2.最常用的创建Servlet的方法：创建HttpServlet类的子类</h1>
+    <h1 id="2.1">2.1HttpServlet类的介绍</h1>
+    <h3>HttpServlet类继承自GenericServlet类，而GenericServlet类实现了Servlet接口</h3>
+    <h1 id="2.2">2.2如何创建HttpServlet类的子类</h1>
+    <img src="./img/QQ截图20180714162938.png" alt="">
+    <h3>部署项目到Tomcat然后在浏览器上访问结果如下：</h3>
+    <img src="./img/QQ截图20180714163133.png" alt="">
+    <h1 id="2.3">2.3生命周期</h1>
+    <h1 id="2.3.1">2.3.1生命周期图示</h1>
+
+</body>
+
+</html>

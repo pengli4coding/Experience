@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dl、dt、dd的使用</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <dl>
+        <!--dt和dd必须是同级的，不能够相互嵌套-->
+        <dt>一级标题</dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt>二级标题</dt>
+                <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+                <dd>
+                    <dl>
+                        <dt>三级标题</dt>
+                        <dt>三级标题</dt>
+                    </dl>
+                </dd>
+                <dt>二级标题</dt>
+                <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+                <dd>
+                    <dl>
+                        <dt>三级标题</dt>
+                        <dt>三级标题</dt>
+                        <dt>三级标题</dt>
+                    </dl>
+                </dd>
+            </dl>
+        </dd>
+        <dt>一级标题</dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt>二级标题</dt>
+                <dt>二级标题</dt>
+            </dl>
+        </dd>
+    </dl>
+</body>
+
+</html>
