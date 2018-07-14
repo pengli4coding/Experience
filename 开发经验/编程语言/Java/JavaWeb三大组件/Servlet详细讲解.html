@@ -69,6 +69,9 @@
                 <dt>
                     <a href="#2.5">2.5设置并获取servlet配置信息</a>
                 </dt>
+                <dt>
+                    <a href="#2.6">2.6设置并获取servlet配置信息</a>
+                </dt>
             </dl>
         </dd>
     </dl>
@@ -104,9 +107,12 @@
     <h3>多个servlet都配置了load-on-startup参数的时候，servlet的创建顺序由load-on-startup参数的大小来决定，参数值越小，越早创建</h3>
     <img src="./img/QQ截图20180714183144.png" alt="">
     <h1 id="2.4">2.4设置并获取servlet的配置信息（ServletConfig）</h1>
+    <h3>ServletConfig代表了当前servlet的配置信息，只能由当前servlet来访问，其它servlet访问不了</h3>
     <img src="./img/QQ截图20180714185956.png" alt="">
     <img src="./img/QQ截图20180714185804.png" alt="">
-    <h1 id="2.5">2.5设置并获取servlet配置信息</h1>
+    <h1 id="2.5">2.5设置并获取servlet容器的配置信息（ServletContext）</h1>
+    <h3>ServletContext代表了servlet容器（或者叫servlet上下文吧），它是web项目中所有servlet都可以访问的全局对象，这个后续的struts框架的配置也会用到</h3>
+    <img src="./img/QQ截图20180714204853.png" alt="">
 </body>
 
 </html>
