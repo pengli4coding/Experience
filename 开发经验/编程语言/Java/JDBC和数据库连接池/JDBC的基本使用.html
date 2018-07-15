@@ -8,6 +8,48 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    
+    <h1>JDBC中常用的类和接口有以下：</h1>
+    <ul>
+        <li>DriverManager类：用于获取Connection</li>
+        <li>Connection接口：代表着对数据库的一次物理连接</li>
+        <li>Statement接口：代表着SQL语句的执行对象</li>
+        <li>PreparedStatement接口：代表着SQL语句的执行对象（预编译）</li>
+        <li>ResultSet接口：代表着查询的结果集</li>
+        <li>ResultSetMetaData接口：代表着元数据对象，可以通过元数据对象获取表名、字段名等信息</li>
+
+    </ul>
+    <br>
+    <br>
+    <br>
+    <h1>用Statement进行增删改查</h1>
+    <h3>数据库中表结构如下：</h3>
+    <img src="./img/QQ截图20180715211558.png" alt="">
+    <h2>增加记录</h2>
+    <img src="./img/QQ截图20180715211747.png" alt="">
+    <img src="./img/QQ截图20180715211809.png" alt="">
+    <h2>删除记录</h2>
+    <img src="./img/QQ截图20180715211809.png" alt="">
+    <img src="./img/QQ截图20180715212438.png" alt="">
+    <img src="./img/QQ截图20180715212456.png" alt="">
+    <h2>修改记录</h2>
+    <img src="./img/QQ截图20180715211809.png" alt="">
+    <img src="./img/QQ截图20180715212330.png" alt="">
+    <img src="./img/QQ截图20180715212346.png" alt="">
+    <h2>查询记录</h2>
+    <img src="./img/QQ截图20180715215140.png" alt="">
+    <img src="./img/QQ截图20180715215240.png" alt="">
+    <h2>获取元数据</h2>
+    <img src="./img/QQ截图20180715220123.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>用PreparedStatement代替Statement进行增删改查</h1>
+    <h3>由于用Statement的时候有SQL注入的风险，所以一般情况下用的比较多的是使用PreparedStatement来进行增删改查的操作，这样可以防止SQL注入的问题，而且可以提升运行效率</h3>
+    <h3>数据库中表结构如下：</h3>
+    <img src="./img/QQ截图20180715222352.png" alt="">
+    <h2>增加记录</h2>
+    <h2>删除记录</h2>
+    <h2>修改记录</h2>
+    <h2>查询记录</h2>
 </body>
 </html>
