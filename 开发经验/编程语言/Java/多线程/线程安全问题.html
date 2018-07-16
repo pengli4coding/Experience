@@ -18,55 +18,17 @@
 	<br>
 	<br>
 	<br>
-    <h1>二、并发安全性问题的简单样例</h1>
-    <pre>
-package com.pl.thread;
-
-public class ThreadSafe implements Runnable {
-	public static void main(String[] args) {
-		ThreadSafe s1 = new ThreadSafe();
-		Thread t1 = new Thread(s1, "窗口一");
-
-		ThreadSafe s2 = new ThreadSafe();
-		Thread t2 = new Thread(s2, "窗口二");
-
-		t1.start();
-		t2.start();
-
-	}
-
-	private static int tickets = 100;//tickets这个变量会被多个线程访问，是共享资源
-	@Override
-	public void run() {
-		while (true) {
-			try {
-				Thread.sleep(50);// 暂停50毫秒，只是为了效果更明显
-			} catch (InterruptedException e) {
-			}
-			if (tickets > 0) {
-				System.out.println(Thread.currentThread().getName() + "正在卖第" + tickets-- + "张票");
-			} else {
-				System.out.println("票已售完");
-				break;
-			}
-		}
-	}
-}
-    </pre>
-	<h3>上面这个样例中主要是模拟“火车站卖票”的过程，tickets是总共的票数，有两个窗口在卖票（即两个线程），由于没有加上合适的同步，所以会造成并发安全性问题，即有可能会出现两个窗口在卖同一张票的情况。</h3>
+	<h1>二、访问共享数据（全局变量）的时候发生非线程安全问题</h1>
+	<img src="./img/QQ截图20180716184143.png" alt="">
 	<br>
 	<br>
 	<br>
-
-	<h1>三、访问共享数据（全局变量）的时候发生线程安全问题</h1>
+	<h1>三、访问共享数据（静态变量）的时候发生非线程安全问题</h1>
+	<img src="./img/QQ截图20180716183917.png" alt="">
 	<br>
 	<br>
 	<br>
-	<h1>四、访问共享数据（静态变量）的时候发生线程安全问题</h1>
-	<img src="./img/QQ截图20180711152513.png" alt="">
-	<img src="./img/QQ截图20180711151948.png" alt="">
-	<br>
-	<br>
-	<br>
+	<h1>四、访问局部变量是永远不可能发生非线程安全问题的</h1>
+	<img src="./img/QQ截图20180716191003.png" alt="">
 </body>
 </html>
