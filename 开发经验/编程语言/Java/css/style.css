@@ -4,6 +4,9 @@
     list-style: none;
     text-decoration: none;
 }
+font{
+    color: red;
+}
 
 pre{
     border: 2px solid green;
