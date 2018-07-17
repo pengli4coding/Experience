@@ -92,13 +92,22 @@
                     <a href="#3.3">3.3HttpServletRequest参数的获取接收</a>
                 </dt>
                 <dt>
-                    <a href="#3.4">3.4HttpServletRequest中文乱码问题</a>
+                    <a href="#3.4">3.4HttpServletRequest获取前台参数值中文乱码问题</a>
                 </dt>
                 <dt>
-                    <a href="#3.5">3.5HttpServletRequest的请求转发和域</a>
+                    <a href="#3.5">3.5HttpServletRequest的请求转发（服务器跳转）</a>
                 </dt>
                 <dt>
-                    <a href="#3.6">3.6HttpServletResponse</a>
+                    <a href="#3.6">3.6HttpServletResponse往页面写内容</a>
+                </dt>
+                <dt>
+                    <a href="#3.7">3.7HttpServletResponse往页面写内容中文乱码的问题</a>
+                </dt>
+                <dt>
+                    <a href="#3.8">3.8HttpServletResponse重定向（客户端跳转）</a>
+                </dt>
+                <dt>
+                    <a href="#3.9">3.9请求转发与页面重定向的区别</a>
                 </dt>
             </dl>
         </dd>
@@ -158,11 +167,20 @@
     <img src="./img/QQ截图20180717203947.png" alt="">
     <img src="./img/QQ截图20180717204123.png" alt="">
     <img src="./img/QQ截图20180717204142.png" alt="">
-    <h1 id="3.4">3.4HttpServletRequest中文乱码问题</h1>
-    <h3>Get方式的中文乱码处理</h3>
-    <h3>Post方式的中文乱码处理</h3>
-    <h1 id="3.5">3.5HttpServletRequest的请求转发和域</h1>
-    <h1 id="3.6">3.6HttpServletResponse</h1>
+    <h1 id="3.4">3.4HttpServletRequest获取前台参数值中文乱码问题</h1>
+    <img src="./img/QQ截图20180717224421.png" alt="">
+    <h1 id="3.5">3.5HttpServletRequest的请求转发（服务器跳转）</h1>
+    <h3>请求转发（服务器跳转）可以跳到当前web应用中别的页面或者是另外的一个Servlet</h3>
+    <h3><font>注意：请求转发（服务器跳转）浏览器的地址栏是不变的</font></h3>
+    <img src="./img/QQ截图20180717231349.png" alt="">
+    <h1 id="3.6">3.6HttpServletResponse往页面写内容</h1>
+    <img src="./img/QQ截图20180718000300.png" alt="">
+    <h1 id="3.7">3.7HttpServletResponse往页面写内容中文乱码的问题</h1>
+    <img src="./img/QQ截图20180717235400.png" alt="">
+    <h1 id="3.8">3.8HttpServletResponse重定向（客户端跳转）</h1>
+    <h3>重定向（客户端跳转）可以跳到当前web应用中别的页面或者是另外的一个Servlet，还可以跳转到别的服务器的页面中（如百度页面）</h3>
+    <h3><font>注意：重定向（客户端跳转）浏览器的地址栏会变为目标页面的地址</font></h3>
+    <img src="./img/QQ截图20180717234245.png" alt="">
 </body>
 
 </html>
