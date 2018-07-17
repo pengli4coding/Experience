@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用@WebServlet注解配置Servlet不生效</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>问题描述：</h1>
+    <h3>为了方便，用@WebServlet注解来配置Servlet，眼看@WebServlet注解没有配置错耶，但是Servlet怎么也加载上，试了好几次都不行</h3>
+    <img src="./img/QQ截图20180717181728.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>解决方案：</h1>
+    <h3>问了一下度娘，原来问题出现在web.xml文件的上，在&lt;web-app&gt;标签中配置了metadata-complete属性为true，该metadata-complete属性用来指定当前的部署描述文件（web.xml）是否是完全的，如果设置为true的时候，则容器在部署的时候只会依赖当前的描述文件（web.xml），不会再去扫描注解来进行组件的部署。</h3>
+    <h3><font>因此，这个问题的解决方案是把web.xml文件中的&lt;web-app&gt;标签的metadata-complete属性为去掉，或者将该属性设置为false</font></h3>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
