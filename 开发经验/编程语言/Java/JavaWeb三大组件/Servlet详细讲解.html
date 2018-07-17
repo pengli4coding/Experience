@@ -67,13 +67,43 @@
                     <a href="#2.4">2.4设置并获取servlet的配置信息（ServletConfig）</a>
                 </dt>
                 <dt>
-                    <a href="#2.5">2.5设置并获取servlet配置信息</a>
+                    <a href="#2.5">2.5设置并获取servlet容器的配置信息（ServletContext）</a>
                 </dt>
                 <dt>
-                    <a href="#2.6">2.6设置并获取servlet配置信息</a>
+                    <a href="#2.6">2.6通过ServletContext获取文件路径并读取资源文件</a>
+                </dt>
+                <dt>
+                    <a href="#2.7">2.7Servlet是单例的，线程不安全的</a>
                 </dt>
             </dl>
         </dd>
+        <dt>
+            <a href="#3">3.请求对象request和响应对象response揭秘</a>
+        </dt>
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#3.1">3.1请求和响应的路径问题</a>
+                </dt>
+                <dt>
+                    <a href="#3.2">3.2HttpServletRequest头信息获取</a>
+                </dt>
+                <dt>
+                    <a href="#3.3">3.3HttpServletRequest参数接收</a>
+                </dt>
+                <dt>
+                    <a href="#3.4">3.4HttpServletRequest中文乱码问题</a>
+                </dt>
+                <dt>
+                    <a href="#3.5">3.5HttpServletRequest的请求转发和域</a>
+                </dt>
+                <dt>
+                    <a href="#3.6">3.6HttpServletResponse</a>
+                </dt>
+            </dl>
+        </dd>
+
+        
     </dl>
     <br>
     <h1 id="1">1.Servlet介绍</h1>
@@ -113,6 +143,19 @@
     <h1 id="2.5">2.5设置并获取servlet容器的配置信息（ServletContext）</h1>
     <h3>ServletContext代表了servlet容器（或者叫servlet上下文吧），它是web项目中所有servlet都可以访问的全局对象，这个后续的struts框架的配置也会用到</h3>
     <img src="./img/QQ截图20180714204853.png" alt="">
+    <h1 id="2.6">2.6通过ServletContext获取文件路径并读取资源文件</h1>
+    <img src="./img/QQ截图20180717135831.png" alt="">
+    <img src="./img/QQ截图20180717140159.png" alt="">
+    <h1 id="2.7">2.7Servlet是单例的，线程不安全的</h1>
+    <h3>出于对性能的考虑，Servlet被设计成单例的，而且是线程不安全的</h3>
+    <h1 id="3">3.请求对象request和响应对象response揭秘</h1>
+    <h1 id="3.1">3.1请求和响应的路径问题</h1>
+
+    <h1 id="3.2">3.2HttpServletRequest头信息获取</h1>
+    <h1 id="3.3">3.3HttpServletRequest参数接收</h1>
+    <h1 id="3.4">3.4HttpServletRequest中文乱码问题</h1>
+    <h1 id="3.5">3.5HttpServletRequest的请求转发和域</h1>
+    <h1 id="3.6">3.6HttpServletResponse</h1>
 </body>
 
 </html>
