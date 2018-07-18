@@ -83,6 +83,25 @@
                 </dt>
             </dl>
         </dd>
+        <dt>
+            <a href="#4">4 JSP指令</a>
+        </dt>
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#4.1">4.1 page指令</a>
+                </dt>
+                <dt>
+                    <a href="#4.2">4.2 include指令</a>
+                </dt>
+                <dt>
+                    <a href="#4.3">4.3 taglib指令</a>
+                </dt>
+            </dl>
+        </dd>
+        <dt>
+            <a href="#5">5 JSP动态标签</a>
+        </dt>
     </dl>
     <br>
     <h1 id="1">1 JSP基本语法</h1>
@@ -156,7 +175,63 @@
     <h1 id="3.2">3.2 request（范围：当前的请求内有效）</h1>
     <img src="./img/QQ截图20180718101318.png" alt="">
     <h1 id="3.3">3.3 session（范围：当前的会话内有效）</h1>
+    <h3>注意：会话是指浏览器不关（页面哪怕关闭），都是在一个会话范围内。如果浏览器关闭，那么会话就结束了</h3>
+    <img src="./img/QQ截图20180718102335.png" alt="">
     <h1 id="3.4">3.4 application（范围：web项目的运行生命周期内有效）</h1>
+    <h3>注意：web项目的运行生命周期是指服务器不重启或者项目不下线（浏览器或者页面哪怕都关闭了），都是在web项目的运行生命周期内。如果服务器重启或者项目下线，那么web项目的运行生命周期就结束了</h3>
+    <img src="./img/QQ截图20180718104850.png" alt="">
+    <img src="" alt="">
+    <h1 id="4">4 JSP指令</h1>
+    <h3>JSP指令说白了就是指示应该如何生成JSP的真身Servlet，指令在“真身Servlet”中并不存在，而是生成“真身Servlet”需要用到指令</h3>
+    <h3>JSP指令格式：&lt;%@指令名 attr1="" attr2=""%&gt;</h3>
+    <h3>如：&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt;</h3>
+    <h1 id="4.1">4.1 page指令</h1>
+    <h3>page指令常用的属性如下：</h3>
+    <table>
+        <tr>
+            <th>属性名</th>
+            <th>功能描述</th>
+            <th>常用设置</th>
+        </tr>
+        <tr>
+            <td>pageEncoding</td>
+            <td>设置当前JSP页面编码</td>
+            <td>pageEncoding="UTF-8"</td>
+        </tr>
+        <tr>
+            <td>contentType</td>
+            <td>设置往页面上写内容的格式，与在Servlet中设置response.setContentType("text/html; charset=UTF-8")是一样的</td>
+            <td>contentType="text/html; charset=UTF-8"</td>
+        </tr>
+        <tr>
+            <td>import</td>
+            <td>引包</td>
+            <td>import="java.util.*"</td>
+        </tr>
+        <tr>
+            <td>errorPage</td>
+            <td>指定如果当前页面发生错误的时候跳转到哪个错误页面（注意这里只能够设置当前的页面，不能够设置其它页面，而且这里的跳转是服务器转发，不用加项目名）</td>
+            <td>errorPage="error.html"</td>
+        </tr>
+        <tr>
+            <td>idErrorPage</td>
+            <td>标识当前页面是否是错误页面，如果当前页面是错误页面，则可以使用JSP的内置对象exception</td>
+            <td>isErrorPage="true"</td>
+        </tr>
+        <tr>
+            <td>isELIgnored</td>
+            <td>EL表达式是否被忽略，默认为false，如果设置为true的话，EL表达式将不会生效</td>
+            <td>isELIgnored="false"</td>
+        </tr>
+    </table>
+    <h1 id="4.2">4.2 include指令</h1>
+    <h3>include指令用于做页面的静态包含，就相当于把两个页面静态拼凑在一起了</h3>
+    <img src="./img/QQ截图20180718145602.png" alt="">
+    <img src="./img/QQ截图20180718145807.png" alt="">
+    <h1 id="4.3">4.3 taglib指令</h1>
+    <h3>taglib指令用于在第三方标签库进行引入的时候，进行“导包”</h3>
+    <h1 id="5">5 JSP动态标签</h1>
+    <h3>什么是标签：所谓标签就是对Java代码进行一些封装，使得格式都向html的格式统一，不然又有Java代码，又有html代码会显得很乱，如下面的对比</h3>
 </body>
 
 </html>
