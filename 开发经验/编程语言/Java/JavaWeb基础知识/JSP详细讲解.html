@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSP详细讲解</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <dl>
+        <!--dt和dd必须是同级的，不能够相互嵌套-->
+        <dt>
+            <a href="#1">1 JSP基本语法</a>
+        </dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#1.1">1.1 &lt;%...%&gt;真身Servlet中service方法内的java代码片段</a>
+                </dt>
+                <dt>
+                    <a href="#1.2">1.2 &lt;%=...%&gt;真身Servlet中service方法内的输出表达式</a>
+                </dt>
+                <dt>
+                    <a href="#1.3">1.3 &lt;%!...%&gt;真身Servlet中的成员变量和方法</a>
+                </dt>
+            </dl>
+        </dd>
+        <dt>
+            <a href="#2">2 JSP的九个内置对象</a>
+        </dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#2.1">2.1 out</a>
+                </dt>
+                <dt>
+                    <a href="#2.2">2.2 config</a>
+                </dt>
+                <dt>
+                    <a href="#2.3">2.3 page</a>
+                </dt>
+                <dt>
+                    <a href="#2.4">2.4 pageContext</a>
+                </dt>
+                <dt>
+                    <a href="#2.5">2.5 exception</a>
+                </dt>
+                <dt>
+                    <a href="#2.6">2.6 request</a>
+                </dt>
+                <dt>
+                    <a href="#2.7">2.7 response</a>
+                </dt>
+                <dt>
+                    <a href="#2.8">2.8 application</a>
+                </dt>
+                <dt>
+                    <a href="#2.9">2.9 session</a>
+                </dt>
+            </dl>
+        </dd>
+        <dt>
+            <a href="#3">3 JSP的九个内置对象中的四个域对象</a>
+        </dt>
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#3.1">3.1 pageContext（范围：当前的页面内有效）</a>
+                </dt>
+                <dt>
+                    <a href="#3.2">3.2 request（范围：当前的请求内有效）</a>
+                </dt>
+                <dt>
+                    <a href="#3.3">3.3 session（范围：当前的会话内有效）</a>
+                </dt>
+                <dt>
+                    <a href="#3.4">3.4 application（范围：web项目的运行生命周期内有效）</a>
+                </dt>
+            </dl>
+        </dd>
+    </dl>
+    <br>
+    <h1 id="1">1 JSP基本语法</h1>
+    <h1 id="#1.1">1.1 &lt;%...%&gt;真身Servlet中service方法内的java代码片段</h1>
+    <h3>样例待补</h3>
+    <h1 id="#1.2">1.2 &lt;%=...%&gt;真身Servlet中service方法内的输出表达式</h1>
+    <h3>样例待补</h3>
+    <table>
+        <tr>
+            <th>JSP中的写法</th>
+            <th>真身Servlet中的实际代码</th>
+            <th>结果</th>
+        </tr>
+        <tr>
+            <td>&lt;%=a%&gt;</td>
+            <td>out.println(a)</td>
+            <td>正确输出</td>
+        </tr>
+        <tr>
+            <td>&lt;%="a"%&gt;</td>
+            <td>out.println("a")</td>
+            <td>正确输出</td>
+        </tr>
+        <tr>
+            <td>&lt;%=fun()%&gt;</td>
+            <td>out.println(fun())</td>
+            <td>正确输出</td>
+        </tr>
+        <tr>
+            <td>&lt;%=a;%&gt;</td>
+            <td>out.println(a;)</td>
+            <td>报错，无法输出</td>
+        </tr>
+        <tr>
+            <td>&lt;%=System.out.println("hello")%&gt;</td>
+            <td>out.println(System.out.println("hello"))</td>
+            <td>报错，无法输出</td>
+        </tr>
+    </table>
+    <h1 id="#1.3">1.3 &lt;%!...%&gt;真身Servlet中的成员变量和方法</h1>
+    <h3>样例待补</h3>
+    <h1 id="2">2 JSP的九个内置对象</h1>
+    <h1 id="2.1">2.1 out</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.2">2.2 config</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.3">2.3 page</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.4">2.4 pageContext</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.5">2.5 exception</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.6">2.6 request</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.7">2.7 response</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.8">2.8 application</h1>
+    <h3>样例待补</h3>
+    <h1 id="2.9">2.9 session</h1>
+    <h3>样例待补</h3>
+    <h1 id="3">3 JSP的九个内置对象中的四个域对象</h1>
+    <h3>域对象的共同特点都是管理域中的属性（attribute）</h3>
+    <h3>它们都有着如下操作属性（attribute）的方法</h3>
+    <ul>
+        <li>void setAttribute(String name, Object o)</li>
+        <li>Object getAttribute(String name)</li>
+        <li>void removeAttribute(String name)</li>
+    </ul>
+    <h1 id="3.1">3.1 pageContext（范围：当前的页面内有效）</h1>
+    <img src="./img/QQ截图20180718100128.png" alt="">
+    <h1 id="3.2">3.2 request（范围：当前的请求内有效）</h1>
+    <img src="./img/QQ截图20180718101318.png" alt="">
+    <h1 id="3.3">3.3 session（范围：当前的会话内有效）</h1>
+    <h1 id="3.4">3.4 application（范围：web项目的运行生命周期内有效）</h1>
+</body>
+
+</html>
