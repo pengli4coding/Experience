@@ -12,14 +12,14 @@
     <h3>网盘地址：https://pan.baidu.com/s/17JBuiJUq7D91nOiY8iB7zA&nbsp;&nbsp;&nbsp;密码：f2x1</h3>
     <h1>第二步：上传文件文件到/usr/software下（如果没有software文件目录，则在/usr下创建software文件目录），并解压</h1>
     <h3>解压命令为：tar -zxvf 压缩包名</h3>
-    <h1>第三步：配置环境变量</h1>
+    <h1>第三步：配置环境变量（即修改/etc/profile文件：vim /etc/profile）</h1>
     <pre>
 export JAVA_HOME=JDK的根路径（也就是上一步解压缩后的文件路径/usr/software/jdk1.8.0_171）
 export JRE_HOME=${JAVA_HOME}/jre
 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
 export PATH=${JAVA_HOME}/bin:${PATH}
     </pre>
-    <h1>第四步：重启服务器</h1>
+    <h1>第四步：输入source /etc/profile命令（或者重启服务器）使得配置生效</h1>
     <h1>第五步：测试是否安装成功</h1>
     <h3>打两个命令：java和java -version;如果没有提示命令找不到的话一般情况下就是安装成功了</h3>
 </body>
