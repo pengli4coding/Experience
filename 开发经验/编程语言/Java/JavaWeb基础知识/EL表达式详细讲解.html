@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,53 @@
     <title>EL表达式详细讲解</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    <h1>什么是EL表达式</h1>
+    <dl>
+        <!--dt和dd必须是同级的，不能够相互嵌套-->
+        <dt>
+            <a href="#1">1 EL表达式简介</a>
+        </dt>
+        <dt>
+            <a href="#2">2 EL表达式的使用</a>
+        </dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#2.1">2.1 基础运算</a>
+                </dt>
+                <dt>
+                    <a href="#2.2">2.2 获取前台传参值（相当于request.getParameter()）</a>
+                </dt>
+                <dd>
+                    <dl>
+                        <dt></dt>
+                        <dt></dt>
+                    </dl>
+                </dd>
+                <dt>
+                    <a href="#2.3">2.3 获取域对象属性（相当于域对象.getAttribute()）</a>
+                </dt>
+            </dl>
+        </dd>
+    </dl>
+
+    <h1 id="1">1 EL表达式简介</h1>
     <h3>EL（Expression Language）是一门表达式语言，它对应&lt;%=...%&gt;，主要用于输出</h3>
     <h3>EL表达式的格式为：${...}，例如：${1+2}</h3>
-    <h1>基础运算符：</h1>
-    <img src="./img/QQ截图20180718195203.png" alt="">
+    <h1 id="2">2 EL表达式的使用</h1>
+    <h1 id="2.1">2.1 基础运算</h1>
+    <img src="./img/QQ截图20180719090709.png" alt="">
+    <h1 id="2.2">2.2 获取前台传参值（相当于request.getParameter()）</h1>
+    <h1 id="2.2.1">2.2.1 通过param获得单值参数</h1>
+    <img src="./img/QQ截图20180719094352.png" alt="">
+    <h1 id="2.2.2">2.2.2 通过paramValues获得多值参数</h1>
+    <img src="./img/QQ截图20180719095644.png" alt="">
+    <h1 id="2.3">2.3 获取域对象属性（相当于域对象.getAttribute()）</h1>
+    <img src="./img/QQ截图20180719101439.png" alt="">
+    <img src="./img/QQ截图20180719101458.png" alt="">
+    <img src="./img/QQ截图20180719101515.png" alt="">
 </body>
+
 </html>
