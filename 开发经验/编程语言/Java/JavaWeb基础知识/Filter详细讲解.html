@@ -12,28 +12,54 @@
 <body>
     <dl>
         <!--dt和dd必须是同级的，不能够相互嵌套-->
-        <dt href="#1">1 Filter介绍</dt>
+        <dt>
+            <a href="#1">1 Filter介绍</a>
+        </dt>
         <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
         <dd>
             <dl>
-                <dt href="#1.1">1.1 什么是Filter？</dt>
-                <dt href="#1.2">1.2 Filter的常见应用场景</dt>
-                <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
-                <dd>
-                    <dl>
-                        <dt>三级标题</dt>
-                        <dt>三级标题</dt>
-                        <dt>三级标题</dt>
-                    </dl>
-                </dd>
+                <dt>
+                    <a href="#1.1">1.1 什么是Filter？</a>
+                </dt>
+                <dt>
+                    <a href="#1.2">1.2 Filter的常见应用场景</a>
+                </dt>
             </dl>
         </dd>
-        <dt>一级标题</dt>
+        <dt>
+            <a href="#2">2 Filter基本用法</a>
+        </dt>
         <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
         <dd>
             <dl>
-                <dt>二级标题</dt>
-                <dt>二级标题</dt>
+                <dt>
+                    <a href="#2.1">2.1 如何创建Filter</a>
+                </dt>
+                <dt>
+                    <a href="#2.2">2.2 Filter的拦截范围</a>
+                </dt>
+                <dt>
+                    <a href="#2.3">2.3 Filter的四种拦截方式</a>
+                </dt>
+                <dt>
+                    <a href="#2.4">2.4 Filter的生命周期</a>
+                </dt>
+                <dt>
+                    <a href="#2.5">2.5 拦截器链(多个拦截器的拦截顺序)</a>
+                </dt>
+            </dl>
+        </dd>
+        <dt>
+            <a href="#3">3 Filter的实际运用</a>
+        </dt>
+        <dd>
+            <dl>
+                <dt>
+                    <a href="#3.1">3.1 处理Post和Get请求的中文乱码问题</a>
+                </dt>
+                <dt>
+                    <a href="#3.2">3.2 判断用户登录状态</a>
+                </dt>
             </dl>
         </dd>
     </dl>
@@ -47,6 +73,20 @@
         <li>客户端发请求过来，先判断用户的登录状态</li>
         <li>获取前台传参的中文乱码处理</li>
     </ul>
+    <h1 id="2">2 Filter基本用法</h1>
+    <h1 id="2.1">2.1 如何创建Filter</h1>
+    <img src="./img/QQ截图20180722153952.png" alt="">
+    <img src="./img/QQ截图20180722154123.png" alt="">
+    <h1 id="2.2">2.2 Filter的拦截范围</h1>
+    <img src="./img/QQ截图20180722155448.png" alt="">
+    <h1 id="2.3">2.3 Filter的四种拦截方式</h1>
+    <img src="./img/QQ截图20180722155557.png" alt="">
+    <img src="./img/QQ截图20180722160837.png" alt="">
+    <h1 id="2.4">2.4 Filter的生命周期</h1>
+    <h3>Filter的生命周期是：随着web应用的启动而创建处理，伴随着web应用的整个生命周期，当web应用停止的时候，Filter随之销毁</h3>
+    <h1 id="2.5">2.5 拦截器链(多个拦截器的拦截顺序)</h1>
+    <img src="./img/QQ截图20180722161803.png" alt="">
+    <img src="./img/QQ截图20180722162002.png" alt="">
 </body>
 
 </html>
