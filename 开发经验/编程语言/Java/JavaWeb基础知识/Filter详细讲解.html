@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter详细讲解</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <dl>
+        <!--dt和dd必须是同级的，不能够相互嵌套-->
+        <dt href="#1">1 Filter介绍</dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt href="#1.1">1.1 什么是Filter？</dt>
+                <dt href="#1.2">1.2 Filter的常见应用场景</dt>
+                <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+                <dd>
+                    <dl>
+                        <dt>三级标题</dt>
+                        <dt>三级标题</dt>
+                        <dt>三级标题</dt>
+                    </dl>
+                </dd>
+            </dl>
+        </dd>
+        <dt>一级标题</dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt>二级标题</dt>
+                <dt>二级标题</dt>
+            </dl>
+        </dd>
+    </dl>
+    <br>
+    <h1 id="1">1 Filter介绍</h1>
+    <h1 id="1.1">1.1 什么是Filter？</h1>
+    <h3>Filter是JavaWeb三大组件（Servlet、Filter、Listener）之一，主要的作用是用于拦截客户端（浏览器）发过来的请求，使用Filter（拦截器）主要体现了面向切面编程的思想</h3>
+    <img src="./img/QQ截图20180722145834.png" alt="">
+    <h1 id="1.2">1.2 Filter的常见应用场景</h1>
+    <ul>
+        <li>客户端发请求过来，先判断用户的登录状态</li>
+        <li>获取前台传参的中文乱码处理</li>
+    </ul>
+</body>
+
+</html>
