@@ -18,6 +18,117 @@
     <br>
     <h1>操作详解</h1>
     <h3>相关命令：</h3>
+    <table>
+        <tr>
+            <th>命令</th>
+            <th>描述</th>
+            <th>示例</th>
+        </tr>
+        <tr>
+            <td>
+                <em>SET</em> key value</td>
+            <td>设置指定key的值，如果指定key的值已经存在，则会覆盖原有的值</td>
+            <td>set name zhangsan</td>
+        </tr>
+        <tr>
+            <td>
+                <em>GET</em> key</td>
+            <td>获取指定key的值</td>
+            <td>get name</td>
+        </tr>
+        <tr>
+            <td>
+                <em>GETSET</em> key value</td>
+            <td>将给定key的值设为value，并返回key的旧值(old value)</td>
+            <td>getset name lisi</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SETNX</em> key value</td>
+            <td>只有在key不存在时设置key的值，否则当key存在的时候设置key的值失败</td>
+            <td>setnx pet fatcat</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SET</em> key value
+                <em>XX</em>
+            </td>
+            <td>只有在key存在时设置key的值，否则当key不存在的时候设置key的值失败</td>
+            <td>set pet fatcat xx</td>
+        </tr>
+        <tr>
+            <td>
+                <em>MSET</em> key1 value1 ...... keyN valueN</td>
+            <td>同时设置一个或多个 key-value 对</td>
+            <td>mset name xiaolili age 28</td>
+        </tr>
+        <tr>
+            <td>
+                <em>MGET</em> key1 key2 ...... keyN</td>
+            <td>获取所有(一个或多个)给定 key 的值</td>
+            <td>mget name age</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SETEX</em> key seconds value</td>
+            <td>将值value关联到key，并将key的过期时间设为seconds(以秒为单位)</td>
+            <td>setex name 10 xiaolili</td>
+        </tr>
+        <tr>
+            <td>
+                <em>PSETEX</em> key milliseconds value</td>
+            <td>这个命令和 SETEX 命令相似，但它以毫秒为单位设置 key 的生存时间，而不是像 SETEX 命令那样，以秒为单位</td>
+            <td>psetex name 10000 xiaolili</td>
+        </tr>
+        <tr>
+            <td>
+                <em>INCR</em> key</td>
+            <td>对key的值做++操作，并返回新的值。注意incr一个不是int的value会返回错误，incr一个不存在的key，则设置key值为1</td>
+            <td>incr age</td>
+        </tr>
+        <tr>
+            <td>
+                <em>INCRBY</em> key increment</td>
+            <td>将key所储存的值加上给定的增量值（increment），key不存在时候会设置key，并认为原来的value是0</td>
+            <td>incrby age 5</td>
+        </tr>
+        <tr>
+            <td>
+                <em>DECR</em> key</td>
+            <td>对key的值做--操作，并返回新的值。注意decr一个不是int的value会返回错误，decr一个不存在的key，则设置key值为-1</td>
+            <td>decr age</td>
+        </tr>
+        <tr>
+            <td>
+                <em>DECRBY</em> key decrement</td>
+            <td>将key所储存的值减去给定的减量值（decrement），key不存在时候会设置key，并认为原来的value是0</td>
+            <td>decrby age 5</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SETRANGE</em> key offset value</td>
+            <td>用value参数覆写给定key所储存的字符串值，从偏移量offset开始</td>
+            <td>setrange email 10 #</td>
+        </tr>
+        <tr>
+            <td>
+                <em>GETRANGE</em> key start end</td>
+            <td>返回key中字符串值的子字符</td>
+            <td>getrange email 10 11</td>
+        </tr>
+        <tr>
+            <td>
+                <em>STRLEN</em> key</td>
+            <td>返回 key 所储存的字符串值的长度</td>
+            <td>strlen name</td>
+        </tr>
+        <tr>
+            <td>
+                <em>APPEND</em> key value</td>
+            <td>如果 key 已经存在并且是一个字符串， APPEND 命令将指定的 value 追加到该 key 原来值（value）的末尾</td>
+            <td>append name world</td>
+        </tr>
+    </table>
     <h3>代码示例：</h3>
     <img src="./img/QQ截图20180725160146.png" alt="">
     <br>
