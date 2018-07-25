@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>redis启动</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>第一步：启动前的准备工作</h1>
+    <h3>1、将redis根路径->src下的redis.conf文件复制一份到指定的地方，这里复制到/usr/local/bin下，注意这里的redis根路径指的是redis的解压后的文件夹</h3>
+    <h3>2、在/usr/local/bin下新建logs文件夹用以存放redis的日志文件</h3>
+    <h3>3、在/usr/local/bin下新建datas文件夹用以存放redis的数据文件（redis是将数据存到内存，也可以设置定时将内存的数据保存到磁盘中）</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第二步：修改redis配置文件redis.conf</h1>
+    <h3>先简单修改以下几个地方：</h3>
+    <img src="./img/QQ截图20180725143934.png" alt="">
+    <br>
+    <img src="./img/QQ截图20180725144152.png" alt="">
+    <br>
+    <img src="./img/QQ截图20180725144330.png" alt="">
+    <br>
+    <img src="./img/QQ截图20180725144519.png" alt="">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>第三步：以指定配置文件的方式启动redis服务</h1>
+    <img src="./img/QQ截图20180725145122.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第四步：查看redis进程</h1>
+    <img src="./img/QQ截图20180725145306.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第五步：启动redis客户端并插入测试数据</h1>
+    <img src="./img/QQ截图20180725145955.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第六步：关闭redis客户端</h1>
+    <img src="./img/QQ截图20180725150044.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第七步：关闭redis服务</h1>
+    <img src="./img/QQ截图20180725150224.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
