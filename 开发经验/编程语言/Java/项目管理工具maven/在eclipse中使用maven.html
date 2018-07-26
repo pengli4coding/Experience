@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在eclipse中使用maven</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>使用自己配置的maven，而不去使用eclipse自带的maven</h1>
+    <h3>在eclipse中依次打开Window->Preferences->Maven->Installations</h3>
+    <img src="./img/QQ截图20180726082247.png" alt="">
+    <img src="./img/QQ截图20180726082523.png" alt="">
+    <img src="./img/QQ截图20180726082558.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>指定maven全局配置文件以及maven用户配置文件</h1>
+    <h3>指定maven全局配置文件:在eclipse中依次打开Window->Preferences->Maven->User Settings配置Global Settings</h3>
+    <h3>说明：maven全局配置文件是在MAVEN_HOME->conf文件夹下的settings.xml文件</h3>
+    <img src="./img/QQ截图20180726083611.png" alt="">
+    <h3>指定maven用户配置文件，分以下两步：</h3>
+    <h3>第一步：将maven全局配置文件复制一份到~/m2文件中，然后可以根据需要修改部分属性（不修改就默认与全局配置文件一致）</h3>
+    <h3>第二步：在eclipse中配置maven用户配置文件（上一步复制过来的settings.xml文件），然后进行更新</h3>
+    <img src="./img/QQ截图20180726084205.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>在eclipse中使用Maven Repositories视图</h1>
+    <h3>在eclipse中依次点击Window->Show View->Other...->Maven->Maven Repositories即可打开Maven Repositories视图</h3>
+    <img src="./img/QQ截图20180726084719.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>在eclipse中使用Maven命令</h1>
+    <h3>在项目的pom.xml文件中点击右键->点击Run As->点击Maven build...（第二个Maven build）</h3>
+    <h3>在弹出的窗口中输入maven命令</h3>
+    <img src="./img/QQ截图20180726090534.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+</html>

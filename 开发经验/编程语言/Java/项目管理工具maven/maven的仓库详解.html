@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>maven的仓库详解</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>maven的仓库分类</h1>
+    <h3>maven的仓库分为两种：本地仓库和远程仓库</h3>
+    <h3>本地仓库：就是用户本地电脑上用来存放依赖包（通常为jar包）和maven插件的文件夹，默认为~/.m2/repository</h3>
+    <h3>远程仓库：除了本地仓库外的其它仓库都是远程仓库，包括中央仓库（目前为https://repo.maven.apache.org/maven2）、私服</h3>
+    <br>
+    <br>
+    <br>
+    <h1>将默认的本地仓库（~/.m2/repository）迁移到其它路径下</h1>
+    <h3>第一步：将~/.m2文件夹下的整个repository文件夹连同maven用户配置文件settings.xml剪切到新的路径下</h3>
+    <img src="./img/QQ截图20180726100227.png" alt="">
+    <h3>第二步：修改maven用户配置文件settings.xml文件</h3>
+    <img src="./img/QQ截图20180726101524.png" alt="">
+    <h3>第三步：修改maven用户配置文件settings.xml文件</h3>
+    <img src="./img/QQ截图20180726104554.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+</html>
