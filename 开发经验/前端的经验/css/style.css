@@ -4,6 +4,9 @@
     list-style: none;
     text-decoration: none;
 }
+font{
+    color: red;
+}
 
 pre{
     border: 2px solid green;
@@ -33,7 +36,7 @@ img{
 ul{
     padding-left: 25px;
     list-style: square;
-    color: crimson;
+    color: deeppink;
 }
 li{
     list-style: square;
@@ -60,6 +63,9 @@ dd {
 dt{
     color:  #4183c4;
 }
+dt>a{
+    color:  #4183c4;
+}
 dl>dt{/*一级标题*/
     font-weight: 700;
     font-size:32px;
@@ -71,5 +77,10 @@ dl>dd>dl>dt{/*二级标题*/
 dl>dd>dl>dd>dl>dt{/*三级标题*/
     font-weight: 700;
     font-size: 20px;
+}
+em{
+    font-style: normal;
+    color: red;
+    font-weight: 800;
 }
 
