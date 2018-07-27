@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XML语法</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>XML是区分大小写的</h1>
+    <h3>XML是区分大小写的</h3>
+    <br>
+    <br>
+    <br>
+    <h1>XML文档的组成</h1>
+    <ul>
+        <li>XML文档声明</li>
+        <li>XML处理指令</li>
+        <li>XML元素</li>
+        <li>XML转义字符和CDATA区</li>
+        <li>XML注释</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <h1>XML文档声明</h1>
+    <h3>XML文档声明如下：</h3>
+    <img src="./img/QQ截图20180727101807.png" alt="">
+    <ul>
+        <li>version属性：用于说明当前xml文档的版本，因为都是在用1.0，所以这个属性值大家都写1.0，version属性是必须的。</li>
+        <li>encoding属性：用于说明当前xml文档使用的字符编码集，xml解析器会使用这个编码来解析xml文档。encoding属性是可选的，默认为UTF-8。注意，如果当前xml文档使用的字符编码集是gb2312，而encoding属性的值为UTF-8，那么一定会出错的。</li>
+        <li>standalone属性：用于说明当前xml文档是否为独立文档，如果该属性值为yes，表示当前xml文档是独立的，如果为no表示当前xml文档不是独立的，即依赖外部的约束文件。默认是yes。</li>
+        <li>没有xml文档声明的xml文档，不是格式良好的xml文档</li>
+        <li>xml文档声明必须从xml文档的1行1列开始</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <h1>XML标签</h1>
+    <h2>基本语法</h2>
+    <ul>
+        <li>xml元素包含：开始标签、元素体（内容）、结束标签。例如：&lt;hello&gt;大家好&lt;/hello&gt;</li>
+        <li>空元素：空元素只有开始标签，没有元素体和结束标签，但空元素一定要闭合。例如：&lt;hello/&gt;</li>
+        <li>xml元素可以包含子元素或文本数据。例如：&lt;a&gt;&lt;b&gt;hello&lt;/b&gt;&lt;/a&gt;，a元素的元素体内容是b元素，而b元素的元素体内容是文本数据hello</li>
+        <li>xml元素可以嵌套，但必须是合法嵌套。例如：&lt;a&gt;&lt;b&gt;hello&lt;/a&gt;&lt;/b&gt;就是错误的嵌套</li>
+    </ul>
+    <h2>根元素</h2>
+    <img src="./img/QQ截图20180727103724.png" alt="">
+    <h2>元素命名规范</h2>
+    <ul>
+        <li>区分大小写：&lt;a&gt;和&lt;A&gt;是两个元素</li>
+        <li>不能以数字开头：&lt;1a&gt;都是错误的</li>
+        <li>最好不要以xml开头：&lt;xml&gt;、&lt;Xml&gt;、&lt;XML&gt;</li>
+        <li>不能包含空格</li>
+    </ul>
+    <h2>元素属性</h2>
+    <ul>
+        <li>属性由属性名与属性值构成，中间用等号连接</li>
+        <li>属性值必须使用引号括起来，单引或双引</li>
+        <li>定义属性必须遵循与标签名相同的命名规范</li>
+        <li>属性必须定义在元素的开始标签中</li>
+        <li>一个元素中不能包含相同的属性名</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <h1>XML转义字符和CDATA区</h1>
+    <h2>转义字符</h2>
+    <img src="./img/QQ截图20180727110104.png" alt="">
+    <h2>CDATA区</h2>
+    <h3>当大量的转义字符出现在xml文档中时，会使xml文档的可读性大幅度降低。这时如果使用CDATA段就会好一些。特别是在使用mybatis的时候，会有大量的SQL语句写在xml文件中，就需要大量的转义（特别是大于小于号），这时候使用CDATA区就比较方便。</h3>
+    <h3><font>CDATA区的语法：&lt;![CDATA[需要转义的内容]]&gt;</font></h3>
+    <br>
+    <br>
+    <br>
+    <h1>XML注释</h1>
+    <h3>XML注释以&lt;!--开头，以--&gt;结束，不能包含--</h3>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
