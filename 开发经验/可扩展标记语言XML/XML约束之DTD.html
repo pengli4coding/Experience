@@ -17,8 +17,91 @@
     <img src="./img/QQ截图20180727160339.png" alt="">
     <h3>方式三：外部DTD文件引入（网络上的外部公共DTD）</h3>
     <img src="./img/QQ截图20180727160736.png" alt="">
+    <br>
+    <br>
+    <br>
     <h1>DTD语法说明</h1>
-    
+    <h2>1、定义元素的语法</h2>
+    <h3>使用ELEMENT声明元素：&lt;!ELEMENT 元素名 内容类型或内容&gt;</h3>
+    <h3>例如：&lt;!ELEMENT name (#PCDATA)&gt;</h3>
+    <h3>表示name元素的内容为文本数据</h3>
+    <h3>例如：&lt;!ELEMENT student (name,age,sex)&gt;</h3>
+    <h3>表示student元素中含有一个name子元素，一个age子元素，一个sex子元素，并且这三个子元素是按照name，age，sex的顺序排列</h3>
+    <br><br>
+    <h2>2、元素类型</h2>
+    <h3>元素类型可以是ANY或EMPTY</h3>
+    <h3>例如：&lt;!ELEMENT tag ANY&gt;</h3>
+    <h3>表示tag元素的内容可以是任意元素，也可以是文本数据，也可以是文本数据+子元素，反正就是任意。</h3>
+    <h3>例如：&lt;!ELEMENT tag EMPTY&gt;</h3>
+    <h3>表示tag元素必须为空元素，例如&lt;tag /&gt;。</h3>
+    <br><br>
+    <h2>3、元素内容</h2>
+    <h3>元素内容可以是文本数据，也可以是子元素</h3>
+    <h3>例如：&lt;!ELEMENT name (#PCDATA)&gt;</h3>
+    <h3>表示name元素的内容为文本数据</h3>
+    <h3>例如：&lt;!ELEMENT student (name)&gt;</h3>
+    <h3>表示student元素中含有一个name子元素，而且要注意的是如果&lt;name&gt;元素没有声明，那么就会报错</h3>
+    <br><br>
+    <h2>4、子元素出现次数</h2>
+    <h3>可以使用“?”、“*”、“+”来指定子元素的出现次数。如果没有指定的话，那么默认为出现一次</h3>
+    <h3>例如：&lt;!ELEMENT student (name)&gt;</h3>
+    <h3>表示student元素中含有name子元素，并且name子元素只会出现一次</h3>
+    <h3>例如：&lt;!ELEMENT student (name?)&gt;</h3>
+    <h3>表示student元素中含有name子元素，并且name子元素会出现0~1次</h3>
+    <h3>例如：&lt;!ELEMENT student (name*)&gt;</h3>
+    <h3>表示student元素中含有name子元素，并且name子元素会出现0~n次，即任意次</h3>
+    <h3>例如：&lt;!ELEMENT student (name+)&gt;</h3>
+    <h3>表示student元素中含有name子元素，并且name子元素会出现1~n次，即至少出现一次</h3>
+    <br><br>
+    <h2>5、多个子元素指定顺序</h2>
+    <h3>例如：&lt;!ELEMENT student (name,age,sex)&gt;</h3>
+    <h3>表示student元素中含有一个name子元素，一个age子元素，一个sex子元素，并且这三个子元素是按照name，age，sex的顺序排列</h3>
+    <br><br>
+    <h2>6、多个子元素不指定顺序（子元素只出现一次）</h2>
+    <h3>例如：&lt;!ELEMENT student (name | age | sex)&gt;</h3>
+    <h3>表示student元素中可以含有name子元素或age子元素或sex子元素，并且只能出现这三个子元素的其中一个</h3>
+    <h3>如：&lt;student&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;name&gt;&lt;/name&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是非法的</h3>
+    <br><br>
+    <h2>7、多个子元素不指定顺序（子元素只出现零或者一次）</h2>
+    <h3>例如：&lt;!ELEMENT student (name | age | sex)?&gt;</h3>
+    <h3>表示student元素中可以含有name子元素或age子元素或sex子元素，并且可以出现这三个子元素的其中一个，或者三个子元素都没有出现</h3>
+    <h3>如：&lt;student&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;name&gt;&lt;/name&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;name&gt;&lt;/name&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是非法的</h3>
+    <br><br>
+    <h2>8、多个子元素不指定顺序（子元素至少出现一次）</h2>
+    <h3>例如：&lt;!ELEMENT student (name | age | sex)+&gt;</h3>
+    <h3>表示student元素中可以含有name子元素或age子元素或sex子元素，并且至少出现这三个子元素的其中一个</h3>
+    <h3>如：&lt;student&gt;&lt;name&gt;&lt;/name&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;name&gt;&lt;/name&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;/student&gt;是非法的</h3>
+    <br><br>
+    <h2>9、多个子元素不指定顺序（子元素出现任意次）</h2>
+    <h3>例如：&lt;!ELEMENT student (name | age | sex)*&gt;</h3>
+    <h3>表示student元素中可以含有name子元素或age子元素或sex子元素，并且至少出现这三个子元素的其中一个</h3>
+    <h3>如：&lt;student&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;name&gt;&lt;/name&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是合法的</h3>
+    <h3>如：&lt;student&gt;&lt;name&gt;&lt;/name&gt;&lt;age&gt;&lt;/age&gt;&lt;/student&gt;是合法的</h3>
+    <br><br>
+    <br>
+    <br>
+    <br>
+    <h1>复制样例</h1>
+    <h2>样例一：&lt;!ELEMENT student (name,(age|sex)+)+&gt;</h2>
+    <h3>以下合法：</h3>
+    <h3>&lt;student&gt;</h3>
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;张三&lt;/name&gt;</h3>
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&lt;age&gt;28&lt;/age&gt;</h3>
+    <h3>&lt;/student&gt;</h3>
+    <br><br>
+    <h3>以下非法：</h3>
+    <h3>&lt;student&gt;</h3>
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;张三&lt;/name&gt;</h3>
+    <h3>&lt;/student&gt;</h3>
 </body>
 
 </html>
