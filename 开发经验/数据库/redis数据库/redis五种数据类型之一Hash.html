@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,101 @@
     <title>redis五种数据类型之一Hash</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+    <h1>Hash类型简介</h1>
+    <h3>Hash类型是String类型的field和value的映射表，或者说一个String集合。它特别适合存储对象，相比较而言，将一个对象类型存储在Hash类型里要比存储在String类型里面占用更少的内存空间，并方便存取整个对象。</h3>
+    <br>
+    <br>
+    <br>
+    <h1>操作详解</h1>
+    <h3>相关命令：</h3>
+    <table>
+        <tr>
+            <th>命令</th>
+            <th>描述</th>
+            <th>示例</th>
+            <th>示例说明</th>
+        </tr>
+        <tr>
+            <td>
+                <em>HSET</em> key field value</td>
+            <td>设置指定哈希表key中字段field的值，如果指定哈希表key中字段field的值已经存在，则会覆盖原有的值</td>
+            <td>hset key1 name zhangsan</td>
+            <td>设置哈希表key1中字段name的值为zhangsan</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HGET</em> key field</td>
+            <td>获取指定哈希表key中字段field的值</td>
+            <td>hget key1 name</td>
+            <td>获取哈希表key1中字段name的值</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HDEL</em> key field</td>
+            <td>删除指定哈希表key的字段field</td>
+            <td>hdel key1 addr</td>
+            <td>删除哈希表key1中的字段addr</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HMSET</em> key field1 value1 ...... fieldN valueN</td>
+            <td>设置哈希表key中多个字段的值</td>
+            <td>hmset key1 name zhangsan age 18</td>
+            <td>设置哈希表key1中字段name的值为zhangsan，字段age的值为18</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HMGET</em> key field1 ...... fieldN</td>
+            <td>获取哈希表key中多个字段的值</td>
+            <td>hmget key1 name age</td>
+            <td>获取哈希表key1中字段name和字段age的值</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HKEYS</em> key</td>
+            <td>获取哈希表key中的所有字段名</td>
+            <td>hkeys key1</td>
+            <td>获取哈希表key1中的所有字段名</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HVALS</em> key</td>
+            <td>获取哈希表key中的所有字段值</td>
+            <td>hvals key1</td>
+            <td>获取哈希表key1中的所有字段值</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HGETALL</em> key</td>
+            <td>获取哈希表key中的所有字段名以及对应的字段值</td>
+            <td>hgetall key1</td>
+            <td>获取哈希表key1中的所有字段名以及对应的字段值</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HLEN</em> key</td>
+            <td>获取哈希表key中的字段个数</td>
+            <td>hlen key1</td>
+            <td>获取哈希表key1中的字段个数</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HSETNX</em> key field value</td>
+            <td>只有在哈希表key的字段field不存在时设置值，否则当哈希表key的字段field存在的时候设置值失败</td>
+            <td>hsetnx key1 name lisi</td>
+            <td>设置哈希表key1中字段name的值为lisi，如果字段name已存在，则失败</td>
+        </tr>
+        <tr>
+            <td>
+                <em>HINCRBY</em> key field increment</td>
+            <td>将哈希表key的字段field所储存的值加上给定的增量值（increment）</td>
+            <td>hincrby key1 age 5</td>
+            <td>给哈希表key1中字段age的值加5，并返回加运算后的结果</td>
+        </tr>
+    </table>
+
 </body>
+
 </html>

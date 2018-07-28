@@ -29,6 +29,7 @@
     <u>touch test.java</u>&nbsp;&nbsp;在当前目录下创建一个名为test.java的空文件<br>
     <hr>
     <u>mkdir test</u>&nbsp;&nbsp;在当前目录下创建一个名为test的目录<br>
+    <u>mkdir -p d1/d2/d3</u>&nbsp;&nbsp;在当前目录下创建一个名为d1的目录,接着在d1目录下创建d2目录，接着在d2目录下创建d3目录<br>
     <hr>
     <u>cp test.java test</u>&nbsp;&nbsp;拷贝当前目录下的test.java文件到当前目录下的test文件夹下面<br>
     <u>cp -r /etc /home/test</u>&nbsp;&nbsp;拷贝/etc目录到/home/test目录下，-r表示拷贝的是目录<br>
@@ -87,9 +88,15 @@
     <u>gunzip -c test.gz>Test.java</u>&nbsp;&nbsp;对当前目录下的test.gz文件进行解压缩操作，最终解压到Test.java文件，并且保留原文件test.gz，-c参数可以保留原文件<br>
     <hr>
     <h2>多个文件（目录）打包压缩相关命令</h2>
-    <u>tar -zcvf test.tar.gz test</u>&nbsp;&nbsp;对当前目录下的test文件夹进行打包并压缩操作，最终生成test.tar.gz文件，test文件夹也保留下来，-c表示产生.tar打包文件，-v表示显示详细信息，-f是指定文件名，-z表示打包同时压缩<br>
     <u>tar -cvf test.tar test</u>&nbsp;&nbsp;对当前目录下的test文件夹进行打包，最终生成test.tar文件，test文件夹也保留下来，-c表示打包，-v表示显示详细信息，-f是指定文件名<br>
-    <u>tar -zxvf 1.tar.gz</u>&nbsp;&nbsp;对当前目录下的test文件夹进行解包并解压缩操作，最终解压出来etc文件（压缩的就是etc文件夹），1.tar.gz文件也保留下来，-x表示解包，-v表示显示详细信息，-f是指定要解压的文件名，-z表示打包同时压缩<br>
+    <u>tar -zcvf test.tar.gz test</u>&nbsp;&nbsp;对当前目录下的test文件夹进行打包并压缩操作，最终生成test.tar.gz文件，test文件夹也保留下来，-c表示产生.tar打包文件，-v表示显示详细信息，-f是指定文件名，-z表示打包同时压缩<br>
+    <u>tar -zxvf 1.tar.gz</u>&nbsp;&nbsp;对当前目录下的1.tar.gz文件进行解包并解压缩操作，最终解压出来etc文件（压缩的就是etc文件夹），1.tar.gz文件也保留下来，-x表示解包，-v表示显示详细信息，-f是指定要解压的文件名，-z表示打包同时压缩<br>
+    <u>tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/local</u>&nbsp;&nbsp;对当前目录下的jdk压缩包进行解包并解压缩操作，最终解压到/usr/local目录下，-C表示指定解压到哪个目录下<br>
+    <h2>zip压缩解压缩相关命令</h2>
+    <u>zip b.zip a.txt</u>&nbsp;&nbsp;对当前目录下的a.txt文件进行压缩生成b.zip文件在当前目录下，并且a.txt文件也会保留下来<br>
+    <u>zip -r b.zip d1</u>&nbsp;&nbsp;对当前目录下的d1文件夹进行压缩生成b.zip文件在当前目录下，并且d1文件夹也会保留下来，-r表示对文件夹进行压缩<br>
+    <u>unzip b.zip</u>&nbsp;&nbsp;对当前目录下的b.zip进行解压缩<br>
+    <u>unzip -d /home b.zip</u>&nbsp;&nbsp;对当前目录下的b.zip进行解压缩到/home目录下，-d表示指定解压缩到哪个目录下<br>
     <hr>
     <h2>输出重定向</h2>
     <u>ls -al /etc > result.txt</u>&nbsp;&nbsp;把执行ls -al /etc命令的结果输出到当前目录下的result.txt文件中，&gt;会覆盖原文件的内容，如果当前文件夹中不存在resutl.txt文件的话，则会创建result.txt文件<br>

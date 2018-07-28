@@ -20,7 +20,7 @@
     <br>
     <br>
     <br>
-    <h1>DTD语法说明</h1>
+    <h1>DTD中定义元素的语法说明</h1>
     <h2>1、定义元素的语法</h2>
     <h3>使用ELEMENT声明元素：&lt;!ELEMENT 元素名 内容类型或内容&gt;</h3>
     <h3>例如：&lt;!ELEMENT name (#PCDATA)&gt;</h3>
@@ -90,7 +90,7 @@
     <br>
     <br>
     <br>
-    <h1>复制样例</h1>
+    <h1>DTD中定义元素的语法说明的复杂样例</h1>
     <h2>样例一：&lt;!ELEMENT student (name,(age|sex)+)+&gt;</h2>
     <h3>以下合法：</h3>
     <h3>&lt;student&gt;</h3>
@@ -102,6 +102,19 @@
     <h3>&lt;student&gt;</h3>
     <h3>&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;张三&lt;/name&gt;</h3>
     <h3>&lt;/student&gt;</h3>
+    <br>
+    <br>
+    <br>
+    <h1>DTD中定义元素属性的语法说明</h1>
+    <h2>1、定义元素属性的格式</h2>
+    <h3>格式为:&lt;!ATTLIST 元素名 属性名 属性类型 必选还是可选&gt;</h3>
+    <br>
+    <h3>其中元素名指的是这个属性对应在哪个元素里面</h3>
+    <h3>其中属性名是属性的名称</h3>
+    <h3>其中属性类型指的是属性的类型，有三种属性：CDATA（文本）、Enumerated（枚举，枚举只需要提供枚举列表即可）、ID（唯一号，并且不能以数字开头）</h3>
+    <h3>其中必选是#REQUIRED，可选是#IMPLIED</h3>
+    <img src="./img/QQ截图20180728115703.png" alt="">
+    <img src="./img/QQ截图20180728115810.png" alt="">
 </body>
 
 </html>

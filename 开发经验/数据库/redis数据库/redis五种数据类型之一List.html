@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,32 @@
     <title>redis五种数据类型之一List</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+    <h1>Hash类型简介</h1>
+    <h3>Hash类型是String类型的field和value的映射表，或者说一个String集合。它特别适合存储对象，相比较而言，将一个对象类型存储在Hash类型里要比存储在String类型里面占用更少的内存空间，并方便存取整个对象。</h3>
+    <br>
+    <br>
+    <br>
+    <h1>操作详解</h1>
+    <h3>相关命令：</h3>
+    <table>
+        <tr>
+            <th>命令</th>
+            <th>描述</th>
+            <th>示例</th>
+            <th>示例说明</th>
+        </tr>
+        <tr>
+            <td>
+                <em>HSET</em> key field value</td>
+            <td>设置指定哈希表key中字段field的值，如果指定哈希表key中字段field的值已经存在，则会覆盖原有的值</td>
+            <td>hset key1 name zhangsan</td>
+            <td>设置哈希表key1中字段name的值为zhangsan</td>
+        </tr>
+       
+    </table>
+
 </body>
+
 </html>

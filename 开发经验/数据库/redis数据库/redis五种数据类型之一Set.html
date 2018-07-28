@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,115 @@
     <title>redis五种数据类型之一Set</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    
+    <h1>Set类型简介</h1>
+    <h3>Set集合是string类型的无序集合，set是通过hashtable实现的，对集合我们可以取交集、并集、差集</h3>
+    <br>
+    <br>
+    <br>
+    <h1>操作详解</h1>
+    <h3>相关命令：</h3>
+    <table>
+        <tr>
+            <th>命令</th>
+            <th>描述</th>
+            <th>示例</th>
+            <th>示例说明</th>
+        </tr>
+        <tr>
+            <td>
+                <em>SADD</em> set member1 member2 member3 ...</td>
+            <td>向集合set中插入一个或多个成员值</td>
+            <td>sadd set1 aaa bbb ccc</td>
+            <td>向集合set1中插入aaa、bbb、ccc</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SMEMBERS</em> set</td>
+            <td>获取集合set中所有成员值</td>
+            <td>smembers set1</td>
+            <td>获取集合set1的所有成员值</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SREM</em> set member1 member2 member3 ...</td>
+            <td>删除集合set中一个或多个成员值</td>
+            <td>srem set1 aaa bbb</td>
+            <td>删除集合set1的成员值aaa和bbb</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SPOP</em> set</td>
+            <td>随机弹出集合set中的一个成员</td>
+            <td>spop set1</td>
+            <td>随机弹出集合set1中的一个成员</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SINTER</em> set1 set2</td>
+            <td>返回集合set1和集合set2的交集</td>
+            <td>sinter set1 set2</td>
+            <td>返回集合set1和集合set2的交集</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SUNION</em> set1 set2</td>
+            <td>返回集合set1和集合set2的并集</td>
+            <td>sinter set1 set2</td>
+            <td>返回集合set1和集合set2的并集</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SDIFF</em> set1 set2</td>
+            <td>返回集合set1和集合set2的差集，即set1中有的set2中没有的</td>
+            <td>sdiff set1 set2</td>
+            <td>返回集合set1和集合set2的差集，即set1中有的set2中没有的</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SINTERSTORE</em> interset set1 set2</td>
+            <td>返回集合set1和集合set2的交集存到interset中</td>
+            <td>sinter set1 set2</td>
+            <td>返回集合set1和集合set2的交集存到interset中</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SUNIONSTORE</em> unionset set1 set2</td>
+            <td>返回集合set1和集合set2的并集存到unionset中</td>
+            <td>sinter set1 set2</td>
+            <td>返回集合set1和集合set2的并集存到unionset中</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SDIFFSTORE</em> diffset set1 set2</td>
+            <td>返回集合set1和集合set2的差集存到diffset中</td>
+            <td>sdiff set1 set2</td>
+            <td>返回集合set1和集合set2的差集存到diffset中</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SMOVE</em> set1 set2 aaa</td>
+            <td>将集合set1中的成员aaa移动到set2中</td>
+            <td>smove set1 set2 aaa</td>
+            <td>将集合set1中的成员aaa移动到set2中</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SCARD</em> set</td>
+            <td>查看集合set中的成员个数</td>
+            <td>scard set1</td>
+            <td>查看集合set1中的成员个数</td>
+        </tr>
+        <tr>
+            <td>
+                <em>SISMEMBER</em> set member</td>
+            <td>查看集合set中是否存在成员member</td>
+            <td>sismember set1 aaa</td>
+            <td>查看集合set1中是否存在成员aaa</td>
+        </tr>
+    </table>
+
 </body>
+
 </html>
