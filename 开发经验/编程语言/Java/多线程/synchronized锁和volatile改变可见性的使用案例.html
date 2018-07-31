@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>synchronized锁的使用案例</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>案例1：演示synchronized锁的是对象</h1>
+    <pre>
+/**
+ * synchronized关键字
+ * 锁的是对象哦
+ * 呵呵，老男孩还没有对象。。。
+ */
+package com.pl.concurrent_demo;
+
+public class Demo1 {
+	private int count = 0;
+	private Object o = new Object();
+	
+	public void testSync1() {
+		synchronized (o) {//锁的是实例o
+			System.out.println(Thread.currentThread().getName() + " count = " + count++);
+		}
+	}
+
+	public void testSync2() {
+		synchronized (this) {//锁的是this
+			System.out.println(Thread.currentThread().getName() + " count = " + count++);
+		}
+	}
+
+	public synchronized void testSync3() {//锁的是this
+		System.out.println(Thread.currentThread().getName() + " count = " + count++);
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例2：演示锁的是类的类对象</h1>
+    <pre>
+/**
+ * synchronized关键字
+ * 这里演示锁的是类的类对象
+ * 
+ */
+package com.pl.concurrent_demo;
+
+public class Demo2 {
+	private static int staticCount = 0;
+
+	public static synchronized void testSync1() {//这里锁的是Demo2类的类对象
+		System.out.println(Thread.currentThread().getName() + " staticCount = " + staticCount++);
+	}
+
+	public void testSync2() {
+		synchronized (Demo2.class) {//这里锁的是Demo2类的类对象
+			System.out.println(Thread.currentThread().getName() + " staticCount = " + staticCount++);
+		}
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例3：演示的是访问共享资源如果不加锁的话会出现非线程安全问题</h1>
+    <pre>
+/**
+ * 演示的是访问共享资源如果不加锁的话会出现非线程安全问题
+ * 
+ * 
+ */
+package com.pl.concurrent_demo;
+
+public class Demo3 implements Runnable {
+	private int count = 0;
+
+	@Override
+	public /*synchronized*/ void run() {
+		System.out.println(Thread.currentThread().getName() + " count = " + count++);
+	}
+
+	public static void main(String[] args) {
+		Demo3 demo = new Demo3();
+		for (int i = 0; i &lt; 5; i++) {
+			new Thread(demo, "Thread - " + i).start();
+		}
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例4：演示同步方法和非同步方法的调用是不影响的</h1>
+    <pre>
+/**
+ * 同步方法和非同步方法的调用
+ * 同步方法只影响其它线程调用同一个同步方法时的锁问题，不影响其它线程调用非同步方法，或调用其它锁资源的同步方法
+ * 
+ */
+package com.pl.concurrent_demo;
+
+public class Demo4 {
+	public synchronized void testSync1() {
+		System.out.println("public synchronized void testSync1() start");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("public synchronized void testSync1() end");
+	}
+
+	public void testSync2() {
+		System.out.println("public void testSync2() start");
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("public void testSync2() end");
+	}
+
+	public static class MyThread01 implements Runnable {
+		int i;
+		Demo4 demo4;
+
+		public MyThread01(int i, Demo4 demo4) {
+			this.i = i;
+			this.demo4 = demo4;
+		}
+
+		@Override
+		public void run() {
+			if (i == 0) {
+				demo4.testSync1();
+			} else {
+				demo4.testSync2();
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Demo4 demo=new Demo4();
+		new Thread(new Demo4.MyThread01(0, demo)).start();
+		new Thread(new Demo4.MyThread01(1, demo)).start();
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例5：演示脏读的问题</h1>
+    <pre>
+/**
+ * 演示脏读的问题
+ * 
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.concurrent.TimeUnit;
+
+public class Demo5 {
+	private double d = 0.0;
+
+	public synchronized void testSync1(double d) {
+		try {
+			TimeUnit.SECONDS.sleep(2);//模拟复杂的业务逻辑代码
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		this.d = d;
+	}
+
+	public double getDouble() {
+		return this.d;
+	}
+
+	public static void main(String[] args) {
+		final Demo5 demo5 = new Demo5();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo5.testSync1(100);
+			}
+		}).start();
+		System.out.println(demo5.getDouble());//这时候还没有把d的值修改过来，就直接插进去读d的值了，这一步就是脏读
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println(demo5.getDouble());
+	}
+}
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例6：演示锁的重入</h1>
+    <pre>
+/**
+ * 演示锁的重入
+ * 锁可重入指的是同一个线程，多次调用同步代码（锁定同一个锁对象），则可重入
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.concurrent.TimeUnit;
+
+public class Demo6 {
+	synchronized void testSync1() {//锁this
+		System.out.println("testSync1 start");
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		testSync2();
+		System.out.println("testSync1 end");
+	}
+
+	synchronized void testSync2() {//锁this
+		System.out.println("testSync2 start");
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("testSync2 end");
+	}
+
+	public static void main(String[] args) {
+		new Demo6().testSync1();
+	}
+
+}
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例7：演示继承关系上的锁重入</h1>
+    <pre>
+/**
+ * 子类同步方法覆盖父类同步方法，可以指定调用父类的同步方法
+ * 相当于锁的重入
+ * 
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.concurrent.TimeUnit;
+
+public class Demo7 {
+	synchronized void testSync1() {
+		System.out.println("Super Class testSync1  start");
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Super Class testSync1 end");
+	}
+	public static void main(String[] args) {
+		new Sub_Demo7().testSync1();
+	}
+}
+
+class Sub_Demo7 extends Demo7{
+	synchronized void testSync1() {
+		System.out.println("Sub Class start");
+		super.testSync1();
+		System.out.println("Sub Class end");
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例8：当同步方法中发生异常的时候，自动释放锁资源，不会影响其它线程的执行</h1>
+    <pre>
+/**
+ * 演示当同步方法中发生异常的时候，自动释放锁资源，不会影响其它线程的执行
+ * 同步业务逻辑中发生异常的时候，应该要回滚数据
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.concurrent.TimeUnit;
+
+public class Demo8 {
+	int i = 0;
+
+	synchronized void testSync1() {
+		System.out.println(Thread.currentThread().getName() + " - start");
+		while (true) {
+			i++;
+			System.out.println(Thread.currentThread().getName() + " - " + i);
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			if (i == 5) {
+				try {
+					i = 1 / 0;
+				} catch (Exception e) {
+					i = 0;// 当业务方法发生异常的时候，回滚
+				}
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		final Demo8 demo = new Demo8();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync1();
+			}
+
+		}, "t1").start();
+		;
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync1();
+			}
+
+		}, "t2").start();
+		;
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例9：演示volatile关键字是如何改变共享变量的可见性</h1>
+    <pre>
+/**
+ * 演示volatile关键字是如何改变共享变量的可见性
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.concurrent.TimeUnit;
+
+public class Demo9 {
+	/*volatile*/ boolean b = true;
+
+	void testSync1() {
+		System.out.println("start");
+		while (b) {
+		}
+		System.out.println("end");
+	}
+
+	public static void main(String[] args) {
+		final Demo9 demo = new Demo9();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync1();
+			}
+		}).start();
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		demo.b=false;
+	}
+
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例10：演示volatile关键字只是保证可见性，不能够保证原子性</h1>
+    <pre>
+        /**
+ * 演示volatile关键字只是保证可见性，不能够保证原子性
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Demo10 {
+	volatile int count = 0;
+
+	/*synchronized*/ void testSync1() {
+		for (int i = 0; i &lt; 10000; i++) {
+			count++;
+		}
+	}
+
+	public static void main(String[] args) {
+		final Demo10 demo = new Demo10();
+		List&lt;Thread&gt; threadList = new ArrayList&lt;&gt;();
+		for (int i = 0; i &lt; 10; i++) {
+			threadList.add(new Thread(new Runnable() {
+				@Override
+				public void run() {
+					demo.testSync1();
+				}
+			}));
+		}
+		for (Thread thread : threadList) {
+			thread.start();
+		}
+		for (Thread thread : threadList) {
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println(demo.count);
+	}
+
+}
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例11：演示AtomicXxx是原子操作类型，其中的每个方法都是原子操作，可以保证线程安全</h1>
+    <pre>
+/**
+ * 演示AtomicXxx是原子操作类型，其中的每个方法都是原子操作，可以保证线程安全
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Demo11 {
+	AtomicInteger count=new AtomicInteger(0);
+	void testSync1() {
+		for(int i=0;i&lt;10000;i++) {
+			count.incrementAndGet();
+		}
+	}
+	public static void main(String[] args) {
+		final Demo11 demo=new Demo11();
+		List&lt;Thread&gt; threadList = new ArrayList&lt;&gt;();
+		for(int i=0;i&lt;10;i++) {
+			threads.add(new Thread(new Runnable() {
+				@Override
+				public void run() {
+					demo.testSync1();
+				}
+			}));
+		}
+		for(Thread thread:threads) {
+			thread.start();
+		}
+		for(Thread thread:threads) {
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			};
+		}
+		System.out.println(demo.count.intValue());
+		
+	}
+
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例12：演示中途换锁，锁的是对象，而不是引用</h1>
+    <pre>
+/**
+ * 演示中途换锁，锁的是对象，而不是引用
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.concurrent.TimeUnit;
+
+public class Demo12 {
+	Object o = new Object();
+
+	void testSync1() {
+		System.out.println(Thread.currentThread().getName() + " start");
+		synchronized (o) {
+			while (true) {
+				try {
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println(Thread.currentThread().getName());
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		final Demo12 demo = new Demo12();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync1();
+			}
+		}, "thead1").start();
+		try {
+			TimeUnit.SECONDS.sleep(3);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Thread t2 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				demo.testSync1();
+			}
+		}, "thead2");
+		demo.o=new Object();//换锁
+		t2.start();
+
+	}
+
+}
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>案例13：演示在定义同步代码块的时候，不要使用常量对象作为锁对象</h1>
+    <pre>
+/**
+ * 演示在定义同步代码块的时候，不要使用常量对象作为锁对象
+ * 
+ */
+package com.pl.concurrent_demo;
+
+public class Demo13 {
+	String s1 = "hello";
+	String s2 = "hello";
+
+	void testSync1() {
+		synchronized (s1) {//这里锁的是"hello"这个常量
+			System.out.println("m1()");
+			while (true) {}
+		}
+	}
+	void testSync2() {
+		synchronized (s2) {//这里锁的是"hello"这个常量
+			System.out.println("m2()");
+			while (true) {}
+		}
+	}
+	public static void main(String[] args) {
+		final Demo13 demo=new Demo13();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync1();
+			}
+			
+		}).start();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync2();
+			}
+			
+		}).start();
+	}
+
+}
+	</pre>
+	<br>
+	<br>
+	<br>
+	<h1>案例14：演示门闩</h1>
+	<pre>
+/**
+ * 演示门闩
+ * 门闩相当于在门上加上n多把锁，当这n多把锁都被解开之后，就可以开门了
+ * 
+ */
+package com.pl.concurrent_demo;
+
+import java.util.concurrent.CountDownLatch;
+
+public class Demo14 {
+	CountDownLatch latch = new CountDownLatch(5);
+
+	void testSync1() {
+		try {
+			latch.await();//等待门闩开放
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("m1() method");
+	}
+
+	void testSync2() {
+		for (int i = 0; i < 10; i++) {
+			if (latch.getCount() != 0) {
+				System.out.println("latch count : " + latch.getCount());
+				latch.countDown();
+			}
+			System.out.println("m2() method : " + i);
+		}
+	}
+	public static void main(String[] args) {
+		final Demo14 demo=new Demo14();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync1();
+			}
+			
+		}).start();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				demo.testSync2();
+			}
+			
+		}).start();
+	}
+
+}
+	</pre>
+</body>
+</html>
