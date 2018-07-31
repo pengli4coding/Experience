@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用mybatis框架的大体步骤</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>示意图</h1>
+    <img src="./img/QQ截图20180731141631.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>样例</h1>
+    <h3>前提准备：先建一个maven工程，并引入mybatis的核心依赖包和mysql的驱动包，如下所示：</h3>
+    <img src="./img/QQ截图20180731142310.png" alt="">
+    <br>
+    <br>
+    <h3>第一步：首先数据库中得有表吧，不然还干啥呢？</h3>
+    <img src="./img/QQ截图20180731143248.png" alt="">
+    <br>
+    <br>
+    <h3>第二步：编写获取全局SqlSessionFactory（Sql会话工厂）的配置文件（sqlMapConfig.xml）</h3>
+    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;
+&lt;configuration&gt;
+
+	&lt;environments default="development"&gt;
+		&lt;environment id="development"&gt;
+			&lt;transactionManager type="JDBC" /&gt;
+			&lt;dataSource type="POOLED"&gt;
+				&lt;property name="driver" value="com.mysql.jdbc.Driver" /&gt;
+				&lt;property name="url" value="jdbc:mysql://172.18.5.25:3306/mybatis?characterEncoding=utf-8" /&gt;
+				&lt;property name="username" value="root" /&gt;
+				&lt;property name="password" value="382346819pl" /&gt;
+			&lt;/dataSource&gt;
+		&lt;/environment&gt;
+	&lt;/environments&gt;
+	
+	&lt;mappers&gt;
+		&lt;mapper resource="com/pl/models/PetMapper.xml" /&gt;
+	&lt;/mappers&gt;
+	
+&lt;/configuration&gt;
+    </pre>
+    <br>
+    <br>
+    <h3>第三步：编写对象-关系映射文件（如：PersonMapper.xml）并引入到Sql会话工厂的配置文件中</h3>
+    <br>
+    <br>
+    <h3>第四步：获取SqlSessionFactory，然后开session进行增删改查操作</h3>
+    <br>
+    <br>
+</body>
+
+</html>
