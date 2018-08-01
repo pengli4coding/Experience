@@ -614,7 +614,7 @@ public class Demo14 {
 	}
 
 	void testSync2() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i &lt; 10; i++) {
 			if (latch.getCount() != 0) {
 				System.out.println("latch count : " + latch.getCount());
 				latch.countDown();
