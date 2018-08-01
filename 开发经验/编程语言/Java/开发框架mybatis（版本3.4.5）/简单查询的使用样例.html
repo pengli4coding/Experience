@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单查询的使用样例</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>前置准备</h1>
+    <img src="./img/QQ截图20180801133937.png" alt="">
+    <img src="./img/QQ截图20180801134633.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>【查】根据id来查询单条记录</h1>
+    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+  
+&lt;!-- namespace：映射文件的命名空间，一般是映射文件所在的包名+映射文件名 --&gt;
+&lt;mapper namespace="com.pl.models.PetMapper"&gt;
+
+	&lt;!-- 用resultMap来指定类的属性与数据库字段一一对应的关系 --&gt;
+	&lt;!-- type属性：映射类的全类名 --&gt;
+	&lt;resultMap type="com.pl.models.Pet" id="PetResultMap"&gt;
+		&lt;id property="id" column="ID" /&gt;&lt;!-- id标签指定主键 --&gt;
+		&lt;result property="petName" column="PET_NAME" /&gt;&lt;!-- property：映射类的属性名；column：表的字段名 --&gt;
+		&lt;result property="birthday" column="BIRTHDAY" /&gt;
+		&lt;result property="gender" column="GENDER" /&gt;
+		&lt;result property="weight" column="WEIGHT" /&gt;
+		&lt;result property="addr" column="ADDR" /&gt;
+	&lt;/resultMap&gt;
+	<font style="color: red;">
+	&lt;!-- 根据id来查询单条记录 --&gt;
+	&lt;select id="selectPetById" parameterType="java.lang.Integer" resultMap="PetResultMap"&gt;
+		select * from PET where id = #{id}
+        &lt;/select&gt;</font>
+	
+&lt;/mapper&gt;
+    </pre>
+    <pre>
+package com.pl.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.pl.models.Pet;
+
+public class TestPet {
+
+	SqlSessionFactory sqlSessionFactory;
+
+	@Before
+	public void setUp() throws IOException {
+		//读取配置文件为初始化SqlSessionFactory做准备
+		InputStream in = Resources.getResourceAsStream("sqlMapConfig.xml");
+		//获得SqlSessionFactory的实例
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
+	}
+
+	@Test
+	public void test() {
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+			//session.selectOne(String statement, Object parameter)方法传的第一个参数为mapper映射文件的namespace命名空间+sql语句的id号
+			<font style="color: red;">Pet pet = session.selectOne("com.pl.models.PetMapper.selectPetById", 2);</font>
+			System.out.println(pet);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>【查】查询表中记录的总数</h1>
+    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+  
+&lt;!-- namespace：映射文件的命名空间，一般是映射文件所在的包名+映射文件名 --&gt;
+&lt;mapper namespace="com.pl.models.PetMapper"&gt;
+
+	&lt;!-- 用resultMap来指定类的属性与数据库字段一一对应的关系 --&gt;
+	&lt;!-- type属性：映射类的全类名 --&gt;
+	&lt;resultMap type="com.pl.models.Pet" id="PetResultMap"&gt;
+		&lt;id property="id" column="ID" /&gt;&lt;!-- id标签指定主键 --&gt;
+		&lt;result property="petName" column="PET_NAME" /&gt;&lt;!-- property：映射类的属性名；column：表的字段名 --&gt;
+		&lt;result property="birthday" column="BIRTHDAY" /&gt;
+		&lt;result property="gender" column="GENDER" /&gt;
+		&lt;result property="weight" column="WEIGHT" /&gt;
+		&lt;result property="addr" column="ADDR" /&gt;
+	&lt;/resultMap&gt;
+	
+	<font style="color: red;">
+	&lt;!-- 查询表中记录的总数 --&gt;
+	&lt;select id="selectPetCount" resultType="java.lang.Integer"&gt;
+		select count(*) from PET
+	&lt;/select&gt;</font>
+	
+&lt;/mapper&gt;
+    </pre>
+    <pre>
+        package com.pl.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.pl.models.Pet;
+
+public class TestPet {
+
+	SqlSessionFactory sqlSessionFactory;
+
+	@Before
+	public void setUp() throws IOException {
+		//读取配置文件为初始化SqlSessionFactory做准备
+		InputStream in = Resources.getResourceAsStream("sqlMapConfig.xml");
+		//获得SqlSessionFactory的实例
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
+	}
+
+	@Test
+	public void test() {
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+			//session.selectOne(String statement)方法传的第一个参数为mapper映射文件的namespace命名空间+sql语句的id号
+			<font style="color: red;">Integer petCount = session.selectOne("com.pl.models.PetMapper.selectPetCount");</font>
+			System.out.println("表中的记录总数为："+petCount);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+}
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>【查】查询表中的多条记录（传入单一参数）</h1>
+    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+  
+&lt;!-- namespace：映射文件的命名空间，一般是映射文件所在的包名+映射文件名 --&gt;
+&lt;mapper namespace="com.pl.models.PetMapper"&gt;
+
+	&lt;!-- 用resultMap来指定类的属性与数据库字段一一对应的关系 --&gt;
+	&lt;!-- type属性：映射类的全类名 --&gt;
+	&lt;resultMap type="com.pl.models.Pet" id="PetResultMap"&gt;
+		&lt;id property="id" column="ID" /&gt;&lt;!-- id标签指定主键 --&gt;
+		&lt;result property="petName" column="PET_NAME" /&gt;&lt;!-- property：映射类的属性名；column：表的字段名 --&gt;
+		&lt;result property="birthday" column="BIRTHDAY" /&gt;
+		&lt;result property="gender" column="GENDER" /&gt;
+		&lt;result property="weight" column="WEIGHT" /&gt;
+		&lt;result property="addr" column="ADDR" /&gt;
+	&lt;/resultMap&gt;
+	
+	<font style="color: red;">
+	&lt;!-- 查询表中的多条记录 --&gt;
+	&lt;select id="selectPetAll" parameterType="java.lang.Integer" resultMap="PetResultMap"&gt;
+        &lt;!-- 注意这里由于只有一个参数 ，并且类型是基础类型，所以参数名任意指定--&gt;
+        &lt;![CDATA[
+        select * from PET where weight&gt;#{num}
+        ]]&gt;
+	&lt;/select&gt;</font>
+	
+&lt;/mapper&gt;
+    </pre>
+    <pre>
+package com.pl.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.pl.models.Pet;
+
+public class TestPet {
+
+	SqlSessionFactory sqlSessionFactory;
+
+	@Before
+	public void setUp() throws IOException {
+		//读取配置文件为初始化SqlSessionFactory做准备
+		InputStream in = Resources.getResourceAsStream("sqlMapConfig.xml");
+		//获得SqlSessionFactory的实例
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
+	}
+
+	@Test
+	public void test() {
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+			//session.selectOne(String statement)方法传的第一个参数为mapper映射文件的namespace命名空间+sql语句的id号
+			<font style="color: red;">List&lt;Pet&gt; petList = session.selectList("com.pl.models.PetMapper.selectPetAll",7);</font>
+			for (Pet petItem : petList) {
+				System.out.println(petItem);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>【查】查询表中的多条记录（传入多个参数）</h1>
+    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+  
+&lt;!-- namespace：映射文件的命名空间，一般是映射文件所在的包名+映射文件名 --&gt;
+&lt;mapper namespace="com.pl.models.PetMapper"&gt;
+
+	&lt;!-- 用resultMap来指定类的属性与数据库字段一一对应的关系 --&gt;
+	&lt;!-- type属性：映射类的全类名 --&gt;
+	&lt;resultMap type="com.pl.models.Pet" id="PetResultMap"&gt;
+		&lt;id property="id" column="ID" /&gt;&lt;!-- id标签指定主键 --&gt;
+		&lt;result property="petName" column="PET_NAME" /&gt;&lt;!-- property：映射类的属性名；column：表的字段名 --&gt;
+		&lt;result property="birthday" column="BIRTHDAY" /&gt;
+		&lt;result property="gender" column="GENDER" /&gt;
+		&lt;result property="weight" column="WEIGHT" /&gt;
+		&lt;result property="addr" column="ADDR" /&gt;
+	&lt;/resultMap&gt;
+
+    <font style="color: red;">
+	&lt;!-- 查询表中的多条记录（传入多个参数） --&gt;
+	&lt;select id="selectPetByParams" parameterType="java.util.Map" resultMap="PetResultMap"&gt;
+		&lt;!-- 由于传入多个参数，这里就必须要用Map来存放参数集合了--&gt;
+		&lt;!-- 而且参数名必须对应Map集合中的key --&gt;
+		&lt;![CDATA[
+		select * from PET where weight&gt;#{weight} and addr=#{addr}
+		]]&gt;
+	&lt;/select&gt;</font>
+	
+&lt;/mapper&gt;
+    </pre>
+    <pre>
+package com.pl.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.pl.models.Pet;
+
+public class TestPet {
+
+	SqlSessionFactory sqlSessionFactory;
+
+	@Before
+	public void setUp() throws IOException {
+		//读取配置文件为初始化SqlSessionFactory做准备
+		InputStream in = Resources.getResourceAsStream("sqlMapConfig.xml");
+		//获得SqlSessionFactory的实例
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
+	}
+
+	@Test
+	public void test() {
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+            <font style="color: red;">
+			//用一个Map来存放要传入的参数值
+			Map&lt;String,Object&gt; map=new HashMap&lt;String,Object&gt;();
+			map.put("weight", 8);
+			map.put("addr", "中国广东珠海");
+			//session.selectOne(String statement)方法传的第一个参数为mapper映射文件的namespace命名空间+sql语句的id号
+			List&lt;Pet&gt; petList = session.selectList("com.pl.models.PetMapper.selectPetByParams",map);</font>
+			for (Pet pet : petList) {
+				System.out.println(pet);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>【查】模糊查询要用${}不用#{}</h1>
+    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+  
+&lt;!-- namespace：映射文件的命名空间，一般是映射文件所在的包名+映射文件名 --&gt;
+&lt;mapper namespace="com.pl.models.PetMapper"&gt;
+
+	&lt;!-- 用resultMap来指定类的属性与数据库字段一一对应的关系 --&gt;
+	&lt;!-- type属性：映射类的全类名 --&gt;
+	&lt;resultMap type="com.pl.models.Pet" id="PetResultMap"&gt;
+		&lt;id property="id" column="ID" /&gt;&lt;!-- id标签指定主键 --&gt;
+		&lt;result property="petName" column="PET_NAME" /&gt;&lt;!-- property：映射类的属性名；column：表的字段名 --&gt;
+		&lt;result property="birthday" column="BIRTHDAY" /&gt;
+		&lt;result property="gender" column="GENDER" /&gt;
+		&lt;result property="weight" column="WEIGHT" /&gt;
+		&lt;result property="addr" column="ADDR" /&gt;
+	&lt;/resultMap&gt;
+
+    <font style="color: red;">
+	&lt;!-- 模糊查询 --&gt;
+	&lt;!-- #{}对应PreparedStatement，即预编译 --&gt;
+	&lt;!-- ${}对应Statement，相当于${}是一个占位符 ，模糊查询的时候就必须要用${}了--&gt;
+	&lt;select id="selectPetByName" parameterType="java.util.Map" resultMap="PetResultMap"&gt;
+		&lt;![CDATA[
+		select * from PET where pet_name like '%${name}%'
+		]]&gt;
+	&lt;/select&gt;</font>
+	
+&lt;/mapper&gt;
+    </pre>
+    <pre>
+package com.pl.test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.pl.models.Pet;
+
+public class TestPet {
+
+	SqlSessionFactory sqlSessionFactory;
+
+	@Before
+	public void setUp() throws IOException {
+		//读取配置文件为初始化SqlSessionFactory做准备
+		InputStream in = Resources.getResourceAsStream("sqlMapConfig.xml");
+		//获得SqlSessionFactory的实例
+		sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
+	}
+
+	@Test
+	public void test() {
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+            <font style="color: red;">
+			//用一个Map来存放要传入的参数值
+			Map&lt;String,Object&gt; map=new HashMap&lt;String,Object&gt;();
+			map.put("name", "肥");
+			List&lt;Pet&gt; petList = session.selectList("com.pl.models.PetMapper.selectPetByName",map);</font>
+			for (Pet pet : petList) {
+				System.out.println(pet);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+}
+    </pre>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
