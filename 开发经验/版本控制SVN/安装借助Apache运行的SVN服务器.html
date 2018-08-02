@@ -128,10 +128,10 @@ touch /svn/authz
 开放 3306 端口访问权限。
 命令 ： vi /etc/sysconfig/iptables
 增加下述内容：
-<pre>-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</pre>修改后，重启防火墙服务，命令： service iptables restart
+
+命令 ： mysqladmin -uroot password 'yourPassword'<pre>-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</pre>修改后，重启防火墙服务，命令： service iptables restart
 
 5.6设置 MySQL 数据库 root 用户初始密码
-命令 ： mysqladmin -uroot password 'yourPassword'
 
 5.7为 MySQL 数据库 root 用户授权
 在默认情况下，MySQL 数据库中的 root 用户只能本地访问。需要为此用户授予远程访
