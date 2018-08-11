@@ -12,9 +12,16 @@
     <u>service iptables status</u>&nbsp;&nbsp;查看防火墙状态<br>
     <u>service iptables start</u>&nbsp;&nbsp;开启防火墙（重启后防火墙配置消失）<br>
     <u>service iptables stop</u>&nbsp;&nbsp;关闭防火墙（重启后防火墙配置消失）<br>
-    <u>chkconfig iptables on</u>&nbsp;&nbsp;开启防火墙（重启后防火墙配置不会消失）<br>
-    <u>chkconfig iptables off</u>&nbsp;&nbsp;关闭防火墙（重启后防火墙配置不会消失）<br>
+    <u>chkconfig iptables on</u>&nbsp;&nbsp;开启防火墙（重启后防火墙配置不会消失，而且建议运行一下service iptables start，不然还得重启服务器）<br>
+    <u>chkconfig iptables off</u>&nbsp;&nbsp;关闭防火墙（重启后防火墙配置不会消失，而且建议运行一下service iptables stop，不然还得重启服务器）<br>
     <br>
+    <pre>
+开放某一个端口访问权限（这里以开发80端口的访问权限为例子）
+命令 ： vim /etc/sysconfig/iptables
+增加下述内容：
+<pre style="width: 800px;">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</pre>修改后，重启防火墙服务，命令： service iptables restart
+
+    </pre>
     <br>
     <br>
     <h1>CentOS7的防火墙设置</h1>
