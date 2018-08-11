@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>安装官方的employees示例数据库</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>什么是官方的employees示例数据库</h1>
+    <h3>官方的employees示例数据库是mysql官方给提供的示例数据库，我们的初学者可以用来进行数据库的操作实验，地址是https://launchpad.net/test-db</h3>
+    <br>
+    <br>
+    <br>
+    <h1>如何安装</h1>
+    <h2>第一步：下载</h2>
+    <pre>
+[root@VM_0_13_centos ~]# cd /usr/local/software
+[root@VM_0_13_centos software]# wget https://launchpad.net/test-db/employees-db-1/1.0.6/+download/employees_db-full-1.0.6.tar.bz2
+    </pre>
+    <br><br>
+    <h2>第二步：解压</h2>
+    <pre>
+[root@VM_0_13_centos software]# tar jxf employees_db-full-1.0.6.tar.bz2
+    </pre>
+    <br><br>
+    <h2>第三步：导入数据</h2>
+    <pre>
+[root@VM_0_13_centos software]# cd employees_db
+[root@VM_0_13_centos employees_db]# mysql -uroot -p123456 -t &lt; employees.sql
+    </pre>
+    <br><br>
+</body>
+</html>
