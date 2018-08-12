@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搭建空的maven多模块项目架构并且上传到远程git仓库</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>第一步：在Github上创建空仓库learning</h1>
+    <img src="./img/QQ截图20180812232651.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第二步：创建父工程项目learning-parent（learning-parent一定要是maven的pom工程）</h1>
+    <img src="./img/QQ截图20180812233340.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第三步：删除父工程项目learning-parent中的src文件夹</h1>
+    <img src="./img/QQ截图20180812233504.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第四步：父工程项目learning-parent中新建.gitignore文件并加入内容</h1>
+    <img src="./img/QQ截图20180812233820.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第五步：将父工程项目learning-parent所在的项目文件夹变为本地仓库</h1>
+    <img src="./img/QQ截图20180812234253.png" alt="">
+    <img src="./img/QQ截图20180812234545.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第六步：提交父工程项目learning-parent到本地仓库</h1>
+    <img src="./img/QQ截图20180812234822.png" alt="">
+    <img src="./img/QQ截图20180812234915.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第七步：提交本地仓库到远程仓库（非常关键，这一步可以实现本地仓库名与远程仓库名不一样的效果）</h1>
+    <img src="./img/QQ截图20180812235158.png" alt="">
+    <img src="./img/QQ截图20180812235400.png" alt="">
+    <img src="./img/QQ截图20180812235627.png" alt="">
+    <img src="./img/QQ截图20180812235706.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第八步：观察远程仓库的变化</h1>
+    <img src="./img/QQ截图20180813000044.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第九步：添加子模块并上传到远程仓库中</h1>
+    <img src="./img/QQ截图20180813000347.png" alt="">
+    <img src="./img/QQ截图20180813000438.png" alt="">
+    <img src="./img/QQ截图20180813000701.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第十步：继续按照第九步来添加其它子模块</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第十一步：这一步是需要拉取代码的开发人员或者有代码洁癖的架构师做的</h1>
+    <h3>为啥要有这一步呢？主要开发人员需要拉取远程仓库到本地或者架构师忍受不了本地仓库与远程仓库名称不一致而做的</h3>
+    <h3>下面以架构师的角度来操作，开发人员拉取远程仓库的步骤基本是一致的：</h3>
+    <h3>首先把Eclipse中的相关项目都删掉，本地仓库也删掉</h3>
+    <h3>然后克隆远程仓库到本地</h3>
+    <h3>最后通过导入已有maven项目的方法到从本地仓库导入项目到Eclipse中</h3>
+    <br>
+    <br>
+    <br>
+
+</body>
+
+</html>
