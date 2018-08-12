@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>如何在Eclipse中使用Git</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>准备工作</h1>
+    <h2>提供SSH2钥匙</h2>
+    <h3>使用Eclipse生成本地密匙文件：window->preference->general->network connections->ssh2->点击 Generate RSA KEY->点击Save private key 生成并保存本地密匙</h3>
+    <img src="./img/QQ截图20180812094525.png" alt="">
+    <h3>生成后的密匙文件所在位置是：C:\${user.home}\.ssh 目录。密匙文件名为：id_rsa 和id_rsa.pub。其中 id_rsa.pub 文件是公钥密匙，需要手工添加到 Github 密匙库中</h3>
+    <br>
+    <br>
+    <h2>在Github中添加添加上一步中生成的公钥</h2>
+    <h3>在C:\${user.home}\.ssh目录（如C:\Users\Administrator\.ssh）中找到id_rsa.pub文件，把里面的内容复制出来</h3>
+    <h3>打开Github网站添加SSH密钥</h3>
+    <img src="./img/QQ截图20180812095430.png" alt="">
+    <img src="./img/QQ截图20180812095604.png" alt="">
+    <img src="./img/QQ截图20180812095811.png" alt="">
+    <img src="./img/QQ截图20180812095903.png" alt="">
+    <img src="./img/QQ截图20180812100028.png" alt="">
+    <br>
+    <br>
+    <h2>在Eclipse上添加ssl版本号</h2>
+    <img src="./img/QQ截图20180812100829.png" alt="">
+    <img src="./img/QQ截图20180812101147.png" alt="">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>克隆远程仓库到Eclipse中</h1>
+    <h3>远程仓库https://github.com/pengli4coding/learning.git是一个空仓库</h3>
+    <h3>打开Git仓库视图：window->Show View->Git Repositories</h3>
+    <img src="./img/QQ截图20180812110627.png" alt="">
+    <img src="./img/QQ截图20180812110718.png" alt="">
+    <img src="./img/QQ截图20180812110806.png" alt="">
+    <img src="./img/QQ截图20180812111028.png" alt="">
+    <img src="./img/QQ截图20180812111247.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>工作区（Workspace）、暂存区（Index/Stage）、本地仓库（Repository）、远程仓库（Remote）</h1>
+    <img src="./img/QQ截图20180611164929.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>把Eclipse中的项目分享到工作区（Workspace）中</h1>
+    <h3>这一步操作一般只是在创建项目的时候分享一次，其余大部分时间都是提交或者拉取内容</h3>
+    <img src="./img/QQ截图20180812142502.png" alt="">
+    <img src="./img/QQ截图20180812142618.png" alt="">
+    <img src="./img/QQ截图20180812142946.png" alt="">
+    <img src="./img/QQ截图20180812145830.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>把工作区（Workspace）中的文件变更提交到暂存区（Index/Stage）</h1>
+    <h3>这里的文件变更包括文件创建、修改、删除，也就是对文件的一切操作了</h3>
+    <h2>待更新</h2>
+    <img src="./img/QQ截图20180812150204.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>把暂存区（Index/Stage）中的文件变更提交到本地仓库（Repository）</h1>
+    <img src="./img/QQ截图20180812150845.png" alt="">
+    <img src="./img/QQ截图20180812151508.png" alt="">
+    <img src="./img/QQ截图20180812152127.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>把本地仓库（Repository）中的文件变更提交到远程仓库（Remote）</h1>
+    <img src="./img/QQ截图20180812152233.png" alt="">
+    <img src="./img/QQ截图20180812152358.png" alt="">
+    <img src="./img/QQ截图20180812152531.png" alt="">
+    <img src="./img/QQ截图20180812152834.png" alt="">
+    <img src="./img/QQ截图20180812152714.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1></h1>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
