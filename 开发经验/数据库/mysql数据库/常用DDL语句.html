@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用DDL语句</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+    pre{
+        font-size: 20px;
+    }
+    </style>
+</head>
+<body>
+    <h1>数据库（database）的增删改查</h1>
+    <pre>
+增：
+create database DB_A;
+删：
+drop database DB_A;
+查：
+show databases;
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>表（table）的增删改查</h1>
+    <pre>
+增：
+create table TABLE_A
+(
+EMP_NO int not null,
+FIRST_NAME varchar(14) not null,
+LAST_NAME varchar(14) not null,
+BIRTHDAY date not null,
+primary key(EMP_NO)
+)engine=innodb default charset=utf8
+删：
+drop table TABLE_A;
+查：
+show tables;--查询当前数据库中所有的表
+desc TABLE_A;--查询表TABLE_A的表结构
+show create table TABLE_A;--查询创建表TABLE_A的建表脚本语句
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>字段（column）的增删改查</h1>
+    <br>
+    <br>
+    <br>
+    <h1>索引（index）的增删改查</h1>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
