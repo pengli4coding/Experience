@@ -15,11 +15,11 @@
 <body>
     <h1>数据库（database）的增删改查</h1>
     <pre>
-增：
+<font style="color:red;font-weight: 800;">增：</font>
 create database DB_A;
-删：
+<font style="color:red;font-weight: 800;">删：</font>
 drop database DB_A;
-查：
+<font style="color:red;font-weight: 800;">查：</font>
 show databases;
     </pre>
     <br>
@@ -27,7 +27,7 @@ show databases;
     <br>
     <h1>表（table）的增删改查</h1>
     <pre>
-增：
+<font style="color:red;font-weight: 800;">增：</font>
 create table TABLE_A
 (
 EMP_NO int not null,
@@ -35,10 +35,12 @@ FIRST_NAME varchar(14) not null,
 LAST_NAME varchar(14) not null,
 BIRTHDAY date not null,
 primary key(EMP_NO)
-)engine=innodb default charset=utf8
-删：
+)engine=innodb default charset=utf8;
+<font style="color:red;font-weight: 800;">删：</font>
 drop table TABLE_A;
-查：
+<font style="color:red;font-weight: 800;">改：</font>
+alter table TABLE_A rename TABLE_B;--把表TABLE_A的名字改为TABLE_B
+<font style="color:red;font-weight: 800;">查：</font>
 show tables;--查询当前数据库中所有的表
 desc TABLE_A;--查询表TABLE_A的表结构
 show create table TABLE_A;--查询创建表TABLE_A的建表脚本语句
@@ -47,10 +49,29 @@ show create table TABLE_A;--查询创建表TABLE_A的建表脚本语句
     <br>
     <br>
     <h1>字段（column）的增删改查</h1>
+    <pre>
+<font style="color:red;font-weight: 800;">增：</font>
+alter table TABLE_A add ADDRESS varchar(100) not null;--向表TABLE_A中添加字段ADDRESS，类型为varchar(100),非空
+alter table TABLE_A add EMP_NO int unsigned not null auto_increment , add primary key(EMP_NO);--向表TABLE_A中添加字段EMP_NO，类型为int，非空，自增，并且把EMP_NO作为主键字段
+<font style="color:red;font-weight: 800;">删：</font>
+alter table TABLE_A drop column ADDR;--删除表TABLE_A中的字段ADDR
+<font style="color:red;font-weight: 800;">改：</font>
+alter table TABLE_A modify ADDRESS varchar(200) not null;--将表TABLE_A中的字段ADDRESS的字段类型改为varchar(200),非空
+alter table TABLE_A change ADDRESS ADDR varchar(200) not null;--将表TABLE_A中的字段ADDRESS的字段名改为ADDR
+    </pre>
     <br>
     <br>
     <br>
     <h1>索引（index）的增删改查</h1>
+    <pre>
+<font style="color:red;font-weight: 800;">增：</font>
+alter table TABLE_A add index(FIRST_NAME);--在表TABLE_A中的字段FIRST_NAME中添加索引（注意：这里不像使用create index语句来创建索引那样需要指定索引名称，这里自动将索引所在的字段的字段名作为索引名）
+create index idx_first_name on TABLE_A(FIRST_NAME);--利用create index语句在表TABLE_A中的字段FIRST_NAME中添加索引，索引名为idx_first_name（注意：这里索引名必须显式指定）
+<font style="color:red;font-weight: 800;">删：</font>
+drop index idx_a_b on TABLE_A;--删除表TABLE_A中名为idx_a_b的索引
+<font style="color:red;font-weight: 800;">查：</font>
+show index from TABLE_A;--查看表TABLE_A中的所有索引
+    </pre>
     <br>
     <br>
     <br>
