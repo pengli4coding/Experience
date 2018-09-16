@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>activemq的安装</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>安装activemq前须知</h1>
+    <h3>需要确保系统中已经安装了JDK</h3>
+    <h3>ActiveMQ5.10.x以上版本必须使用JDK1.8才能正常使用</h3>
+    <h3>ActiveMQ5.9.x及以下版本使用JDK1.7即可正常使用</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第一步：上传activemq压缩包到服务器并解压</h1>
+    <h3>$ tar -zxvf apache-activemq-5.9.0-bin.tar.gz -C /usr/local/software</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第二步：启动activemq</h1>
+    <h3>$ /usr/local/software/apache-activemq-5.9.0/bin/activemq start</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第三步：修改activemq根目录下的conf/activemq.xml文件</h1>
+    <h3>$ vim /usr/local/software/apache-activemq-5.9.0/conf/activemq.xml</h3>
+    <h3>修改transportConnectors节点下的内容：</h3>
+    <img src="./img/QQ截图20180917001500.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第四步：启动</h1>
+    <h3>$ cd /usr/local/software/apache-activemq-5.9.0/bin</h3>
+    <h3>$ ./activemq start</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第五步：用jps查看是否有activemq在jvm中运行</h1>
+    <h3>$ jps</h3>
+    <img src="./img/QQ截图20180917002252.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第六步：检查进程</h1>
+    <h3>$ ps aux | grep activemq</h3>
+    <img src="./img/QQ截图20180917002339.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
