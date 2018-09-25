@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>泛型</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>为什么要使用泛型？</h1>
+    <h3>先看一下下面这段代码</h3>
+    <pre>
+package com.pl.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@SuppressWarnings("unchecked")
+public class TestGeneric {
+
+	public static void main(String[] args) {
+		List list = new ArrayList();<font style="color:red;">// 可以加入Object类型的数据</font>
+		list.add("aa");<font style="color:red;">// 加入String类型的数据</font>
+		list.add("bb");<font style="color:red;">// 加入String类型的数据</font>
+		list.add(123);<font style="color:red;">// 加入int类型的数据</font>
+		for (int i = 0; i &lt; list.size(); i++) {
+			<font style="color:red;">// 要使用String类型的特性和方法，必须先进行类型转换，而这一步一不小心就会报错，因为list中会有非String类型的数据</font>
+			String item = (String) list.get(i);
+			System.out.println(item);
+		}
+	}
+}
+    </pre>
+    <h3>运行结果如下，报错了哈哈。。</h3>
+    <pre>
+aa
+bb
+<font style="color:red;">Exception in thread "main" java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+	at com.pl.test.TestGeneric.main(TestGeneric.java:15)</font>
+
+    </pre>
+    <h3>从上面的代码中我们发现如下的两个问题：</h3>
+    <h3>1、当我们将一个对象放入集合中，集合不会记住此对象的类型，当再次从集合中取出此对象时，改对象的编译类型变成了Object类型，但其运行时类型任然为其本身类型。</h3>
+    <h3>2、取出集合元素时需要人为的强制类型转化到具体的目标类型，且很容易出现“java.lang.ClassCastException”异常。</h3>
+    <h3>因此，我们今天要学习的泛型就应运而生了</h3>
+    <br>
+    <br>
+    <br>
+    <h1>泛型可以运用在接口、类、方法上面</h1>
+    <br>
+    <br>
+    <br>
+    <h1>泛型类</h1>
+    <h3>最基本的泛型类的定义如下：</h3>
+    <pre>
+package com.pl.test;
+
+public class Box&lt;T&gt; {
+
+	private T data;
+	
+	public Box(T data) {
+		this.data = data;
+	}
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
+	}
+	
+}
+    </pre>
+    <h3>使用如下：</h3>
+    <pre>
+package com.pl.test;
+
+public class TestGeneric {
+
+	public static void main(String[] args) {
+		Box&lt;Integer&gt; box=new Box&lt;Integer&gt;(123);
+		System.out.println(box.getData());
+		box.setData(321);
+		System.out.println(box.getData());
+	}
+}
+
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>泛型方法</h1>
+    <h3></h3>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
