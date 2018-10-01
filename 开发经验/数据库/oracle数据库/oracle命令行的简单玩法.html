@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>oracle命令行的简单玩法</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>oracle命令行的简单玩法</h1>
+    <h3>玩oracle命令行只需要开启以下两个服务就可以了:</h3>
+    <img src="./img/QQ截图20181001104801.png" alt="">
+    <h3>以管理员用户sys的身份登入（如果是超级管理员需要在用户名/密码后面加上 as sysdba,是以系统管理员的身份来登录的），在命令行窗口cmd敲入：sqlplus  sys/你安装oracle时设置的密码 as sysdba</h3>
+    <img src="./img/QQ截图20181001105205.png" alt="">
+    <h3>以scott用户身份登入（如果是普通用户，则不需要加上as sysdba的），在命令行窗口cmd敲入：sqlplus scott/tiger</h3>
+    <img src="./img/QQ截图20181001105758.png" alt="">
+    <h3>查看属于当前登录用户下的所有的表，敲入命令：select * from tab;</h3>
+    <img src="./img/QQ截图20181001110101.png" alt="">
+    <h3>查看一张表下的所有数据，敲入命令：select * from 你需要查看的表;</h3>
+    <img src="./img/QQ截图20181001110347.png" alt="">
+    <h3>查看一张表的表结构，敲入命令：desc 表名;</h3>
+    <img src="./img/QQ截图20181001110545.png" alt="">
+</body>
+
+</html>
