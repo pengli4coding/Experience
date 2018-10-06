@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>用户、组、用户家目录的对应关系</h1>
+    <img src="./img/QQ截图20181006204529.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>组的相关操作</h1>
+    <h3>添加组：<font style="color:red;">groupadd 组名</font></h3>
+    <h3>删除组：<font style="color:red;">groupdel 组名</font></h3>
+    <br>
+    <br>
+    <br>
+    <h1>用户的相关操作</h1>
+    <h3>添加用户（如果没有指定用户从属于哪个组，则默认新建一个以用户名为组名的组，并将用户添加到这个组下面），默认会在/home目录下添加以用户名为目录名的用户家目录：<font style="color:red;">useradd 用户名</font></h3>
+    <h3>添加用户（如果没有指定用户从属于哪个组，则默认新建一个以用户名为组名的组，并将用户添加到这个组下面），并指定用户的家目录位置：<font style="color:red;">useradd -d 指定的用户家目录 用户名</font></h3>
+    <h3>添加用户，并指定用户属于哪个组：<font style="color:red;">useradd -g 组名 用户名</font></h3>
+    <h3>为用户设置密码：<font style="color:red;">passwd 用户名</font>，然后输入密码</h3>
+    <h3>删除用户（不删除用户家目录）：<font style="color:red;">userdel 用户名</font></h3>
+    <h3>删除用户并删除用户家目录：<font style="color:red;">userdel -r 用户名</font></h3>
+    <h3>查看用户信息：<font style="color:red;">id 用户名</font>，如果用户不存在的话则提示用户不存在</h3>
+    <h3>切换用户：<font style="color:red;">su - 用户名</font></h3>
+    <img src="./img/QQ截图20181006211038.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>用户管理相关配置文件</h1>
+    <h3>组配置文件：/etc/group</h3>
+    <img src="./img/QQ截图20181006211324.png" alt="">
+    <h3>用户信息配置文件：/etc/passwd</h3>
+    <img src="./img/QQ截图20181006211520.png" alt="">
+    <h3>用户密码配置文件：/etc/shadow</h3>
+    <img src="./img/QQ截图20181006211651.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
