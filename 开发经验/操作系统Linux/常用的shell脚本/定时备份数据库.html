@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定时备份数据库</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>需求分析：</h1>
+    <h3>每天凌晨2点备份数据库testDB到/data/backup/db</h3>
+    <h3>备份开始和备份结束能够给出相应的提示信息</h3>
+    <h3>备份后的文件要求以备份时间为文件名，并打成.tar.gz包，如：2018-10-02_020000.tar.gz</h3>
+    <h3>在备份的同时，检查是否有10天前备份的数据文件，如果有就将其删除</h3>
+    <br>
+    <br>
+    <br>
+    <h1>实现：</h1>
+    <pre>
+#!/bin/bash
+
+#定义备份的路径
+BACKUP=/home/backup/db
+
+#获取当前的时间作为文件名
+NOW=$(date '+%Y-%m-%d_%H%M%S')
+
+#给出开始备份的提示信息
+echo "================开始备份========================"
+echo "================备份的路径是：$BACKUP/$NOW.tar.gz========================"
+
+#主机
+HOST=localhost
+#用户名
+DB_USER=root
+#密码
+DB_PWD=382346819pl
+#备份数据库名
+DB_NAME=testDB
+
+#如果存放备份文件的文件夹存在，则使用，如果不存在，则创建
+if [ ! -d "$BACKUP/$NOW" ]
+then
+        echo "存放备份文件的文件夹不存在，开始自动创建"
+        mkdir -p "$BACKUP/$NOW"
+fi
+
+#执行mysql备份数据库指令，先放到临时目录下
+mysqldump -u${DB_USER} -p${DB_PWD} --host=${HOST} ${DB_NAME} | gzip > $BACKUP/$NOW/$NOW.sql.gz
+
+#打包
+cd $BACKUP
+tar -zcvf $NOW.tar.gz $NOW
+#删除临时目录
+rm -rf $NOW
+
+#删除10天前的备份文件
+find $BACKUP -mtime +10 -name "*.tar.gz" -exec rm -rf {} \;
+echo ""=====================备份文件成功========================================
+
+    </pre>
+
+    <img src="./img/QQ截图20181007183216.png" alt="">
+    <h3>加入到定时任务中，先敲crontab -e，然后输入下面内容</h3>
+    <img src="./img/QQ截图20181007183611.png" alt="">
+
+</body>
+
+</html>
