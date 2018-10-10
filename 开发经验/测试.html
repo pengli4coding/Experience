@@ -1,0 +1,670 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Generator" content="Montinz Word-2-CHM 1.1.7.1 Free">
+    <title>5.10.4 分页获取布控车辆【V2.8.2】</title>
+    <link href="document.css" type="text/css" rel="stylesheet" />
+    <link href="images/montinz_style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="jscript/montinz_jscript.js"></script>
+    <script src="jscript/DD_belatedPNG.js"></script>
+    <!--[if IE 6]>
+<script>
+DD_belatedPNG.fix('img,.ie6png');
+</script>
+<![endif]-->
+</head>
+
+<body lang=ZH-CN link=blue vlink="#954F72" style='tab-interval:21.0pt; text-justify-trim:punctuation'>
+    <div class="sys_PrevUpNext">
+        <div style="width:40px;float:right"><a href="154.html"><img src="images/next.gif" style="border:0px" /></a></div>
+        <div style="width:40px;float:right"><a href="148.html"><img src="images/up.gif" style="border:0px" /></a></div>
+        <div style="width:40px;float:right"><a href="151.html"><img src="images/prev.gif" style="border:0px" /></a></div>
+        <div style="clear:both; height:0px; font-size:0px"></div>
+    </div>
+    <div class=WordSection2 style='layout-grid:15.6pt'>
+        <div id=h2>
+
+            <p class=MsoNormal><span lang=EN-US><img src='doc.files/image028.jpg' style='width:111pt;height:15pt;visibility:visible;'></span><span
+                    lang=EN-US style='font-size:9.0pt; font-family:等线; '>ISMS-OpenAPI</span><span style='font-size:9.0pt;font-family:等线;'>系列<span
+                        lang=EN-US>-HTTP</span>接口使用手册密级级别： <span lang=EN-US>
+
+
+
+
+                        <span lang=EN-US><span lang=EN-US>外部公开</span></span></span></span></p>
+
+            <p class=MsoNormal><span lang=EN-US style='font-size:9.0pt;font-family:等线;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span></p>
+
+        </div>
+        <h3 style='margin-left:0cm;text-indent:0cm;'>
+            <!----numberstart----><span lang=EN-US>5.10.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span>
+            <!----numberend----><span style='font-family:宋体;'>分页获取布控车辆【</span><span lang=EN-US>V2.8.2</span><span style='font-family:宋体;'>】</span></h3>
+
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>应用场景</span></p>
+        <p class=aa style='text-indent:24.0pt'><span style='font-family:宋体;'>调用方可以通过该接口分页获取停车场布控车信息。（支持车牌模糊查询、支持分页查询）</span></p>
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>适用范围</span></p>
+        <p class=aa style='text-indent:24.0pt'><span style='font-family:宋体;'>综合安防管理平台</span><span lang=EN-US>V2.8.2</span><span
+                style='font-family:宋体;'>版本及以上。</span></p>
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>接口地址</span></p>
+        <p class=aa style='text-indent:24.0pt'><span class=MsoHyperlink><span lang=EN-US>http://IP:PORT/openapi/service/pms/alarm/getAlarmCarInfos</span></span></p>
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>提交方式</span></p>
+        <p class=aa style='text-indent:24.0pt'><span lang=EN-US>POST</span></p>
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>输入参数</span></p>
+        <div align=center>
+            <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=627 style='border-collapse:collapse;border:none; '>
+                <tr>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性名称</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性描述</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>类型</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>必须</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>备注</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=627 colspan=5 style='width:470.4pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style='font-size:12.0pt;font-family: 宋体; font-weight:normal'>系统参数</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span lang=EN-US style='font-size:12.0pt; font-family:Consolas;color:blue;font-weight:normal'>appkey</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>调用方唯一标识</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                lang=EN-US style='font-weight:normal'>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                lang=EN-US style='font-size:12.0pt; font-family:Consolas;color:blue;font-weight:normal'>time</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>时间戳</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Long</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>时间戳详见</span><a href="6.html#_接口认证方式"><span
+                                    style=' font-family:宋体;font-weight:normal'>接口认证方式</span></a></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                lang=EN-US style='font-size:12.0pt; font-family:Consolas;color:blue;font-weight:normal'>token</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>认证参数</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>拼接在</span><span lang=EN-US style='font-weight: normal'>POST</span><span
+                                style='font-family:宋体; font-weight: normal'>请求</span><span lang=EN-US style='font-weight: normal'>URL</span><span
+                                style='font-family:宋体; font-weight: normal'>后面，</span><span lang=EN-US style='font-weight: normal'>token</span><span
+                                style='font-family:宋体; font-weight: normal'>生成见</span><a href="10.html#_生成token值"><span
+                                    style=' font-family:宋体;font-weight:normal'>生成</span><span lang=EN-US style='font-weight: normal'>token</span><span
+                                    style='font-family:宋体; font-weight: normal'>值</span></a></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=627 colspan=5 style='width:470.4pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style='font-size:12.0pt;font-family: 宋体; font-weight:normal'>接口参数</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:blue; '>pageNo</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>当前页码</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Integer</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>页码大于</span><span lang=EN-US>0</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt; font-family:Consolas; color:#2A00FF;'>pageSize</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>每页数据记录数</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Integer</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>建议</span><span lang=EN-US>400</span><span
+                                style='font-family:宋体; '>以下，不超过</span><span lang=EN-US>1000</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-top:0cm;margin-right:10.5pt;margin-bottom: 0cm;margin-left:21.0pt;margin-bottom:.0001pt;text-indent:-21.0pt'><span
+                                lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF;'>opUserUuid</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>操作用户</span><span
+                                lang=EN-US style='font-weight: normal'>UUID</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>详见</span><a href="13.html#_opUserUuid的获取"><span
+                                    lang=EN-US>opUserUuid</span><span style='font-family:宋体; '>的获取</span></a></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt; font-family:Consolas; color:#2A00FF;'>plateNo</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>车牌号码</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>支持模糊查询</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt; font-family:Consolas; color:#2A00FF;'>startTime</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>布控开始时间</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Long</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>单位：毫秒</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt; font-family:Consolas; color:#2A00FF;'>endTime</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>布控结束时间</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Long</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>单位：毫秒</span></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>入参举例如下：</span></p>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#00AA00'>{</span></b></span><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333; '><img border=0 width=28 height=11 src="doc.files/image004.gif" alt="http://tool.oschina.net/tools/json_format/Expanded.gif" ></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp; </span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;appkey&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=string><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#007777'>&quot;61fdb13b&quot;</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;time&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=number><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#AA00AA'>1479364577369</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;pageNo&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=number><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#AA00AA'>1</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;pageSize&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=number><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#AA00AA'>40</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;opUserUuid&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=string><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#007777'>&quot;43a9a55f76474bde89ecabc1d6914a7f&quot;</span></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#00AA00'>}</span></b></span></pre>
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>返回参数</span></p>
+        <div align=center>
+            <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=627 style='border-collapse:collapse;border:none; '>
+                <tr>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性名称</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性描述</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>类型</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>必须</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>备注</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:blue; '>errorCode</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>错误码</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Integer</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>0</span><span style='font-family:宋体; '>表示成功，其它详见</span><a
+                                href="4.html#_错误码说明"><span style=' font-family:宋体;'>错误码说明</span></a></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:blue; '>errorMessage</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>错误消息</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>否</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:blue; '>data</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>返回数据</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Map</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>否</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style=' font-family:宋体;'>当</span><span lang=EN-US>data</span><span
+                                style='font-family:宋体; '>有返回值时，各字段属性参照下表</span></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class=aa style='text-indent:24.0pt'><span lang=EN-US>data</span><span style='font-family:宋体;'>主要属性：</span></p>
+        <div align=center>
+            <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=627 style='border-collapse:collapse;border:none; '>
+                <tr>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性名称</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性描述</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>类型</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>必须</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>备注</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>total</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>查询数据记录总数</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Integer</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>pageNo</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>当前页码</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Integer</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>pageSize</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>每页记录总数</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Integer</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt;border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>list</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>对象列表</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>List&lt;Map&gt;</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border-top:none;border-left:none;border-bottom: solid #BFBFBF 1.0pt;border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt; '>&nbsp;</span></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class=aa style='text-indent:24.0pt'><span lang=EN-US>list</span><span style='font-family:宋体;'>主要属性：</span></p>
+        <div align=center>
+            <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=627 style='border-collapse:collapse;border:none; '>
+                <tr>
+                    <td width=130 style='width:97.55pt;border:solid #BFBFBF 1.0pt; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性名称</span></p>
+                    </td>
+                    <td width=146 style='width:109.4pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>属性描述</span></p>
+                    </td>
+                    <td width=76 style='width:2.0cm;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>类型</span></p>
+                    </td>
+                    <td width=57 style='width:42.5pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>必须</span></p>
+                    </td>
+                    <td width=219 style='width:164.25pt;border:solid #BFBFBF 1.0pt;border-left:none; background:#E7E6E6; padding:0cm 0cm 0cm 4.25pt'>
+                        <p class=a4 align=center style='margin-top:8.15pt;margin-right:10.5pt; margin-bottom:8.15pt;margin-left:0cm;text-align: center'><span
+                                style='font-size:12.0pt;font-family: 宋体; '>备注</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>alarmUuid</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>布控车辆</span><span
+                                lang=EN-US style='font-weight: normal'>UUID</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoListParagraph style='text-indent:0cm;'><span lang=EN-US style='font-size:11.5pt;font-family:宋体; color:black;'>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>plateNo</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>车牌号码</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>是</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoListParagraph style='text-indent:0cm;'><span lang=EN-US style='font-size:10.0pt;'>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>startTime</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>布控开始时间</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Long</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoListParagraph style='text-indent:0cm;'><span style='font-family:宋体;'>单位：毫秒</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>endTime</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>布控结束时间</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>Long</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoListParagraph style='text-indent:0cm;'><span style='font-family:宋体;'>单位：毫秒</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt; font-family:Consolas;color:blue;'>num</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>布控次数</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt;'><span lang=EN-US>Integer</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin-top:0cm;margin-right:10.5pt;margin-bottom:0cm; margin-left:0cm;margin-bottom:.0001pt;'><span
+                                style=' font-family:宋体;font-weight:normal'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoListParagraph style='text-indent:0cm;'><span lang=EN-US style='font-size:10.0pt;'>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>phoneNo</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>联系电话</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoListParagraph style='text-indent:0cm;'><span lang=EN-US style='font-size:10.0pt;'>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:blue; '>personName</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>车主姓名</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US style='font-size:10.0pt; '>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='height:19.85pt'>
+                    <td width=130 valign=top style='width:97.55pt;border:solid #BFBFBF 1.0pt; border-top:none; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal style='margin-right:10.5pt'><span lang=EN-US style='font-size:12.0pt;font-family:Consolas;color:#2A00FF; '>remark</span></p>
+                    </td>
+                    <td width=146 valign=top style='width:109.4pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=a4 style='margin:0cm;margin-bottom:.0001pt; '><span style=' font-family:宋体;font-weight:normal'>备注</span></p>
+                    </td>
+                    <td width=76 valign=top style='width:2.0cm;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span lang=EN-US>String</span></p>
+                    </td>
+                    <td width=57 valign=top style='width:42.5pt;border-top:none;border-left:none; border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoNormal><span style='font-family:宋体;'>否</span></p>
+                    </td>
+                    <td width=219 valign=top style='width:164.25pt;border-top:none;border-left: none;border-bottom:solid #BFBFBF 1.0pt; border-right:solid #BFBFBF 1.0pt; padding:0cm 0cm 0cm 4.25pt;height:19.85pt'>
+                        <p class=MsoListParagraph align=left style='text-align:left;text-indent:0cm; '><span lang=EN-US
+                                style='font-size:10.0pt; '>&nbsp;</span></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class=aa style='margin-left:42.0pt;text-indent:-21.0pt;'><span lang=EN-US style='font-family:Wingdings;'>n<span
+                    style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span style='font-family:宋体;'>返回值样例如下：</span></p>
+        <pre style='line-height:13.5pt;tab-stops:21.0pt;background:whitesmoke; word-break:break-all'><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#00AA00'>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span></b></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#00AA00'>{</span></b></span><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333; '><img border=0 width=28 height=11 src="doc.files/image004.gif" alt="http://tool.oschina.net/tools/json_format/Expanded.gif" ></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp; </span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;errorCode&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=number><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#AA00AA'>0</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;errorMessage&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=string><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#007777'>&quot;</span></span><span class=string><span style='font-size:9.0pt; color:#007777'>获取黑名单记录成功</span></span><span class=string><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#007777'>&quot;</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;data&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#00AA00'>{</span></b></span><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333; '><img border=0 width=28 height=11 src="doc.files/image004.gif" alt="http://tool.oschina.net/tools/json_format/Expanded.gif" ></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;total&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=number><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#AA00AA'>1</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;pageNo&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=number><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#AA00AA'>1</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;pageSize&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=number><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#AA00AA'>400</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;list&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=arraybrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#0033FF'>[</span></b></span><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333; '><img border=0 width=28 height=11 src="doc.files/image004.gif" alt="http://tool.oschina.net/tools/json_format/Expanded.gif" ></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#00AA00'>{</span></b></span><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;color:#333333; '><img border=0 width=28 height=11 src="doc.files/image004.gif" alt="http://tool.oschina.net/tools/json_format/Expanded.gif" ></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;alarmUuid&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=string><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#007777'>&quot;2fc61cf01cce4c57836d6646c48e4e3e&quot;</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;plateNo&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=string><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#007777'>&quot;</span></span><span class=string><span style='font-size:9.0pt; color:#007777'>浙</span></span><span class=string><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#007777'>A12345&quot;</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;startTime&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=null><span lang=EN-US style='font-family:Consolas;color:blue'>null</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;endTime&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=null><span lang=EN-US style='font-family:Consolas;color:blue'>null</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;num&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=null><span lang=EN-US style='font-family:Consolas;color:blue'>null</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;phoneNo&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=null><span lang=EN-US style='font-family:Consolas;color:blue'>null</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;personName&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=null><span lang=EN-US style='font-family:Consolas;color:blue'>null</span></span><span class=comma><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:black'>,</span></b></span> </pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class=propertyname><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#CC0000'>&quot;remark&quot;</span></b></span><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>: </span></span><span class=null><span lang=EN-US style='font-family:Consolas;color:blue'>null</span></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#00AA00'>}</span></b></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span class=arraybrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#0033FF'>]</span></b></span></pre>
+        <pre style='line-height:13.5pt;background:whitesmoke;word-break:break-all'><span class=collapsible><span lang=EN-US style='font-family:Consolas;color:#333333'>&nbsp;&nbsp;&nbsp; </span></span><span class=objectbrace><b><span lang=EN-US style='font-size:9.0pt;font-family:Consolas; color:#00AA00'>}</span></b></span></pre>
+        <pre style='line-height:13.5pt;tab-stops:21.0pt;background:whitesmoke;word-break: break-all'><span class=objectbrace><b><span lang=EN-US style='font-size: 9.0pt;font-family:Consolas;color:#00AA00'>}</span></b></span></pre>
+
+
+
+        <div id=f2>
+
+            <p class=MsoFooter align=right style='text-align:right;word-break:break-all'><span style='font-family:宋体'>海康威视保密信息，未经授权禁止扩散</span><span
+                    style='font-family:宋体;'>第 </span> <span style='font-family:宋体;'>页 </span></p>
+
+        </div>
+
+    </div>
+    <div class="sys_PrevUpNext">
+        <div style="width:40px;float:right"><a href="154.html"><img src="images/next.gif" style="border:0px" /></a></div>
+        <div style="width:40px;float:right"><a href="148.html"><img src="images/up.gif" style="border:0px" /></a></div>
+        <div style="width:40px;float:right"><a href="151.html"><img src="images/prev.gif" style="border:0px" /></a></div>
+        <div style="clear:both; height:0px; font-size:0px"></div>
+    </div>
+</body>
+
+</html>
+<!--  Generator:Montinz Word-2-CHM 1.1.7.1 Free (word2chm.com)  -->
