@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务管理</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>查看所有的服务的状态</h1>
+    <h3>第一种方式：通过setup来查看</h3>
+    <img src="./img/QQ截图20181013225700.png" alt="">
+    <img src="./img/QQ截图20181013225805.png" alt="">
+    <img src="./img/QQ截图20181013225917.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h3>第二种方式：查看/etc/init.d目录下的文件，每个文件对应一个服务</h3>
+    <img src="./img/QQ截图20181013230647.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h3>第三种方式（推荐使用，这种方式还可以查看服务在每一种运行级别下是否自动启动）：通过chkconfig --list命令来查看</h3>
+    <img src="./img/QQ截图20181013232954.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>设置服务开机启动（只是设置了开机启动，还需要配合service命令来马上开启服务）</h1>
+    <h3>设置在某个服务在某个运行级别是否自动启动，基本语法：<font style="color:red;">chkconfig --level 运行级别的号码(从0到6) 服务名称 on或者off</font>，示例：chkconfig --level 5 iptables off  命令的的意思是在运行级别为5的时候，iptables服务（防火墙）不会自动启动</h3>
+    <br><br>
+    <h3>设置在所有运行级别下某个服务是否自动启动，基本语法：<font style="color:red;">chkconfig 服务名称 on或者off</font>，示例：chkconfig iptables on  命令的意思是在所有的运行级别下设置iptables服务（防火墙）自动启动</h3>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
