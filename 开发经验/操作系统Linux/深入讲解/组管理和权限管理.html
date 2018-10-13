@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组管理和权限管理</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>改变文件所有者命令：chown</h1>
+    <h3>基本语法：<font style="color:red;">chown 新的文件所有者 文件名</font>，例如：chmod pl test.txt的作用就是将test.txt的所有者变更为pl用户</h3>
+    <h3>改变目录及子目录下的文件所有者：<font style="color:red;">chown -R 新的文件所有者 目录</font>，例如：chmod -R pl /test/aa</h3>
+    <br>
+    <br>
+    <br>
+    <h1>改变文件所在组命令：chgrp</h1>
+    <h3>基本语法：<font style="color:red;">chgrp 新的文件所在组 文件名</font>，例如：chgrp pl test.txt的作用就是将test.txt的所有组变更为pl组</h3>
+    <h3>改变目录及子目录下的文件所在组：<font style="color:red;">chgrp -R 新的文件所在组 目录</font>，例如：chgrp -R pl /test/aa</h3>
+    <br>
+    <br>
+    <br>
+    <h1>改变用户所在组命令：usermod</h1>
+    <h3>基本语法：<font style="color:red;">usermod -g 用户新的归属组名 用户名</font></h3>
+    <br>
+    <br>
+    <br>
+    <h1>文件信息详解</h1>
+    <img src="./img/QQ截图20181013205626.png" alt="">
+    <h3>第一块：标识类型，如果是-则是普通文件，如果是d则是文件夹，如果是l则是软链接</h3>
+    <h3>第二块：标识文件用户拥有的权限</h3>
+    <h3>第三块：标识文件用户所在组的用户拥有的权限</h3>
+    <h3>第四块：标识非文件用户所在组的用户拥有的权限</h3>
+    <h3>第五块：如果是文件，则表示文件拥有的硬链接数量，如果是文件夹，则表示文件夹下面拥有的子文件夹的数量</h3>
+    <h3>第六块：文件的所有者</h3>
+    <h3>第七块：文件所有者所在的组</h3>
+    <h3>第八块：如果是文件，则表示文件的大小，如果是文件夹，则始终显示为4096</h3>
+    <h3>第九块：文件最后修改日期</h3>
+    <h3>第十块：文件名称</h3>
+    <br>
+    <br>
+    <br>
+    <h1>文件权限标识rwx详解</h1>
+    <h3>作用于文件：</h3>
+    <h3>[r]代表可读(read)：可以读取，查看</h3>
+    <h3>[w]代表可写(write)：可以修改，<font style="color:red;">但是不代表可以删除该文件，删除一个文件的前提条件是对该文件所在的目录有写权限，才能够删除该文件</font></h3>
+    <h3>[w]代表可执行(execute)：可以被执行</h3>
+    <br><br>
+    <h3>作用于文件夹：</h3>
+    <h3>[r]代表可读(read)：可以读取，即执行ls命令的时候可以查看文件夹下的内容</h3>
+    <h3>[w]代表可写(write)：可以修改，<font style="color:red;">即可以在文件夹内部创建、删除、重命名文件夹及文件</font></h3>
+    <h3>[w]代表可执行(execute)：可以进入该目录</h3>
+    <br>
+    <br>
+    <br>
+    <h1>修改文件权限命令：chmod</h1>
+    <h3>有两种方式：</h3>
+    <h3>第一种：用+、-、=变更权限，如chmod g+w,o-w test.txt或者chmod u=rwx,g=rx,o=x test.txt等待，其中<font style="color:red;">u代表文件所有者，g代表文件所有者所在的组的用户，o代表非文件所有者所在组的用户，a代表所有用户</h3>
+    <h3>第二种：通过数字，如chmod 777 test.txt或者chmod 755 test.txt等等，其中<font style="color:red;">4代表r，2代表w，1代表x</font></h3>
+    <br>
+    <br>
+    <br>
+    
+</body>
+</html>
