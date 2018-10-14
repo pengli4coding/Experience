@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tomcat的安装配置</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>第一步：将tomcat的tar.gz包上传到服务器的/opt目录下，并解压</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第二步：进入到解压之后的tomcat目录，并进入到bin目录下，运行startup.sh文件（可以通过bash startup.sh命令来运行）</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第三步：检查防火墙是否开了tomcat的端口（假设为8080端口），如果没有开，则开启端口</h1>
+    <h3>可以通过service iptables status命令查看防火墙开了哪些端口，如果没有开到tomcat的端口，则要开启</h3>
+    <img src="./img/QQ截图20181014164114.png" alt="">
+    <h3>开启的方法是进入到/etc/sysconfig目录下，修改iptables文件如下：</h3>
+    <img src="./img/QQ截图20181014164351.png" alt="">
+    <h3>通过命令service iptables restart来重启防火墙使得配置生效</h3>
+    <img src="./img/QQ截图20181014164522.png" alt="">
+    <h3>再次通过service iptables status命令来确保8080端口已经开启了</h3>
+    <img src="./img/QQ截图20181014164704.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第四步：通过外网访问tomcat来验证tomcat是否已经开启</h1>
+    <img src="./img/QQ截图20181014164910.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第五步（可选）：将tomcat加入到系统服务中，并设置为开机自启动</h1>
+    <h3>首先，将tomcat目录的bin目录下的catalina.sh复制一份到/etc/init.d目录下，并重命名为tomcat</h3>
+    <img src="./img/QQ截图20181014165916.png" alt="">
+    <h3>然后，编辑上一步的/etc/init.d目录下的tomcat文件，加入以下两行：</h3>
+    <img src="./img/QQ截图20181014170729.png" alt="">
+    <h3>再然后，还是编辑/etc/init.d目录下的tomcat文件，加入CATALINA_HOME和JAVA_HOME</h3>
+    <img src="./img/QQ截图20181014171509.png" alt="">
+    <h3>再然后，修改/etc/init.d目录下的tomcat文件的权限</h3>
+    <img src="./img/QQ截图20181014171701.png" alt="">
+    <h3>再然后，添加tomcat到系统服务中并设置开机重启</h3>
+    <img src="./img/QQ截图20181014172033.png" alt="">
+    <h3>最后，重启服务器（reboot命令）看tomcat是不是已经加入到系统服务中并开机自启动了</h3>
+    <img src="./img/QQ截图20181014172355.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+</html>

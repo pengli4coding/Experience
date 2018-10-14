@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进程动态监控top和网络服务监控netstat</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>进程动态监控命令top</h1>
+    <h3>选项说明：</h3>
+    <h3><font style="color:red;">-d</font>  功能：指定top命令每隔几秒更新</h3>
+    <h3><font style="color:red;">-i</font>  功能：使top不显示任何闲置或者僵尸进程</h3>
+    <h3><font style="color:red;">-p</font>  功能：通过指定监控进程pid来仅仅监控某个进程的状态</h3>
+    <br><br>
+    <h3>交互操作说明：</h3>
+    <h3><font style="color:red;">敲P</font>  功能：以CPU使用率排序，默认就是此项</h3>
+    <h3><font style="color:red;">敲M</font>  功能：以内存的使用率排序</h3>
+    <h3><font style="color:red;">敲N</font>  功能：以PID排序</h3>
+    <h3><font style="color:red;">敲u然后输入某个用户名</font>  功能：只显示某个用户下的进程</h3>
+    <h3><font style="color:red;">敲k然后输入PID然后再输入杀死信号（一般是9）</font>  功能：杀死某个进程</h3>
+    <br>
+    <br>
+    <br>
+    <h1>网络服务监控命令：netstat</h1>
+    <h3>最常用的就是敲<font style="color:red;">netstat -anp</font>来查看有哪些端口在监听，有哪些主机已经连接上了，其中-a表示列出所有，-n表示以数字形式的地址显示，-p表示列出调用的进程pid</h3>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
