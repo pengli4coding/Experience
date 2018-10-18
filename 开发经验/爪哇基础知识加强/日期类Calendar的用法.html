@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日期类Calendar类的用法</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1 style="color: green;">// 由于Calendar是抽象类，无法通过new来获取实例，而是通过Calendar.getInstance()来获取Calendar类的实例</h1>
+    <h1 style="color: red;">Calendar ca = Calendar.getInstance();</h1>
+    <h1 style="color: green;">// 获取当前时间的年、月、日、时、分、秒</h1>
+    <h1 style="color: red;">int year = ca.get(Calendar.YEAR);<font style="color:green;">// 获取当前年份</font></h1>
+    <h1 style="color: red;">int month = ca.get(Calendar.MONTH)+1;<font style="color:green;">// 获取当前月份（注意，这里的月份范围是0~11，所以要获取当前月的话需要加一）</font></h1>
+    <h1 style="color: red;">int day = ca.get(Calendar.DAY_OF_MONTH);<font style="color:green;">// 获取当前日</font></h1>
+    <h1 style="color: red;">int hour = ca.get(Calendar.HOUR_OF_DAY);<font style="color:green;">// 获取当前时（注意，这里是24小时制的显示）</font></h1>
+    <h1 style="color: red;">int minute = ca.get(Calendar.MINUTE);<font style="color:green;">// 获取当前分</font></h1>
+    <h1 style="color: red;">int second = ca.get(Calendar.SECOND);<font style="color:green;">// 获取当前秒</font></h1>
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+</body>
+</html>
