@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>命令行下模拟并行开发</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>先创建两个工作目录模拟两个工作人员</h1>
+    <h3>mkdir -p /home/workspace/harry</h3>
+    <h3>mkdir -p /home/workspace/sally</h3>
+    <br>
+    <br>
+    <br>
+    <h1>分别进入到上面两个工作区去检出svn版本库中的项目，涉及命令<font style="color:red;">svn checkout</font></h1>
+    <h3>cd /home/workspace/harry</h3>
+    <h3>svn checkout svn://127.0.0.1:3690/pro_erp ./</h3>
+    <h3>cd /home/workspace/sally</h3>
+    <h3>svn checkout svn://127.0.0.1:3690/pro_erp ./</h3>
+    <h3>说明一下：上面的svn：//127.0.0.1:3690/pro_erp是在svn版本库中项目的路径，./表示将svn版本库中的项目检出到当前的路径中</h3>
+    <h3>检出操作完成之后，会在工作区下面看到.svn这个隐藏文件，这个就是所谓的“svn工作副本”，这个文件一定不要删除或者修改</h3>
+    <br>
+    <br>
+    <br>
+    <h1>上传文件到svn版本库中，涉及命令<font style="color:red;">svn commit</font></h1>
+    <h3>首先修改svn版本库中的svnserve.conf文件允许匿名访问并可以读写</h3>
+    <img src="./img/QQ截图20181021091142.png" alt="">
+    <h3>进入到harry的工作目录中：cd /home/workspace/harry</h3>
+    <h3>新建一个文件并写入一些内容：vim hello.txt</h3>
+    <h3>将文件纳入版本控制体系中：svn add hello.txt</h3>
+    <h3>提交文件到版本库中：svn commit -m "my first commit" hello.txt</h3>
+    <br>
+    <br>
+    <br>
+    <h1>更新操作，涉及命令<font style="color:red;">svn update</font></h1>
+    <h3>进入到sally的工作目录中：cd /home/workspace/sally</h3>
+    <h3>更新：svn update</h3>
+    <br>
+    <br>
+    <br>
+
+</body>
+</html>
