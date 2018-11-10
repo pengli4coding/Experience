@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改ssh的端口</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>ssh的端口一般是22，我们可以修改端口</h1>
+    <h3>修改/etc/ssh/sshd_config文件</h3>
+    <img src="./img/QQ截图20181110194417.png" alt="">
+    <h3>修改/etc/sysconfig/iptables文件，添加ssh端口开放</h3>
+    <img src="./img/QQ截图20181110203401.png" alt="">
+    <h3>重启ssh服务：service sshd restart</h3>
+    <h3>重启防火墙服务：service iptables restart</h3>
+</body>
+</html>
