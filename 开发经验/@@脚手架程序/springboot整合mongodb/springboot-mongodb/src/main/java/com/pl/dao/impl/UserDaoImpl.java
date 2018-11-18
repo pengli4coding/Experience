@@ -20,33 +20,29 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void saveUser(User user) {
-		// TODO Auto-generated method stub
-		
+		this.mongoTemplate.save(user);
+
 	}
 
 	@Override
 	public User findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.mongoTemplate.findOne(query(where("id").is(id)), User.class);
 	}
 
 	@Override
 	public List<User> findByAge(int minAge, int maxAge) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.mongoTemplate.find(query(where("age").gte(minAge).lte(maxAge)), User.class);
 	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		
+		this.mongoTemplate.updateFirst(query(where("id").is(user.getId())),
+				update("name", user.getName()).set("age", user.getAge()), User.class);
 	}
 
 	@Override
 	public void deleteUserById(Long id) {
-		// TODO Auto-generated method stub
-		
+		this.mongoTemplate.remove(query(where("id").is(id)), User.class);
 	}
-	
-	
+
 }
