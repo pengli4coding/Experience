@@ -24,6 +24,7 @@ public class FirstServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("接受前台请求，开始进行后台逻辑。。。");
 		resp.setContentType("text/html;charset=UTF-8");
 		resp.getWriter().println("<center><h1>测试Servlet1</h1></center>");
 	}
