@@ -24,8 +24,12 @@
 	</properties>
 
 	<dependencies>
-		
-		
+
+		<!-- 整合spring自带的scheduler所属资源为spring-context-support -->
+		<!-- <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency> -->
 		<!-- web开发相关的启动器 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
