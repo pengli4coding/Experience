@@ -8,12 +8,25 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1>到erlang的官网http://www.erlang.org下载erlang的源码包</h1>
-    <img src="./img/QQ截图20181122222334.png" alt="">
+    <h1>安装零依赖版本的erlang，这里安装的版本是20.3版本，不安装19.3版本，19.3版本有一些bug</h1>
+    <h3>在/etc/yum.repos.d/目录下新建rabbitmq-erlang.repo文件，加入以下内容</h3>
+    <img src="./img/QQ截图20181125175128.png" alt="">
+    <pre>
+[rabbitmq-erlang]
+name=rabbitmq-erlang
+baseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/20/el/6
+gpgcheck=1
+gpgkey=https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+repo_gpgcheck=0
+enabled=1
+    </pre>
     <br>
     <br>
     <br>
-    <h1>上传源码包到linux服务器并解压缩</h1>
-    
+    <h1>验证erlang是否安装成功，输入命令：erl，如果能够进入erlang的shell界面，则说明安装成功了</h1>
+    <img src="./img/QQ截图20181125175316.png" alt="">
+    <br>
+    <br>
+    <br>
 </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>安装RabbitMQ</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>下载rpm包并上传到服务器的/opt目录下，并进行安装</h1>
+    <img src="./img/QQ截图20181125171151.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>验证rabbitmq是否安装成功</h1>
+    <h3>输入命令：service rabbitmq-server start   如果可以启动rabbitmq成功则说明安装rabbitmq成功了</h3>
+    <img src="./img/QQ截图20181125184552.png" alt="">
+    <h3>输入命令：service rabbitmq-server status   查看rabbitmq服务的状态</h3>
+    <img src="./img/QQ截图20181125184716.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>rabbitmq开机自动启动</h1>
+    <h3>输入命令：chkconfig rabbitmq-server on</h3>
+    <br>
+    <br>
+    <br>
+    <h1>开启rabbitmq的相关端口</h1>
+    <h3>略。。。</h3>
+    <br>
+    <br>
+    <br>
+    <h1>添加用户并设置访问权限</h1>
+    <h3>默认情况下rabbitmq刚装好的时候会自动创建一个名为guest的用户，密码也是guest，访问权限只能够在localhost访问</h3>
+    <h3>我们得自己新建一个用户并设置访问权限，输入以下命令：</h3>
+    <pre>
+创建账号，账号名为admin
+rabbitmqctl add_user admin 123456
+为名为admin的用户设置用户角色为管理员角色
+rabbitmqctl  set_user_tags  admin  administrator
+设置用户权限
+rabbitmqctl set_permissions -p "/" admin ".*" ".*" ".*"
+查看当前所有用户和角色
+rabbitmqctl list_users
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>启动rabbitmq的web管理界面</h1>
+    <h3>输入命令：rabbitmq-plugins enable rabbitmq_management</h3>
+    <img src="./img/QQ截图20181125184552.png" alt="">
+    <h3>在浏览器中输入：http://ip：15672方位rabbitmq的web管理界面，端口号默认为15672，可以自行修改</h3>
+    <img src="./img/QQ截图20181125191523.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+</html>

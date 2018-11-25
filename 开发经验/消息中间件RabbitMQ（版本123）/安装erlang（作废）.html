@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>安装erlang</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>注意，安装erlang的版本最好安装20.3版本，19.3版本可能有一些问题</h1>
+    <h1>到erlang的官网http://www.erlang.org下载erlang的源码包</h1>
+    <img src="./img/QQ截图20181122222334.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>上传源码包到linux服务器的/opt目录下并解压缩</h1>
+    <img src="./img/QQ截图20181125161811.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>配置安装</h1>
+    <h3>需要先安装gcc等，命令：yum -y install make gcc gcc-c++ kernel-devel m4 ncurses-devel ncurses openssl-devel perl</h3>
+    <h3>进入到上一步中erlang解压的目录下cd /otp_scr_19.3，输入命令：./configure --prefix=/opt/erlang --with-ssl -enable-threads -enable-smmp-support -enable-kernel-poll --enable-hipe --without-javac</h3>
+    <br>
+    <br>
+    <br>
+    <h1>编译erlang源码并进行安装</h1>
+    <img src="./img/QQ截图20181125162622.png" alt="">
+    <img src="./img/QQ截图20181125163913.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>添加系统环境变量</h1>
+    <h3>编辑/etc/profile文件，在文件的最后添加如下内容：</h3>
+    <img src="./img/QQ截图20181125164502.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>验证erlang是否安装成功</h1>
+    <h3>输入erl命令，如果出现如下信息则说明安装成功了</h3>
+    <img src="./img/QQ截图20181125164623.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+</html>
