@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.pl.AppStarter;
+import com.pl.pojo.Person;
 import com.pl.pojo.User;
 import com.pl.service.UserService;
+import com.pl.useBasicQuery.BasicQueryUtil;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -56,6 +57,12 @@ public class UnitTest {
 	@Test
 	public void deleteUserById() {
 		this.userService.deleteUserById(1L);
+	}
+	
+	@Test
+	public void objectIdQuery() {
+		Person person = BasicQueryUtil.objectIdQuery("5bfc129b283f4bbf6bbc67f3", "t_person");
+		System.out.println(person);
 	}
 	
 

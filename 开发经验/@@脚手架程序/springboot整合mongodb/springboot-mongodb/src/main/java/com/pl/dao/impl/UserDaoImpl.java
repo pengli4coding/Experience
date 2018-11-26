@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
 		this.mongoTemplate.save(user);
 
 	}
-
+	
 	@Override
 	public User findById(Long id) {
 		return this.mongoTemplate.findOne(query(where("id").is(id)), User.class);
@@ -44,5 +44,6 @@ public class UserDaoImpl implements UserDao {
 	public void deleteUserById(Long id) {
 		this.mongoTemplate.remove(query(where("id").is(id)), User.class);
 	}
+	
 
 }
