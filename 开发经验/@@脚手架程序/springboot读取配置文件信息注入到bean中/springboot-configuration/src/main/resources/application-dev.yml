@@ -1,0 +1,15 @@
+myconfiguration:
+    sign: pengli4coding
+    strList:
+    - 张三
+    - 李四
+    mapList:
+        k1:
+        - valueA
+        k2:
+        - valueB
+        - valueC
+        k3:
+        - valueD
+        - valueE
+        - valueF
