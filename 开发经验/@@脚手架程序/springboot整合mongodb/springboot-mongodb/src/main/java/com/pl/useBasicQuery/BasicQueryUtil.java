@@ -28,8 +28,8 @@ public class BasicQueryUtil {
 	public static Person objectIdQuery(String objectId,String collectionName) {
 		// 组装查询条件
 		Document document = new Document();
-		//document.put("_id", new ObjectId(objectId));
-		document.put("name", "小明");
+		document.put("_id", new ObjectId(objectId));// 根据mongodb自动生成的objectId来查询
+		//document.put("name", "张三1");
 		BasicQuery basicQuery = new BasicQuery(document);
 		// 查询
 		Person person = mongoTemplate.findOne(basicQuery, Person.class, collectionName);

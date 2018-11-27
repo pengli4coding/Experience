@@ -5,10 +5,13 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="t_person")
 public class Person {
+	
 	@Field("name")
 	private String name;
+	
 	@Field("idCard")
 	private String idCard;
+	
 	@Field("address")
 	private String address;
 
