@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.pl.pojo.Person;
 import com.pl.pojo.User;
+import com.pl.service.PersonService;
 import com.pl.service.UserService;
 import com.pl.useBasicQuery.BasicQueryUtil;
 
@@ -19,6 +20,8 @@ public class UnitTest {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private PersonService personService;
 
 	@Test
 	public void saveUser() {
@@ -60,9 +63,22 @@ public class UnitTest {
 	}
 	
 	@Test
+	public void savePerson() {
+		for(int i=1;i<=20;i++) {
+			Person person = new Person();
+			person.setName("张三"+i);
+			person.setIdCard(String.valueOf(i));
+			person.setAddress("广东深圳"+i);
+			this.personService.savePerson(person);
+		}
+		
+	}
+	
+	@Test
 	public void objectIdQuery() {
-		Person person = BasicQueryUtil.objectIdQuery("5bfc129b283f4bbf6bbc67f3", "t_person");
+		Person person = BasicQueryUtil.objectIdQuery("5bfc9534a972ed0ac0a0361e", "t_person");
 		System.out.println(person);
+		
 	}
 	
 
