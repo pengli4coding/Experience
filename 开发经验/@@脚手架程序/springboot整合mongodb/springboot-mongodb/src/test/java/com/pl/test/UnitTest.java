@@ -78,8 +78,6 @@ public class UnitTest {
 	public void objectIdQuery() {
 		Person person = BasicQueryUtil.objectIdQuery("5bfc9534a972ed0ac0a0361e", "t_person");
 		System.out.println(person);
-		
 	}
 	
-
 }
