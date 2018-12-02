@@ -8,6 +8,45 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    
+    <h1>前置准备：安装JDK、安装Tomcat、安装Maven、安装SVN</h1>
+    <a href="../操作系统Linux/编程环境搭建/Linux下安装JDK.html" target="_blank">安装JDK教程</a><br>
+    <a href="../操作系统Linux/深入讲解/tomcat的安装配置.html" target="_blank">安装Tomcat</a><br>
+    <a href="../项目管理工具Maven/在linux中安装maven.html" target="_blank">安装Maven</a><br>
+    <a href="../版本控制SVN/深入讲解篇/Linux服务器中安装配置启动svn.html" target="_blank">安装SVN</a><br>
+    <br>
+    <br>
+    <br>
+    <h1>第一步：添加tomcat用户（假设用户名密码为tomcat_user/123456），修改tomcat目录下的/conf/tomcat-users.xml文件</h1>
+    <h3>说明，该用户是为了jenkins能够将应用部署到tomcat容器上用的</h3>
+    <img src="./img/QQ截图20181202195601.png" alt="">
+    <h3>修改完成后需要重启tomcat</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第二步：创建版本库库并添加svn用户（假设用户名密码为svn_user/123456，需要有版本库的读写权限），参考下面教程</h1>
+    <h3>说明，该用户是为了jenkins能够从svn版本库上拉取代码用的</h3>
+    <a href="../版本控制SVN/深入讲解篇/创建并配置版本库.html" target="_blank">创建并配置版本库</a><br>
+    <h3>修改完成后需要重启svn服务（svnserve）</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第三步：将jenkins的war包放入tomcat的/webapps目录下并重启tomcat</h1>
+    <img src="./img/QQ截图20181202201223.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第四步：首次进入jenkins</h1>
+    <h3>在浏览器中输入：http://ip:port/jenkins访问jenkins</h3>
+    <img src="./img/QQ截图20181202201510.png" alt="">
+    <img src="./img/QQ截图20181202201709.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第五步：jenkins系统初始化配置</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第六步：创建maven的war工程并上传到svn版本库中</h1>
+    <img src="./img/QQ截图20181202202725.png" alt="">
 </body>
 </html>
