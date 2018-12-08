@@ -8,6 +8,52 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    
+    <h1>本次安装的redis版本是5.0.2</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第一步：安装gcc</h1>
+    <h3>yum -y install gcc gcc-c++</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第二步：安装tcl</h1>
+    <pre>
+yum install wget
+cd /opt
+wget http://downloads.sourceforge.net/tcl/tcl8.6.6-src.tar.gz
+tar -zxvf tcl8.6.6-src.tar.gz
+cd /opt/tcl8.6.6/unix
+./configure
+make
+make install
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>第三步：下载Redis源码包、上传到服务器中（一般是/opt目录下）、解压缩</h1>
+    <h3>下载Redis有两种方法：</h3>
+    <h3>第一种方法：在官网上直接下载tar.gz包，然后上传到linux服务器中</h3>
+    <h3>第二种方法：直接在linux服务器中通过wget命令下载tar.gz包到服务器（如：wget http://download.redis.io/releases/redis-5.0.2.tar.gz）</h3>
+    <br><br>
+    <h3>解压缩</h3>
+    <img src="./img/QQ截图20181208210106.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第四步：安装redis</h1>
+    <img src="./img/QQ截图20181208210352.png" alt="">
+    <h3><font style="color:red;">注意：make test是可选的，通常情况下并不需要make test</font></h3>
+    <br>
+    <br>
+    <br>
+    <h1>第五步：验证redis是否安装成功</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第六步：将redis添加到系统服务并设置开机自启动</h1>
+    <br>
+    <br>
+    <br>
 </body>
 </html>
