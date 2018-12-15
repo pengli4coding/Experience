@@ -47,12 +47,58 @@
     <br>
     <br>
     <h1>第五步：jenkins系统初始化配置</h1>
+    <img src="./img/QQ截图20181215125521.png" alt="">
+    <h3>全局安全设置</h3>
+    <img src="./img/QQ截图20181215125629.png" alt="">
+    <h3>全局工具设置</h3>
+    <img src="./img/QQ截图20181215131111.png" alt="">
+    <h3>插件管理</h3>
+    <img src="./img/QQ截图20181215192220.png" alt="">
     <br>
     <br>
     <br>
     <h1>第六步：创建maven的war工程并上传到svn版本库中</h1>
     <img src="./img/QQ截图20181202202725.png" alt="">
     <img src="./img/QQ截图20181202211035.png" alt="">
+    <a href="../版本控制SVN/深入讲解篇/Eclipse中管理项目版本的具体操作.html" target="_blank">点击链接，查看如何将项目上传到svn版本库中</a>
+    <br>
+    <br>
+    <br>
+    <h1>第七步：在jenkins中创建一个新的任务</h1>
+    <img src="./img/QQ截图20181215193927.png" alt="">
+    <img src="./img/QQ截图20181215194549.png" alt="">
+    <img src="./img/QQ截图20181215224720.png" alt="">
+    <img src="./img/QQ截图20181215224641.png" alt="">
+    <img src="./img/QQ截图20181215195400.png" alt="">
+    <img src="./img/QQ截图20181215195513.png" alt="">
+    <img src="./img/QQ截图20181215195655.png" alt="">
+    <img src="./img/QQ截图20181215200243.png" alt="">
+    <img src="./img/QQ截图20181215200329.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第八步：配置构建完成后的操作（部署到tomcat容器中）</h1>
+    <img src="./img/QQ截图20181215200952.png" alt="">
+    <img src="./img/QQ截图20181215201047.png" alt="">
+    <img src="./img/QQ截图20181215202434.png" alt="">
+    <img src="./img/QQ截图20181215202509.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第九步：配置钩子程序（提交到svn版本库之后立即构建并添加到tomcat容器中）</h1>
+    <h3>自动化构建的原理：jenkins可以配置通过访问url地址触发构建，我们需要在svn配置一段钩子程序，让钩子程序访问触发jenkins构建的url地址，这样在我们提交代码 到svn版本库的时候就可以自动触发构建了</h3>
+    <br>
+    <h3>先配置触发jenkins构建任务的url地址</h3>
+    <img src="./img/QQ截图20181215221703.png" alt="">
+    <img src="./img/QQ截图20181215222153.png" alt="">
+    <br>
+    <h3>然后配置svn的钩子程序，进入到svn版本库中的hooks文件夹中</h3>
+    <img src="./img/QQ截图20181215223628.png" alt="">
+    <img src="./img/QQ截图20181215224019.png" alt="">
+    <img src="./img/QQ截图20181215225308.png" alt="">
+    <img src="./img/QQ截图20181215223845.png" alt="">
+    <br>
+    <h3>最后验证一下，如果提交代码到svn版本库的时候可以触发构建过程，则说明成功了</h3>
     <br>
     <br>
     <br>
