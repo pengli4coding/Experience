@@ -44,14 +44,26 @@ make install
     <h1>第四步：安装redis</h1>
     <img src="./img/QQ截图20181208210352.png" alt="">
     <h3><font style="color:red;">注意：make test是可选的，通常情况下并不需要make test</font></h3>
+    <h3>make install完成之后会在/usr/local/bin目录下有如下的redis常用启动脚本</h3>
+    <img src="./img/QQ截图20181216121930.png" alt="">
     <br>
     <br>
     <br>
     <h1>第五步：验证redis是否安装成功</h1>
+    <h3>首先将redis解压目录下的redis.conf文件拷贝到/usr/local/bin目录下</h3>
+    <img src="./img/QQ截图20181216125411.png" alt="">
+    <h3>然后修改/usr/local/bin目录下的redis.conf文件，设置为后台启动</h3>
+    <img src="./img/QQ截图20181216133108.png" alt="">
+    <h3>最后以指定配置文件的方式启动redis，做一些基础的验证</h3>
+    <img src="./img/QQ截图20181216133733.png" alt="">
     <br>
     <br>
     <br>
     <h1>第六步：将redis添加到系统服务并设置开机自启动</h1>
+    <h3>首先将redis解压目录下的src/utils目录下的redis_init_script文件拷贝到/etc/init.d目录下</h3>
+    <img src="./img/QQ截图20181216122735.png" alt="">
+    <h3>然后重命名/etc/init.d目录下的redis_init_script文件为redis_36379（也可以是redis_6379、redis_16379，总之命名规则是redis_加上启动端口号）</h3>
+    <img src="./img/QQ截图20181216123314.png" alt="">
     <br>
     <br>
     <br>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用指令之Key（键）</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <dl>
+        <!--dt和dd必须是同级的，不能够相互嵌套-->
+        <dt>常用指令之Key（键）</dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt><font style="color:red;">KEYS</font>：在当前数据库中查找所有符合给定模式 pattern 的 key 。</dt>
+                <dt><font style="color:red;">EXISTS</font>：检查给定 key 是否存在。</dt>
+                <dt><font style="color:red;">DEL</font>：删除给定的一个或多个 key ，不存在的 key 会被忽略。</dt>
+                <dt><font style="color:red;">MOVE</font>：将当前数据库的 key 移动到给定的数据库 db 当中。</dt>
+                <dt><font style="color:red;">EXPIRE</font>：为给定 key 设置生存时间，当 key 过期时(生存时间为 0 )，它会被自动删除，时间单位为秒</dt>
+                <dt><font style="color:red;">TTL</font>：以秒为单位，查看给定 key 的剩余生存时间(TTL, time to live)。</dt>
+                <dt><font style="color:red;">TYPE</font>：返回 key 所储存的值的类型。</dt>
+            </dl>
+        </dd>
+    </dl>
+</body>
+
+</html>

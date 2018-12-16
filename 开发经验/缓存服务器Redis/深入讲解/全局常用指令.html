@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局常用指令</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <dl>
+        <!--dt和dd必须是同级的，不能够相互嵌套-->
+        <dt>全局常用指令</dt>
+        <!--注意dd一般用来做下一级标题的容器，放入dl容器，再放入dt标题-->
+        <dd>
+            <dl>
+                <dt><font style="color:red;">SELECT</font>：切换到指定的数据库，数据库索引号 index 用数字值指定，以 0 作为起始索引值。</dt>
+                <dt><font style="color:red;">DBSIZE</font>：返回当前数据库的 key 的数量。</dt>
+                <dt><font style="color:red;">FLUSHDB</font>：清空当前数据库中的所有 key。</dt>
+                <dt><font style="color:red;">FLUSHALL</font>：清空整个 Redis 服务器的数据(删除所有数据库的所有 key )。</dt>
+            </dl>
+        </dd>
+    </dl>
+</body>
+
+</html>
