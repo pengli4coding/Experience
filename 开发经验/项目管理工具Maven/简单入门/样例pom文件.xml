@@ -160,17 +160,17 @@ under the License.
       <url>http://my.repository.com/repo/path</url>
     </mirror>
      -->
-	 <!-- 配置具体镜像仓库 -->
-	 <mirror>
-		<!-- 指定镜像ID，保证全局唯一的情况下随便取 -->
-		<id>alimaven</id>
-		<!-- 指定镜像名称，随便取 -->
-		<name>aliyun maven</name>
-		<!-- 指定镜像url路径-->
-		<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-		<!-- 指定此镜像用于替代中央仓库，central就是maven中央仓库的id号-->
-		<mirrorOf>central</mirrorOf>
-	 </mirror>
+	  <!-- 配置具体镜像仓库 -->
+	  <mirror>
+		  <!-- 指定镜像ID，保证全局唯一的情况下随便取 -->
+		  <id>alimaven</id>
+		  <!-- 指定镜像名称，随便取 -->
+		  <name>aliyun maven</name>
+		  <!-- 指定镜像url路径-->
+		  <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		  <!-- 指定此镜像用于替代中央仓库，central就是maven中央仓库的id号-->
+		  <mirrorOf>central</mirrorOf>
+	  </mirror>
   </mirrors>
 
   <!-- profiles
@@ -260,17 +260,17 @@ under the License.
     </profile>
     -->
     <profile>    
-		<id>jdk-1.8</id>    
-    	<activation>    
-			<activeByDefault>true</activeByDefault>    
-			<jdk>1.8</jdk>    
-    	</activation>    
-		<properties>    
-			<maven.compiler.source>1.8</maven.compiler.source>    
-			<maven.compiler.target>1.8</maven.compiler.target>    
-			<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>    
-		</properties>    
-	</profile>
+		  <id>jdk-1.8</id>    
+      <activation>    
+	  	  <activeByDefault>true</activeByDefault>    
+	  	  <jdk>1.8</jdk>    
+      </activation>    
+		  <properties>    
+			  <maven.compiler.source>1.8</maven.compiler.source>    
+		  	<maven.compiler.target>1.8</maven.compiler.target>    
+		  	<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>    
+	  	</properties>    
+  	</profile>
 	
   </profiles>
   
