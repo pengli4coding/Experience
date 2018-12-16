@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搭建私服</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>前置准备：安装JDK</h1>
+    <a href="../../操作系统Linux/编程环境搭建/Linux下安装JDK.html" target="_blank">点击链接：安装JDK教程</a><br>
+    <br>
+    <br>
+    <br>
+    <h1>第一步：上传nexus压缩包并解压缩</h1>
+    <h3>最好创建一个文件夹（这里用/opt/nexus）用来存放解压后的nexus压缩包，主要是因为nexus解压出来后有两个文件夹</h3>
+    <img src="./img/QQ截图20181217012141.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第二步：配置nexus</h1>
+    <h3>修改nexus的启动端口号（nexus的web界面是由jetty提供的，可以修改端口号）</h3>
+    <img src="./img/QQ截图20181217013040.png" alt="">
+    <img src="./img/QQ截图20181217013248.png" alt="">
+    <h3>修改 Nexus 运行用户（由于Nexus 私服在启动后，私服应用需要访问 Linux 的文件系统，所以需要有足够的权限），此信息在nexus-2.11.2-03/bin/nexus脚本文件中修改</h3>
+    <img src="./img/QQ截图20181217013546.png" alt="">
+    <img src="./img/QQ截图20181217013715.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第三步：放通防火墙端口</h1>
+    <a href="../../操作系统Linux/深入讲解/centos6的防火墙配置.html" target="_blank">点击链接：centos6的防火墙配置</a>
+    <br>
+    <br>
+    <br>
+    <h1>第四步：启动nexus</h1>
+    <h3>nexus目录下的bin目录下的脚本启动</h3>
+    <img src="./img/QQ截图20181217014950.png" alt="">
+    <h3>用http://ip:port/nexus网址来访问，如果出现如下界面则说明成功了</h3>
+    <img src="./img/QQ截图20181217015143.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第五步：下载中央仓库的jar包</h1>
+    <br>
+    <br>
+    <br>
+    <h1>第六步：让maven工程使用私服</h1>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
