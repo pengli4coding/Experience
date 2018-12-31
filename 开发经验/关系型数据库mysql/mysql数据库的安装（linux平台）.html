@@ -25,11 +25,10 @@ mysql-libs-5.1.73-8.el6_8.x86_64
     <br>
     <br>
     <br>
-    <h1>解压mysql的压缩包到/usr/local下,并将解压后的文件夹重命名为mysql</h1>
+    <h1>上传mysql的二进制压缩包到/opt目录下，解压缩,并将解压后的文件夹重命名为mysql</h1>
     <pre>
-[root@VM_0_13_centos /]# cd /usr/local/software
-[root@VM_0_13_centos software]# tar -zxvf mysql-5.6.41-linux-glibc2.12-x86_64.tar.gz -C /usr/local
-[root@VM_0_13_centos software]# cd /usr/local
+[root@VM_0_13_centos /]# cd /opt
+[root@VM_0_13_centos software]# tar -zxvf mysql-5.6.41-linux-glibc2.12-x86_64.tar.gz -C /opt
 [root@VM_0_13_centos local]# mv mysql-5.6.41-linux-glibc2.12-x86_64/ mysql
     </pre>
     <br>
@@ -47,7 +46,7 @@ groups: mysql: No such user
     <br>
     <h1>修改mysql文件夹的用户组和用户为mysql</h1>
     <pre>
-[root@VM_0_13_centos local]# cd /usr/local
+[root@VM_0_13_centos local]# cd /opt
 [root@VM_0_13_centos local]# chown -R mysql:mysql mysql
 [root@VM_0_13_centos local]# ll
 total 52
@@ -71,49 +70,61 @@ drwxr-xr-x.  2 root  root  4096 Sep 23  2011 src
     <br>
     <h1>进入mysql/scripts/文件夹，进行安装</h1>
     <pre>
-[root@VM_0_13_centos ~]# cd /usr/local/mysql/scripts/
-[root@VM_0_13_centos scripts]# ./mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --user=mysql --explicit_defaults_for_timestamp
+[root@VM_0_13_centos ~]# cd /opt/mysql/scripts/
+[root@VM_0_13_centos scripts]# ./mysql_install_db --basedir=/opt/mysql --datadir=/opt/mysql/data --user=mysql --explicit_defaults_for_timestamp
 
-Installing MySQL system tables...2018-08-11 19:26:30 0 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
-2018-08-11 19:26:30 0 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.6.41) starting as process 14715 ...
-2018-08-11 19:26:30 14715 [Note] InnoDB: Using atomics to ref count buffer pool pages
-2018-08-11 19:26:30 14715 [Note] InnoDB: The InnoDB memory heap is disabled
-2018-08-11 19:26:30 14715 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
-2018-08-11 19:26:30 14715 [Note] InnoDB: Memory barrier is not used
-2018-08-11 19:26:30 14715 [Note] InnoDB: Compressed tables use zlib 1.2.3
-2018-08-11 19:26:30 14715 [Note] InnoDB: Using Linux native AIO
-2018-08-11 19:26:30 14715 [Note] InnoDB: Using CPU crc32 instructions
-2018-08-11 19:26:30 14715 [Note] InnoDB: Initializing buffer pool, size = 128.0M
-2018-08-11 19:26:30 14715 [Note] InnoDB: Completed initialization of buffer pool
-2018-08-11 19:26:30 14715 [Note] InnoDB: Highest supported file format is Barracuda.
-2018-08-11 19:26:30 14715 [Note] InnoDB: 128 rollback segment(s) are active.
-2018-08-11 19:26:30 14715 [Note] InnoDB: Waiting for purge to start
-2018-08-11 19:26:30 14715 [Note] InnoDB: 5.6.41 started; log sequence number 1600607
-2018-08-11 19:26:32 14715 [Note] Binlog end
-2018-08-11 19:26:32 14715 [Note] InnoDB: FTS optimize thread exiting.
-2018-08-11 19:26:32 14715 [Note] InnoDB: Starting shutdown...
-2018-08-11 19:26:34 14715 [Note] InnoDB: Shutdown completed; log sequence number 1625987
+Installing MySQL system tables...2018-12-31 12:16:28 0 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
+2018-12-31 12:16:28 0 [Note] /opt/mysql/bin/mysqld (mysqld 5.6.41) starting as process 26302 ...
+2018-12-31 12:16:28 26302 [Note] InnoDB: Using atomics to ref count buffer pool pages
+2018-12-31 12:16:28 26302 [Note] InnoDB: The InnoDB memory heap is disabled
+2018-12-31 12:16:28 26302 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2018-12-31 12:16:28 26302 [Note] InnoDB: Memory barrier is not used
+2018-12-31 12:16:28 26302 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-12-31 12:16:28 26302 [Note] InnoDB: Using Linux native AIO
+2018-12-31 12:16:28 26302 [Note] InnoDB: Using CPU crc32 instructions
+2018-12-31 12:16:28 26302 [Note] InnoDB: Initializing buffer pool, size = 128.0M
+2018-12-31 12:16:28 26302 [Note] InnoDB: Completed initialization of buffer pool
+2018-12-31 12:16:28 26302 [Note] InnoDB: The first specified data file ./ibdata1 did not exist: a new database to be created!
+2018-12-31 12:16:28 26302 [Note] InnoDB: Setting file ./ibdata1 size to 12 MB
+2018-12-31 12:16:28 26302 [Note] InnoDB: Database physically writes the file full: wait...
+2018-12-31 12:16:28 26302 [Note] InnoDB: Setting log file ./ib_logfile101 size to 48 MB
+2018-12-31 12:16:29 26302 [Note] InnoDB: Setting log file ./ib_logfile1 size to 48 MB
+2018-12-31 12:16:29 26302 [Note] InnoDB: Renaming log file ./ib_logfile101 to ./ib_logfile0
+2018-12-31 12:16:29 26302 [Warning] InnoDB: New log files created, LSN=45781
+2018-12-31 12:16:29 26302 [Note] InnoDB: Doublewrite buffer not found: creating new
+2018-12-31 12:16:29 26302 [Note] InnoDB: Doublewrite buffer created
+2018-12-31 12:16:29 26302 [Note] InnoDB: 128 rollback segment(s) are active.
+2018-12-31 12:16:29 26302 [Warning] InnoDB: Creating foreign key constraint system tables.
+2018-12-31 12:16:29 26302 [Note] InnoDB: Foreign key constraint system tables created
+2018-12-31 12:16:29 26302 [Note] InnoDB: Creating tablespace and datafile system tables.
+2018-12-31 12:16:29 26302 [Note] InnoDB: Tablespace and datafile system tables created.
+2018-12-31 12:16:29 26302 [Note] InnoDB: Waiting for purge to start
+2018-12-31 12:16:29 26302 [Note] InnoDB: 5.6.41 started; log sequence number 0
+2018-12-31 12:16:30 26302 [Note] Binlog end
+2018-12-31 12:16:30 26302 [Note] InnoDB: FTS optimize thread exiting.
+2018-12-31 12:16:30 26302 [Note] InnoDB: Starting shutdown...
+2018-12-31 12:16:31 26302 [Note] InnoDB: Shutdown completed; log sequence number 1625977
 OK
 
-Filling help tables...2018-08-11 19:26:34 0 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
-2018-08-11 19:26:34 0 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.6.41) starting as process 14738 ...
-2018-08-11 19:26:34 14738 [Note] InnoDB: Using atomics to ref count buffer pool pages
-2018-08-11 19:26:34 14738 [Note] InnoDB: The InnoDB memory heap is disabled
-2018-08-11 19:26:34 14738 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
-2018-08-11 19:26:34 14738 [Note] InnoDB: Memory barrier is not used
-2018-08-11 19:26:34 14738 [Note] InnoDB: Compressed tables use zlib 1.2.3
-2018-08-11 19:26:34 14738 [Note] InnoDB: Using Linux native AIO
-2018-08-11 19:26:34 14738 [Note] InnoDB: Using CPU crc32 instructions
-2018-08-11 19:26:34 14738 [Note] InnoDB: Initializing buffer pool, size = 128.0M
-2018-08-11 19:26:34 14738 [Note] InnoDB: Completed initialization of buffer pool
-2018-08-11 19:26:34 14738 [Note] InnoDB: Highest supported file format is Barracuda.
-2018-08-11 19:26:34 14738 [Note] InnoDB: 128 rollback segment(s) are active.
-2018-08-11 19:26:34 14738 [Note] InnoDB: Waiting for purge to start
-2018-08-11 19:26:34 14738 [Note] InnoDB: 5.6.41 started; log sequence number 1625987
-2018-08-11 19:26:34 14738 [Note] Binlog end
-2018-08-11 19:26:34 14738 [Note] InnoDB: FTS optimize thread exiting.
-2018-08-11 19:26:34 14738 [Note] InnoDB: Starting shutdown...
-2018-08-11 19:26:36 14738 [Note] InnoDB: Shutdown completed; log sequence number 1625997
+Filling help tables...2018-12-31 12:16:31 0 [Note] Ignoring --secure-file-priv value as server is running with --bootstrap.
+2018-12-31 12:16:31 0 [Note] /opt/mysql/bin/mysqld (mysqld 5.6.41) starting as process 26325 ...
+2018-12-31 12:16:31 26325 [Note] InnoDB: Using atomics to ref count buffer pool pages
+2018-12-31 12:16:31 26325 [Note] InnoDB: The InnoDB memory heap is disabled
+2018-12-31 12:16:31 26325 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2018-12-31 12:16:31 26325 [Note] InnoDB: Memory barrier is not used
+2018-12-31 12:16:31 26325 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-12-31 12:16:31 26325 [Note] InnoDB: Using Linux native AIO
+2018-12-31 12:16:31 26325 [Note] InnoDB: Using CPU crc32 instructions
+2018-12-31 12:16:31 26325 [Note] InnoDB: Initializing buffer pool, size = 128.0M
+2018-12-31 12:16:31 26325 [Note] InnoDB: Completed initialization of buffer pool
+2018-12-31 12:16:31 26325 [Note] InnoDB: Highest supported file format is Barracuda.
+2018-12-31 12:16:31 26325 [Note] InnoDB: 128 rollback segment(s) are active.
+2018-12-31 12:16:31 26325 [Note] InnoDB: Waiting for purge to start
+2018-12-31 12:16:31 26325 [Note] InnoDB: 5.6.41 started; log sequence number 1625977
+2018-12-31 12:16:31 26325 [Note] Binlog end
+2018-12-31 12:16:31 26325 [Note] InnoDB: FTS optimize thread exiting.
+2018-12-31 12:16:31 26325 [Note] InnoDB: Starting shutdown...
+2018-12-31 12:16:33 26325 [Note] InnoDB: Shutdown completed; log sequence number 1625987
 OK
 
 To start mysqld at boot time you have to copy
@@ -122,12 +133,12 @@ support-files/mysql.server to the right place for your system
 PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
 To do so, start the server, then issue the following commands:
 
-  /usr/local/mysql/bin/mysqladmin -u root password 'new-password'
-  /usr/local/mysql/bin/mysqladmin -u root -h VM_0_13_centos password 'new-password'
+  /opt/mysql/bin/mysqladmin -u root password 'new-password'
+  /opt/mysql/bin/mysqladmin -u root -h VM_0_3_centos password 'new-password'
 
 Alternatively you can run:
 
-  /usr/local/mysql/bin/mysql_secure_installation
+  /opt/mysql/bin/mysql_secure_installation
 
 which will also give you the option of removing the test
 databases and anonymous user created by default.  This is
@@ -137,7 +148,7 @@ See the manual for more instructions.
 
 You can start the MySQL daemon with:
 
-  cd . ; /usr/local/mysql/bin/mysqld_safe &amp;
+  cd . ; /opt/mysql/bin/mysqld_safe &amp;
 
 You can test the MySQL daemon with mysql-test-run.pl
 
@@ -151,12 +162,9 @@ The latest information about MySQL is available on the web at
 
 Support MySQL by buying support/licenses at http://shop.mysql.com
 
-WARNING: Found existing config file /usr/local/mysql/my.cnf on the system.
-Because this file might be in use, it was not replaced,
-but was used in bootstrap (unless you used --defaults-file)
-and when you later start the server.
-The new default config file was created as /usr/local/mysql/my-new.cnf,
-please compare it with your file and take the changes you need.
+New default config file was created as /opt/mysql/my.cnf and
+will be used by default by the server when you start it.
+You may edit this file to change server settings
 
 [root@VM_0_13_centos scripts]#
     </pre>
@@ -165,7 +173,7 @@ please compare it with your file and take the changes you need.
     <br>
     <h1>返回到mysql目录，修改data文件及用户组及用户为mysql</h1>
     <pre>
-[root@VM_0_13_centos mysql]# cd /usr/local/mysql
+[root@VM_0_13_centos mysql]# cd /opt/mysql
 [root@VM_0_13_centos mysql]# chown -R mysql:mysql data
 [root@VM_0_13_centos mysql]#
 
@@ -173,19 +181,33 @@ please compare it with your file and take the changes you need.
     <br>
     <br>
     <br>
-    <h1>添加mysqld服务、设置mysql开机启动、开启mysqld服务</h1>
+    <h1>添加mysqld服务、设置mysql开机启动</h1>
     <pre>
-[root@VM_0_13_centos ~]# cd /usr/local/mysql
+[root@VM_0_13_centos ~]# cd /opt/mysql
 [root@VM_0_13_centos mysql]# cp support-files/mysql.server /etc/init.d/mysqld
 [root@VM_0_13_centos mysql]# chkconfig --add mysqld
 [root@VM_0_13_centos mysql]# chkconfig mysqld on
-[root@VM_0_13_centos mysql]# service mysqld restart
-Shutting down MySQL..180811 19:51:15 mysqld_safe mysqld from pid file /usr/local/mysql/data/VM_0_13_centos.pid ended
- SUCCESS!
-Starting MySQL. SUCCESS!
-[1]+  Done                    /usr/local/mysql/bin/mysqld_safe  (wd: /usr/local/mysql/scripts)
-(wd now: /usr/local/mysql)
-[root@VM_0_13_centos mysql]#
+    </pre>
+    <br>
+    <br>
+    <br>
+    <h1>修改/etc/init.d目录下的mysqld文件</h1>
+    <img src="./img/QQ截图20181231125425.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>编辑my.cnf文件以修改端口号（这里的my.cnf文件是在mysql安装目录下的，不是在/etc目录下的）</h1>
+    <img src="./img/QQ截图20181231133251.png" alt="">
+    <br>
+    <img src="./img/QQ截图20181231133412.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>启动mysql服务</h1>
+    <pre>
+[root@VM_0_3_centos mysql]# service mysqld start
+Starting MySQL. SUCCESS! 
+[root@VM_0_3_centos mysql]# 
     </pre>
     <br>
     <br>
@@ -193,15 +215,18 @@ Starting MySQL. SUCCESS!
     <h1>添加mysql到系统环境变量中</h1>
     <pre>
 [root@VM_0_13_centos ~]# vim /etc/profile
-添加export PATH=${PATH}:/usr/local/mysql/bin到文件的末尾
+添加以下两行：
+export MYSQL_HOME=/opt/mysql
+export PATH=${MYSQL_HOME}/bin:${PATH}
+到文件的末尾
 [root@VM_0_13_centos ~]# source /etc/profile
     </pre>
     <br>
     <br>
     <br>
-    <h1>进行mysql安全安装（这一步会进行root用户密码配置、匿名用户删除、测试库删除等操作，安装提示一步步往下配置）</h1>
+    <h1>进行mysql安全安装（这一步会进行root用户密码配置、匿名用户删除、测试库删除等操作，自行根据安装提示一步步往下配置）</h1>
     <pre>
-[root@VM_0_13_centos ~]# cd /usr/local/mysql/bin
+[root@VM_0_13_centos ~]# cd /opt/mysql/bin
 [root@VM_0_13_centos bin]# ./mysql_secure_installation
     </pre>
     <br>
@@ -209,8 +234,7 @@ Starting MySQL. SUCCESS!
     <br>
     <h1>登陆mysql</h1>
     <pre>
-[root@VM_0_13_centos bin]# cd ~
-[root@VM_0_13_centos ~]# mysql -uroot -p
+[root@VM_0_13_centos ~]# mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 13
@@ -235,5 +259,13 @@ mysql>
 mysql> grant all privileges on *.* to root@'%' identified by '12345678';
 mysql> flush privileges;
     </pre>
+    <br>
+    <br>
+    <br>
+    <h1>防火墙放通mysql端口</h1>
+    <h3>略。。。</h3>
+    <br>
+    <br>
+    <br>
 </body>
 </html>
