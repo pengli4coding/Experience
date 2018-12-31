@@ -43,6 +43,10 @@ rabbitmqctl  set_user_tags  admin  administrator
 rabbitmqctl set_permissions -p "/" admin ".*" ".*" ".*"
 查看当前所有用户和角色
 rabbitmqctl list_users
+删除用户（假设为guest用户）
+rabbitmqctl delete_user guest
+修改用户密码（假设为admin用户修改密码）
+rabbitmqctl change_password admin 654321
     </pre>
     <br>
     <br>
