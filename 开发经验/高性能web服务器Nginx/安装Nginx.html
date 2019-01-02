@@ -27,5 +27,56 @@
     <h3>nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。</h3>
     <h3><font style="color:red;">yum install -y openssl openssl-devel</font></h3>
     <br><br>
+    <br>
+    <br>
+    <br>
+    <h1>编译安装Nginx</h1>
+    <h3>从Nginx官网上下载源码包（这里下载的是nginx-1.8.1.tar.gz），并上传到服务器的/opt目录下</h3>
+    <img src="./img/QQ截图20190102212336.png" alt="">
+    <br><br>
+    <h3>进入nginx解压目录，配置nginx编译参数如下：</h3>
+    <pre>
+./configure \
+--prefix=/opt/nginx \  安装目录位置
+--pid-path=/var/run/nginx/nginx.pid \  启动的时候,进程描述文件保存位置和进程文件名
+--lock-path=/var/lock/nginx.lock \  锁定文件
+--error-log-path=/opt/nginx/log/error.log \  错误日志
+--http-log-path=/opt/nginx/log/access.log \  访问日志
+--with-http_gzip_static_module \  解压压缩模式
+--http-client-body-temp-path=/var/temp/nginx/client \  客户端定义
+--http-proxy-temp-path=/var/temp/nginx/proxy \  代理临时目录位置.
+--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \  快速访问临时目录
+--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \  sgi访问目录
+--http-scgi-temp-path=/var/temp/nginx/scgi  scgi访问临时目录
+    </pre>
+    <h3><font style="color:red;">注意：上面这些配置参数可以通过./configure --help查看详细</font></h3>
+    <h3><font style="color:red;">注意：由于nginx可以创建临时目录的自定义使用目录. 但是不能创建临时目录的父目录，因此如果讲上述临时文件目录指定为/var/temp/nginx，需要手动 mkdir -p /var/temp/nginx</font></h3>
+    <br><br>
+    <h3>运行make以及make install</h3>
+    <br>
+    <br>
+    <br>
+    <h1>启动Nginx</h1>
+    <img src="./img/QQ截图20190102214627.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>强制停止Nginx</h1>
+    <h3>强制停止Nginx的命令是：nginx -s stop，这个命令会立即断开所有连接</h3>
+    <img src="./img/QQ截图20190102232754.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>优雅停止Nginx</h1>
+    <h3>优雅停止Nginx的命令是：nginx -s quit，这个命令不会立即断开所有连接，而是处理完现有连接后再停掉Nginx</h3>
+    <img src="./img/QQ截图20190102233034.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>Nginx加入系统服务并设置开机启动</h1>
+    <h3>待补充。。。</h3>
+    <br>
+    <br>
+    <br>
 </body>
 </html>
