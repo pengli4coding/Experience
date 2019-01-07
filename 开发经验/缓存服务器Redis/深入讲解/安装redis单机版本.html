@@ -59,11 +59,29 @@ make install
     <br>
     <br>
     <br>
-    <h1>第六步：将redis添加到系统服务并设置开机自启动</h1>
-    <h3>首先将redis解压目录下的src/utils目录下的redis_init_script文件拷贝到/etc/init.d目录下</h3>
+    <h1>第六步：将redis添加到系统服务并设置开机自启动（假设redis的监听端口号是36379）</h1>
+    <h3>首先将redis解压目录下的utils目录下的redis_init_script文件拷贝到/etc/init.d目录下</h3>
     <img src="./img/QQ截图20181216122735.png" alt="">
-    <h3>然后重命名/etc/init.d目录下的redis_init_script文件为redis_36379（也可以是redis_6379、redis_16379，总之命名规则是redis_加上启动端口号）</h3>
+    <h3>然后重命名/etc/init.d目录下的redis_init_script文件为redis_36379（命名规则是redis_加上监听端口号）</h3>
     <img src="./img/QQ截图20181216123314.png" alt="">
+    <h3>修改/etc/init.d/redis_36379文件</h3>
+    <img src="./img/QQ截图20190106102840.png" alt="">
+    <h3>创建/etc/redis目录并拷贝redis解压目录下的redis.conf文件到/etc/redis目录下，并修改/etc/reids目录下的redis.conf文件名为36379.conf</h3>
+    <img src="./img/QQ截图20190106103604.png" alt="">
+    <h3>编辑/etc/redis/36379.conf文件</h3>
+    <img src="./img/QQ截图20190106104807.png" alt=""><br>
+    <img src="./img/QQ截图20190106104903.png" alt=""><br>
+    <img src="./img/QQ截图20190106105031.png" alt=""><br>
+    <img src="./img/QQ截图20190106105708.png" alt=""><br>
+    <img src="./img/QQ截图20190106105835.png" alt=""><br>
+    <h3>创建redis的工作目录</h3>
+    <img src="./img/QQ截图20190106110117.png" alt="">
+    <h3>将redis加入到系统服务</h3>
+    <img src="./img/QQ截图20190106110336.png" alt="">
+    <h3>设置redis服务开机启动</h3>
+    <img src="./img/QQ截图20190106110921.png" alt="">
+    <h3>开启redis服务</h3>
+    <img src="./img/QQ截图20190106111053.png" alt="">
     <br>
     <br>
     <br>
