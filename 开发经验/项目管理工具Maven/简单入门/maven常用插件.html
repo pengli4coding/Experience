@@ -11,6 +11,22 @@
     <h1>编译器插件</h1>
     <h3>在项目的pom.xml文件中加入如下红框中的配置</h3>
     <img src="./img/QQ截图20180726214001.png" alt="">
+    <pre>
+&lt;build&gt;
+	&lt;plugins&gt;
+		&lt;plugin&gt;
+			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+			&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+			&lt;version&gt;3.7.0&lt;/version&gt;
+			&lt;configuration&gt;
+				&lt;source&gt;1.8&lt;/source&gt;
+				&lt;target&gt;1.8&lt;/target&gt;
+				&lt;encoding&gt;UTF-8&lt;/encoding&gt;
+			&lt;/configuration&gt;
+		&lt;/plugin&gt;
+	&lt;/plugins&gt;
+&lt;/build&gt;
+    </pre>
     <br>
     <br>
     <br>
