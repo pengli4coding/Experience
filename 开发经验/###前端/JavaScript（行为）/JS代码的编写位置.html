@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--
+        可以将JS代码编写到外部js文件中，然后引入
+        这样的好处是JS代码可以在不同的页面中同时引用，也可以利用到浏览器的缓存机制
+        这种方式是推荐使用的
+
+        要特别注意的是，script标签如果一旦用于引入外部文件了，就不能在标签内部编写JS代码了，即使编写了浏览器也会忽略掉
+    -->
+    <script src="./外部JS文件/demo.js"></script>
+    <script>
+        alert("我是script标签中的JS代码");
+    </script>
+</head>
+
+<body>
+
+    <!--可以将JS代码编写到标签的onclick属性中-->
+    <button onclick="alert('讨厌，你点我干嘛~~~');">点我一下</button>
+    <!--可以将JS代码写到a标签的href属性中，不过要加上javascript:来表示这是一段JS代码-->
+    <a href="javascript:alert('让你点你就点！！！');">你也点我一下</a>
+
+</body>
+
+</html>
