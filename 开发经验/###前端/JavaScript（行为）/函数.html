@@ -6,7 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        // 
+
+        // 首先要知道的是函数也是一个“对象”
+
+        // 第一种方式创建函数，其实函数的创建也就是“对象”的创建
+        // 函数的执行代码以字符串的形式传递给构造函数
+        var funObj = new Function("console.log('执行')");
+        console.log(funObj);
+        console.log(typeof funObj);
+        funObj();// 函数的调用
+        funObj.hello = "你好";// 由于函数本质上也是一个对象，所以可以有对象的属性值
+        console.log(funObj.hello);
+
+        // 第二种方式创建函数，这种方式才是开发中常用的方式
+        // 使用函数声明来创建一个函数
+        function myFunction(){
+            console.log("myFunction函数执行了！！！");
+        }
+        console.log(myFunction);
+        console.log(typeof myFunction);
+        myFunction();
+
+        // 第三种方式创建函数，这种方式也是开发中常用的方式
+        // 使用函数表达式创建函数
+        var myFunction1 = function(){
+            console.log("myFunction1函数执行了！！！");
+        };// 由于这种方式是给一个变量赋值，所以最好后面加上分号;
+        console.log(myFunction1);
+        console.log(typeof myFunction1);
+        myFunction1();
+
+        // 函数传参
+        function sum(a,b){
+            var result;
+            result = a + b;
+            console.log(result);
+        }
+        var aa = 1;
+        var bb = 2;
+        sum(aa,bb);
+
+        // 调用函数时解析器不会检查实参的类型
+        sum(1,"你好");
+
+        // 调用函数时解析器也不会检查实参的数量
+        // 实参多于形参的时候
+        sum(2,3,4);// 最后传的实参4其实不会用到
+        // 实参小于形参的时候
+        sum(2);// 这时候没有对应实参的形参将是undefined
+
+        // 函数的返回值
+
+
     </script>
 </head>
 <body>
