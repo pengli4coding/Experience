@@ -117,35 +117,35 @@ Copies of this document may be made for your own use and for distribution to oth
 </li>
 </ul>
 </li>
-<li><a href="#reference">Reference Documentation</a>
+<li><a href="#reference">Reference Documentation&nbsp;&nbsp;<font class="pl">参考文档</font></a>
 <ul class="sectlevel1">
-<li><a href="#introduction">9. Introduction</a>
+<li><a href="#introduction">9. Introduction&nbsp;&nbsp;<font class="pl">介绍</font></a>
 <ul class="sectlevel2">
-<li><a href="#_document_structure">9.1. Document Structure</a></li>
+<li><a href="#_document_structure">9.1. Document Structure&nbsp;&nbsp;<font class="pl">文档结构</font></a></li>
 </ul>
 </li>
 <li><a href="#mongo.core">10. MongoDB support</a>
 <ul class="sectlevel2">
-<li><a href="#mongodb-getting-started">10.1. Getting Started</a></li>
+<li><a href="#mongodb-getting-started">10.1. Getting Started&nbsp;&nbsp;<font class="pl">开始</font></a></li>
 <li><a href="#mongo.examples-repo">10.2. Examples Repository</a></li>
-<li><a href="#mongodb-connectors">10.3. Connecting to MongoDB with Spring</a>
+<li><a href="#mongodb-connectors">10.3. Connecting to MongoDB with Spring&nbsp;&nbsp;<font class="pl">通过Spring连接MongoDB</font></a>
 <ul class="sectlevel3">
-<li><a href="#mongo.mongo-java-config">10.3.1. Registering a Mongo Instance by using Java-based Metadata</a></li>
-<li><a href="#mongo.mongo-xml-config">10.3.2. Registering a Mongo Instance by Using XML-based Metadata</a></li>
-<li><a href="#mongo.mongo-db-factory">10.3.3. The MongoDbFactory Interface</a></li>
-<li><a href="#mongo.mongo-db-factory-java">10.3.4. Registering a <code>MongoDbFactory</code> Instance by Using Java-based Metadata</a></li>
-<li><a href="#mongo.mongo-db-factory-xml">10.3.5. Registering a <code>MongoDbFactory</code> Instance by Using XML-based Metadata</a></li>
+<li><a href="#mongo.mongo-java-config">10.3.1. Registering a Mongo Instance by using Java-based Metadata&nbsp;&nbsp;<font class="pl">使用基于Java的元数据注册Mongo实例</font></a></li>
+<li><a href="#mongo.mongo-xml-config">10.3.2. Registering a Mongo Instance by Using XML-based Metadata&nbsp;&nbsp;<font class="pl">使用基于XML的元数据注册Mongo实例</font></a></li>
+<li><a href="#mongo.mongo-db-factory">10.3.3. The MongoDbFactory Interface&nbsp;&nbsp;<font class="pl">MongoDbFactory接口</font></a></li>
+<li><a href="#mongo.mongo-db-factory-java">10.3.4. Registering a <code>MongoDbFactory</code> Instance by Using Java-based Metadata&nbsp;&nbsp;<font class="pl">使用基于Java的元数据注册MongoDbFactory的实例</font></a></a></li>
+<li><a href="#mongo.mongo-db-factory-xml">10.3.5. Registering a <code>MongoDbFactory</code> Instance by Using XML-based Metadata&nbsp;&nbsp;<font class="pl">使用基于XML的元数据注册MongoDbFactory的实例</font></a></li>
 </ul>
 </li>
-<li><a href="#mongo-template">10.4. Introduction to <code>MongoTemplate</code></a>
+<li><a href="#mongo-template">10.4. Introduction to <code>MongoTemplate</code>&nbsp;&nbsp;<font class="pl">MongoTemplate的介绍</font></a>
 <ul class="sectlevel3">
-<li><a href="#mongo-template.instantiating">10.4.1. Instantiating <code>MongoTemplate</code></a></li>
+<li><a href="#mongo-template.instantiating">10.4.1. Instantiating <code>MongoTemplate</code>&nbsp;&nbsp;<font class="pl">实例化MongoTemplate</font></a></li>
 <li><a href="#mongo-template.writeresultchecking">10.4.2. <code>WriteResultChecking</code> Policy</a></li>
 <li><a href="#mongo-template.writeconcern">10.4.3. <code>WriteConcern</code></a></li>
 <li><a href="#mongo-template.writeconcernresolver">10.4.4. <code>WriteConcernResolver</code></a></li>
 </ul>
 </li>
-<li><a href="#mongo-template.save-update-remove">10.5. Saving, Updating, and Removing Documents</a>
+<li><a href="#mongo-template.save-update-remove">10.5. Saving, Updating, and Removing Documents&nbsp;&nbsp;<font class="pl">保存、更新以及删除文档</font></a>
 <ul class="sectlevel3">
 <li><a href="#mongo-template.id-handling">10.5.1. How the <code>_id</code> Field is Handled in the Mapping Layer</a></li>
 <li><a href="#mongo-template.type-mapping">10.5.2. Type Mapping</a></li>
@@ -157,7 +157,7 @@ Copies of this document may be made for your own use and for distribution to oth
 <li><a href="#mongo-template.optimistic-locking">10.5.8. Optimistic Locking</a></li>
 </ul>
 </li>
-<li><a href="#mongo.query">10.6. Querying Documents</a>
+<li><a href="#mongo.query">10.6. Querying Documents&nbsp;&nbsp;<font class="pl">查询文档</font></a>
 <ul class="sectlevel3">
 <li><a href="#mongodb-template-query">10.6.1. Querying Documents in a Collection</a></li>
 <li><a href="#mongo-template.querying">10.6.2. Methods for Querying for Documents</a></li>
@@ -2548,12 +2548,14 @@ public class UserController {
 <p>For most tasks, you should use <code>MongoTemplate</code> or the Repository support, which both leverage the rich mapping functionality. <code>MongoTemplate</code> is the place to look for accessing functionality such as incrementing counters or ad-hoc CRUD operations. <code>MongoTemplate</code> also provides callback methods so that it is easy for you to get the low-level API artifacts, such as <code>com.mongo.DB</code>, to communicate directly with MongoDB. The goal with naming conventions on various API artifacts is to copy those in the base MongoDB Java driver so you can easily map your existing knowledge onto the Spring APIs.</p>
 </div>
 <div class="sect2">
-<h3 id="mongodb-getting-started"><a class="anchor" href="#mongodb-getting-started"></a>10.1. Getting Started</h3>
+<h3 id="mongodb-getting-started"><a class="anchor" href="#mongodb-getting-started"></a>10.1. Getting Started&nbsp;&nbsp;<font class="pl">开始</font></h3>
 <div class="paragraph">
-<p>Spring MongoDB support requires MongoDB 2.6 or higher and Java SE 6 or higher. An easy way to bootstrap setting up a working environment is to create a Spring-based project in <a href="https://spring.io/tools/sts">STS</a>.</p>
+<p style="margin-bottom:0px;">Spring MongoDB support requires MongoDB 2.6 or higher and Java SE 6 or higher. An easy way to bootstrap setting up a working environment is to create a Spring-based project in <a href="https://spring.io/tools/sts">STS</a>.</p>
+<p class="pl">Spring的MongoDB支持要求MongoDB的版本最低是2.6，Java SE版本最低是6。</p>
 </div>
 <div class="paragraph">
-<p>First, you need to set up a running MongoDB server. Refer to the <a href="http://docs.mongodb.org/manual/core/introduction/">MongoDB Quick Start guide</a> for an explanation on how to startup a MongoDB instance. Once installed, starting MongoDB is typically a matter of running the following command: <code>${MONGO_HOME}/bin/mongod</code></p>
+<p style="margin-bottom:0px;">First, you need to set up a running MongoDB server. Refer to the <a href="http://docs.mongodb.org/manual/core/introduction/">MongoDB Quick Start guide</a> for an explanation on how to startup a MongoDB instance. Once installed, starting MongoDB is typically a matter of running the following command: <code>${MONGO_HOME}/bin/mongod</code></p>
+<p class="pl">首先，你需要启动一个MongoDB服务。参考<a href="http://docs.mongodb.org/manual/core/introduction/">MongoDB Quick Start guide</a>这篇帮助文档</p>
 </div>
 <div class="paragraph">
 <p>To create a Spring project in STS:</p>
@@ -2616,7 +2618,8 @@ log4j.appender.stdout.layout.ConversionPattern=%d{ABSOLUTE} %5p %40.40c:%4L - %m
 </div>
 </div>
 <div class="paragraph">
-<p>Then you can create a <code>Person</code> class to persist:</p>
+<p style="margin-bottom:0px;">Then you can create a <code>Person</code> class to persist:</p>
+<p class="pl">然后你需要创建一个持久化类<code>Person</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2725,9 +2728,12 @@ public class MongoApp {
 </div>
 </div>
 <div class="sect2">
-<h3 id="mongodb-connectors"><a class="anchor" href="#mongodb-connectors"></a>10.3. Connecting to MongoDB with Spring</h3>
+<h3 id="mongodb-connectors"><a class="anchor" href="#mongodb-connectors"></a>10.3. Connecting to MongoDB with Spring&nbsp;&nbsp;<font class="pl">通过Spring连接MongoDB</font></h3>
 <div class="paragraph">
-<p>One of the first tasks when using MongoDB and Spring is to create a <code>com.mongodb.Mongo</code> object using the IoC container. There are two main ways to do this, either by using Java-based bean metadata or by using XML-based bean metadata. Both are discussed in the following sections.</p>
+<p style="margin-bottom:0px;">One of the first tasks when using MongoDB and Spring is to create a <code>com.mongodb.Mongo</code> object using the IoC container. There are two main ways to do this, either by using Java-based bean metadata or by using XML-based bean metadata. Both are discussed in the following sections.</p>
+<p class="pl">要想在Spring框架的基础上操作MongoDB，首要任务是通过IoC容器创建一个<code>com.mongodb.Mongo</code>实例对象。
+这里主要有两种方法：第一种是通过基于Java的bean元数据实现，第二种是通过基于XML的bean元数据实现。这两种方法在以下的章节展开讨论：
+</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2742,7 +2748,7 @@ For those not familiar with how to configure the Spring container using Java-bas
 </table>
 </div>
 <div class="sect3">
-<h4 id="mongo.mongo-java-config"><a class="anchor" href="#mongo.mongo-java-config"></a>10.3.1. Registering a Mongo Instance by using Java-based Metadata</h4>
+<h4 id="mongo.mongo-java-config"><a class="anchor" href="#mongo.mongo-java-config"></a>10.3.1. Registering a Mongo Instance by using Java-based Metadata&nbsp;&nbsp;<font class="pl">使用基于Java的元数据注册Mongo实例</font></h4>
 <div class="paragraph">
 <p>The following example shows an example of using Java-based bean metadata to register an instance of a <code>com.mongodb.Mongo</code>:</p>
 </div>
@@ -3031,9 +3037,10 @@ public class MongoConfiguration {
 </div>
 </div>
 <div class="sect2">
-<h3 id="mongo-template"><a class="anchor" href="#mongo-template"></a>10.4. Introduction to <code>MongoTemplate</code></h3>
+<h3 id="mongo-template"><a class="anchor" href="#mongo-template"></a>10.4. Introduction to <code>MongoTemplate</code>&nbsp;&nbsp;<font class="pl">MongoTemplate的介绍</font></h3>
 <div class="paragraph">
-<p>The <code>MongoTemplate</code> class, located in the <code>org.springframework.data.mongodb.core</code> package, is the central class of Spring&#8217;s MongoDB support and provides a rich feature set for interacting with the database. The template offers convenience operations to create, update, delete, and query MongoDB documents and provides a mapping between your domain objects and MongoDB documents.</p>
+<p style="margin-bottom:0px;">The <code>MongoTemplate</code> class, located in the <code>org.springframework.data.mongodb.core</code> package, is the central class of Spring&#8217;s MongoDB support and provides a rich feature set for interacting with the database. The template offers convenience operations to create, update, delete, and query MongoDB documents and provides a mapping between your domain objects and MongoDB documents.</p>
+<p class="pl">在<code>org.springframework.data.mongodb.core</code>包中的<code>MongoTemplate</code>类是Spring对MongoDB支持模块的最主要的类，它提供丰富的操作MongoDB的功能。它不仅提供了对MongoDB的增删改查便捷操作，同时可以将MongoDB中的文档映射到域对象中。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3207,9 +3214,10 @@ The preferred way to reference the operations on <code>MongoTemplate</code> inst
 </div>
 </div>
 <div class="sect2">
-<h3 id="mongo-template.save-update-remove"><a class="anchor" href="#mongo-template.save-update-remove"></a>10.5. Saving, Updating, and Removing Documents</h3>
+<h3 id="mongo-template.save-update-remove"><a class="anchor" href="#mongo-template.save-update-remove"></a>10.5. Saving, Updating, and Removing Documents&nbsp;&nbsp;<font class="pl">保存、更新以及删除文档</font></h3>
 <div class="paragraph">
-<p><code>MongoTemplate</code> lets you save, update, and delete your domain objects and map those objects to documents stored in MongoDB.</p>
+<p style="margin-bottom:0px;"><code>MongoTemplate</code> lets you save, update, and delete your domain objects and map those objects to documents stored in MongoDB.</p>
+<p class="pl"><code>MongoTemplate</code>可以让你对域对象的增删改操作映射到对MongogDB的增删改操作</p>
 </div>
 <div class="paragraph">
 <p>Consider the following class:</p>
@@ -3256,6 +3264,7 @@ The preferred way to reference the operations on <code>MongoTemplate</code> inst
 </td>
 <td class="content">
 <code>MongoOperations</code> is the interface that <code>MongoTemplate</code> implements.
+<p class="pl"><code>MongoTemplate</code>类实现了<code>MongoOperations</code>接口</p>
 </td>
 </tr>
 </table>
