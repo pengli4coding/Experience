@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.pl</groupId>
+	<artifactId>spring-data-mongodb-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>spring-data-mongodb-demo</name>
+	<description>spring-data-mongodb的样例代码及脚手架程序</description>
+
+	<properties>
+		<junit.version>4.12</junit.version>
+		<spring-data-mongodb.version>1.10.18.RELEASE</spring-data-mongodb.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring-data-mongodb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>
