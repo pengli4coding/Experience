@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择器</title>
+    <style type="text/css">
+
+        /* 通配符选择器 */
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* 标签选择器 */
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+        /* id选择器 */
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        /* class选择器 */
+        .div2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+
+        .fontColor{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="div1">内容</div>
+    <br>
+
+    <div class="div2">内容</div>
+    <br>
+
+    <div>内容</div>
+    <br>
+
+    <!-- 一个标签里面有多个属性，这些属性对应的css样式共同作用于这个标签 -->
+    <div class="div2 fontColor">内容</div>
+
+</body>
+</html>

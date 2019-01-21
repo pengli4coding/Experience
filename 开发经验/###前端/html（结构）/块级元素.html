@@ -9,12 +9,144 @@
 </head>
 
 <body>
+    <!--h代表header的意思-->
     <h1>一级标题</h1>
     <h2>二级标题</h2>
     <h3>三级标题</h3>
     <h4>四级标题</h4>
     <h5>五级标题</h5>
     <h6>六级标题</h6>
+
+    <strong>加粗</strong>
+
+    <em>斜体</em>
+
+    <!--p是paragraph的缩写，代表段落-->
+    <p>这是一个段落</p>
+
+    <!--br是break的缩写，是用来换行的，这是一个单标签-->
+    <br>
+
+    <!--hr是horizontal line的缩写，代表水平线，这是一个单标签-->
+    <hr>
+
+    <!--ol和li标签组成有序列表，ol是order list的缩写-->
+    <ol type="1"><!--type属性为1的时候，列表前面的编号是阿拉伯数字-->
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>雪梨</li>
+    </ol>
+
+    <!--ol和li标签组成有序列表，ol是order list的缩写-->
+    <ol type="a"><!--type属性为a的时候，列表前面的编号是小写字母-->
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>雪梨</li>
+    </ol>
+
+    <!--ol和li标签组成有序列表，ol是order list的缩写-->
+    <ol type="A"><!--type属性为A的时候，列表前面的编号是大写字母-->
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>雪梨</li>
+    </ol>
+
+    <!--ol和li标签组成有序列表，ol是order list的缩写-->
+    <ol type="i"><!--type属性为i的时候，列表前面的编号是小写罗马数字-->
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>雪梨</li>
+    </ol>
+
+    <!--ol和li标签组成有序列表，ol是order list的缩写-->
+    <ol type="I"><!--type属性为I的时候，列表前面的编号是大写罗马数字-->
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>雪梨</li>
+    </ol>
+
+    <!--ol和li标签组成有序列表，ol是order list的缩写-->
+    <ol type="1" start="2"><!--可以通过start属性来指定有序列表编号的开始值-->
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>雪梨</li>
+    </ol>
+
+    <!--ol和li标签组成有序列表，ol是order list的缩写-->
+    <ol type="1" reversed="reversed"><!--可以通过reversed属性来反转列表-->
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>雪梨</li>
+    </ol>
+
+
+    <!--ul和li标签组成有序列表，ul是unorder list的缩写-->
+    <ul type="disc"><!--type属性为disc的时候，列表前面的编号实心圆形-->
+        <li>刘备</li>
+        <li>关羽</li>
+        <li>张飞</li>
+    </ul>
+
+    <!--ul和li标签组成有序列表，ul是unorder list的缩写-->
+    <ul type="square"><!--type属性为square的时候，列表前面的编号实心方块-->
+        <li>刘备</li>
+        <li>关羽</li>
+        <li>张飞</li>
+    </ul>
+
+    <!--ul和li标签组成有序列表，ul是unorder list的缩写-->
+    <ul type="circle"><!--type属性为circle的时候，列表前面的编号空心圆形-->
+        <li>刘备</li>
+        <li>关羽</li>
+        <li>张飞</li>
+    </ul>
+
+    <img style="width: 500px;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548087701900&di=22db0bf2e81c50b14457480c79b1392b&imgtype=0&src=http%3A%2F%2Fp0.qhimgs4.com%2Ft012e570b2255cf2bea.jpg" alt="当图片无法加载的时候显示的内容" title="当鼠标放在图片上面的时候显示的内容"><br><br><br>
+
+    <!--a是anchor的缩写，是锚点的意思，这是因为早期a标签是用来做锚点的，超链接是后续才扩展的功能-->
+    <a href="http://www.baidu.com" target="_blank">点击打开百度网址</a><!--target属性为_blank的时候，代表在新的标签中打开链接-->
+
+    <br><br>
+
+    <!--a是anchor的缩写，是锚点的意思，这是因为早期a标签是用来做锚点的，超链接是后续才扩展的功能-->
+    <a href="http://www.baidu.com" target="_blank">
+        <!--a标签的另一个强大的功能是将包裹在内的标签变成一个超链接-->
+        <img style="width: 500px;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548088025658&di=fd2a58b4472af3b417c7a88504157ee7&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F17%2F20180617165212_rtWRh.jpeg" alt="">
+    </a>
+
+    <br><br>
+    
+    <!--a是anchor的缩写，是锚点的意思，这是因为早期a标签是用来做锚点的，超链接是后续才扩展的功能-->
+    <a href="javascript:alert('hello');">试着点击一下</a><!--a标签中可以写一些js代码-->
+
+    <br><br>
+
+    <!--form标签是用来做表单用的，非常重要-->
+    <form action="" method="GET">
+        <p>
+            用户名：<input type="text" name="username"><!--name属性必须指定，不然是无法发送表单数据的值-->
+        </p>
+        <p>
+            密码：<input type="password" name="password"><!--name属性必须指定，不然是无法发送表单数据的值-->
+        </p>
+        <p>
+            性别：<!--name属性必须指定，不然是无法发送表单数据的值-->
+            男<input type="radio" name="gender" value="male" checked="checked">
+            女<input type="radio" name="gender" value="female">
+        </p>
+        <p>
+            <h5>省份</h5>
+            <select name="">
+                <option value="beijing">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="guangzhou">广州</option>
+                <option value="shenzhen">深圳</option>
+            </select>
+        </p>
+        <input type="submit" value="提交"><!--表单中的数据能够发送给后台必须要有数据名name和数据值value-->
+    </form>
+
+    
 </body>
 
 </html>
