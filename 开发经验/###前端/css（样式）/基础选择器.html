@@ -34,8 +34,20 @@
             background-color: blue;
         }
 
+        /* class选择器 */
         .fontColor{
             color: white;
+        }
+
+        /* 属性选择器 */
+        /* 语法是：[属性名=属性值]或者[属性名] */
+        [id="id1"]{
+            background-color: black;
+        }
+
+        /* !important的用法 */
+        .imp{
+            background-color:pink !important;
         }
 
     </style>
@@ -53,6 +65,13 @@
 
     <!-- 一个标签里面有多个属性，这些属性对应的css样式共同作用于这个标签 -->
     <div class="div2 fontColor">内容</div>
+    <br>
+
+    <div id="id1" class="fontColor">内容</div>
+    <br>
+
+    <!--行间样式也敌不过!important-->
+    <div class="imp" style="background-color: black;">内容</div>
 
 </body>
 </html>

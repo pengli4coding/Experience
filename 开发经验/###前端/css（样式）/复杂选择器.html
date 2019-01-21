@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复杂选择器</title>
+    <style>
+        /* 父子|孙选择器 */
+        .wrapper .box em{
+            background-color: red;
+        }
+
+        /* 直接子元素选择器 */
+        .wrapper1>.box1>em{
+            background-color: red;
+        }
+
+        /* 交集选择器 */
+        div.demo{
+            background-color: red;
+        }
+
+        /* 复杂选择器的权重计算问题 */
+        /* 如果一个元素被多个复杂选择器同时选中了，而且这些复杂选择器对这个元素的同一个css样式进行了不同的设置，这时候是哪个复杂选择器的css样式生效呢？ */
+        /* 这时候需要用到权重的计算了，将复杂选择器中的基础选择器的权重相加，看哪个复杂选择器的相加结果最高，则这个复杂选择器生效 */
+        .class1#id1 .class2{/*10+100+10=120*/
+            color:white;
+            background-color: red;
+        }
+        .class1 .class2{/*10+10=20*/
+            color:black;
+            background-color: green;
+        }
+        .class1#id1>.class2#id2{/*10+100+10+100=220*/
+            background-color: blue;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--对应父子|孙选择器css样例-->
+    <div class="wrapper">
+        <strong class="box">
+            <em>123</em>
+            <strong>
+                <em>456</em>
+            </strong>
+        </strong>
+    </div>
+    <strong>
+        <em>789</em>
+    </strong>
+
+
+    <br>
+    <br>
+    <br>
+
+    <!--对应直接子元素选择器css样例-->
+    <div class="wrapper1">
+        <em>aa</em>
+        <strong class="box1">
+            <em>bb</em>
+            <strong>
+                <em>cc</em>
+            </strong>
+        </strong>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!--对应交集选择器css样例-->
+    <div>1</div>
+    <div class="demo">2</div>
+    <p class="demo">3</p>
+
+    <br>
+    <br>
+    <br>
+
+    <!-- 对应复杂选择器的权重计算问题 -->
+    <div class="class1" id="id1">
+        <p class="class2" id="id2">内容</p>
+    </div>
+
+</body>
+
+</html>
