@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>立即执行函数</title>
+
+    <script>
+        // 什么是立即执行函数？最简单的理解就是当函数创建完成之后就立即执行了
+
+        // 立即执行函数往往只会执行一次，这是因为立即执行函数一般是声明一个匿名函数，声明完成之后马上调用
+
+        // 语法是：(无参匿名函数)() 或 (有参匿名函数)(参数一,参数二,...)
+
+        // (无参匿名函数)() 
+        (function(){
+            alert("我是一个匿名函数");
+        })();
+
+        // (有参匿名函数)(参数一,参数二,...)
+        (function(a,b){
+            alert(a + b);
+        })(2,3);
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

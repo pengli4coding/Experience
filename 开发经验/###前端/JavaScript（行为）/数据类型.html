@@ -18,13 +18,26 @@
         // 布尔(boolean)类型
         var c = true;
         console.log(typeof c);
-        // 空值(null)类型
+        // null类型
         var d = null;
-        console.log(typeof d);// 空值(null)类型专门用来表示为空的对象，所以这里会打印出object
-        // 未定义(undefined)类型
+        console.log(typeof d);// null类型专门用来表示为空的对象，所以这里会打印出object
+        // undefined类型
         var e;
         console.log(typeof e);
         // 对象(object)类型
+        var obj = {
+            name : "孙悟空",
+            address : "花果山水帘洞",
+            gender : 1,
+            age : 5000
+        };
+        console.log(typeof obj);
+        var obj1 = new Object();
+        obj1.name = "孙悟空";
+        obj1.address = "花果山水帘洞";
+        obj1.gender = 1;
+        obj1.age = 5000;
+        console.log(typeof obj1);
         
 
         /*
