@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内联框架iframe</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <h1>iframe用于在网页内显示网页，如下所示：</h1>
+    <iframe src="http://www.baidu.com" width="1200px;" height="600px;" name="jd"></iframe>
+    <br>
+    <!--
+        可以通过a标签来使iframe内联框架跳转到特定的网站
+        具体的做法是：给iframe指定name属性，a标签的target属性指向iframe的name的属性值，通俗的理解就是a标签打开的网站在iframe中显示出来
+    -->
+    <a href="http://www.jd.com" target="jd">点击将上面的iframe内联框架的网址跳转到京东网站</a>
+</body>
+</html>
