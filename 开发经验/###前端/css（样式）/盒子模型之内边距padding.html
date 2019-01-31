@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>盒子模型之内边距padding</title>
+    <style>
+        .box1 {
+            /*设置内容区的样式*/
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /*设置边框border*/
+            border: 1px black solid;
+
+            /*设置上、右、下、左内边距padding*/
+            padding: 10px 20px 30px 40px;
+        }
+
+        .box2{
+            /*设置宽高为100%的时候，相当于box2把box1撑满了*/
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+
+    <br><br>
+
+</body>
+
+</html>
