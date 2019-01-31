@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>伪类选择器</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /*
+            伪类专门用来表示元素的一种特殊的状态，比如：访问过的超链接、获取焦点的文本框
+
+        */
+
+        /*未访问的链接为蓝色*/
+        a:link{
+            color:blue;
+        }
+        /*已访问的链接为红色*/
+        a:visited{
+            color:red;
+        }
+        /*鼠标移动到链接上为绿色*/
+        a:hover{
+            color:green;
+        }
+
+        /*选定的链接为黄色*/
+        a:active{
+            color:yellow;
+        }
+
+        /*伪类选择器不仅仅给a标签使用*/
+        /*鼠标移动到段落上变为粉红色*/
+        p:hover{
+            color:pink;
+        }
+
+        /*文本框获取焦点以后，修改背景颜色为蓝色*/
+        input:focus{
+            background-color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com">这是一个超链接</a>
+    <br><br>
+    <a href="http://www.baidu123456.com">这是一个超链接</a>
+    <br><br>
+    <p>这是一个段落</p>
+    <br><br>
+    <input type="text">
+</body>
+</html>
