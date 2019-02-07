@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>设置背景图片</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .div1{
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            /*可以同时指定背景颜色和背景图片，这样背景颜色会作为背景图片的底色（特别是图片是png的时候）*/
+            /*一般是同时指定背景颜色和背景图片的，因为假如图片的加载速度比较慢，那么可以先有个背景颜色出来，用户就不会觉得页面是比较空的*/
+            background-color: green;
+            /*如果背景图片大于元素大小，默认显示图片左上角*/
+            background-image: url("../../img/流浪地球.jpg");
+        }
+        .div2{
+            width: 1080px;
+            height: 532px;
+            margin: 0 auto;
+            /*可以同时指定背景颜色和背景图片，这样背景颜色会作为背景图片的底色（特别是图片是png的时候）*/
+            /*一般是同时指定背景颜色和背景图片的，因为假如图片的加载速度比较慢，那么可以先有个背景颜色出来，用户就不会觉得页面是比较空的*/
+            background-color: green;
+            /*如果背景图片等于元素大小，则可以显示全*/
+            background-image: url("../../img/流浪地球.jpg");
+        }
+        .div3{
+            width: 1200px;
+            height: 600px;
+            margin: 0 auto;
+            /*可以同时指定背景颜色和背景图片，这样背景颜色会作为背景图片的底色（特别是图片是png的时候）*/
+            /*一般是同时指定背景颜色和背景图片的，因为假如图片的加载速度比较慢，那么可以先有个背景颜色出来，用户就不会觉得页面是比较空的*/
+            background-color: green;
+            /*如果背景图片小于元素大小，则在水平方向和垂直方向重复以充满元素*/
+            background-image: url("../../img/流浪地球.jpg");
+        }
+        .div4{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            /*可以同时指定背景颜色和背景图片，这样背景颜色会作为背景图片的底色（特别是图片是png的时候）*/
+            /*一般是同时指定背景颜色和背景图片的，因为假如图片的加载速度比较慢，那么可以先有个背景颜色出来，用户就不会觉得页面是比较空的*/
+            background-color: green;
+            /*如果背景图片小于元素大小，则在水平方向和垂直方向重复以充满元素*/
+            background-image: url("../../img/猫.jpg");
+            /*
+            background-repeat 属性设置是否及如何重复背景图像。
+            可选值：
+                repeat	默认。背景图像将在垂直方向和水平方向重复。
+                repeat-x	背景图像将在水平方向重复。
+                repeat-y	背景图像将在垂直方向重复。
+                no-repeat	背景图像将仅显示一次。
+            */
+            background-repeat: repeat;
+        }
+        .div5{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            /*可以同时指定背景颜色和背景图片，这样背景颜色会作为背景图片的底色（特别是图片是png的时候）*/
+            /*一般是同时指定背景颜色和背景图片的，因为假如图片的加载速度比较慢，那么可以先有个背景颜色出来，用户就不会觉得页面是比较空的*/
+            background-color: green;
+            /*如果背景图片小于元素大小，则在水平方向和垂直方向重复以充满元素*/
+            background-image: url("../../img/猫.jpg");
+            /*
+            background-repeat 属性设置是否及如何重复背景图像。
+            可选值：
+                repeat	默认。背景图像将在垂直方向和水平方向重复。
+                repeat-x	背景图像将在水平方向重复。
+                repeat-y	背景图像将在垂直方向重复。
+                no-repeat	背景图像将仅显示一次。
+            */
+            background-repeat: repeat-x;
+        }
+        .div6{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            /*可以同时指定背景颜色和背景图片，这样背景颜色会作为背景图片的底色（特别是图片是png的时候）*/
+            /*一般是同时指定背景颜色和背景图片的，因为假如图片的加载速度比较慢，那么可以先有个背景颜色出来，用户就不会觉得页面是比较空的*/
+            background-color: green;
+            /*如果背景图片小于元素大小，则在水平方向和垂直方向重复以充满元素*/
+            background-image: url("../../img/猫.jpg");
+            /*
+            background-repeat 属性设置是否及如何重复背景图像。
+            可选值：
+                repeat	默认。背景图像将在垂直方向和水平方向重复。
+                repeat-x	背景图像将在水平方向重复。
+                repeat-y	背景图像将在垂直方向重复。
+                no-repeat	背景图像将仅显示一次。
+            */
+            background-repeat: repeat-y;
+        }
+        .div7{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            /*可以同时指定背景颜色和背景图片，这样背景颜色会作为背景图片的底色（特别是图片是png的时候）*/
+            /*一般是同时指定背景颜色和背景图片的，因为假如图片的加载速度比较慢，那么可以先有个背景颜色出来，用户就不会觉得页面是比较空的*/
+            background-color: green;
+            /*如果背景图片小于元素大小，则在水平方向和垂直方向重复以充满元素*/
+            background-image: url("../../img/猫.jpg");
+            /*
+            background-repeat 属性设置是否及如何重复背景图像。
+            可选值：
+                repeat	默认。背景图像将在垂直方向和水平方向重复。
+                repeat-x	背景图像将在水平方向重复。
+                repeat-y	背景图像将在垂直方向重复。
+                no-repeat	背景图像将仅显示一次。
+            */
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1"></div>
+    <br>
+    <div class="div2"></div>
+    <br>
+    <div class="div3"></div>
+    <br>
+    <div class="div4"></div>
+    <br>
+    <div class="div5"></div>
+    <br>
+    <div class="div6"></div>
+    <br>
+    <div class="div7"></div>
+    <br>
+</body>
+</html>
