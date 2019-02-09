@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dom的增删改查</title>
+    <script>
+        console.log("===========================================================================================================================================");
+        // document是window的属性，可以直接拿来用，document代表的是整个文档的dom树
+        console.log(document == window.document);
+
+        console.log("===========================================================================================================================================");
+        // 下面这个函数是给按钮2绑定事件用的
+        function btn2Fun() {
+            var btn2 = document.getElementById("btn2");//查出id为btn2的dom元素
+            btn2.innerHTML = "我是按钮2";
+        }
+
+        console.log("===========================================================================================================================================");
+
+        //一般是要等整个页面加载完成之后才能进行dom元素的增删改查，window.onload = function () {}相当于给整个文档加载完成后绑定一个函数来完成相应的动作
+        window.onload = function () {
+            var btn3 = document.getElementById("btn3");//查出id为btn3的dom元素
+            console.log(btn3);//打印出来看一下
+            console.log(btn3.innerHTML);
+            console.log(btn3.innerText);
+            // 给btn3的点击事件绑定处理函数
+            btn3.onclick = function () {
+                btn3.innerHTML = "我是按钮3";
+            }
+
+        }
+
+        console.log("===========================================================================================================================================");
+
+    </script>
+</head>
+
+<body>
+    <button id="btn1" onclick="document.getElementById('btn1').innerHTML='我是按钮1';">按钮1</button><!--相当于点击的时候直接执行js代码-->
+    <button id="btn2" onclick="btn2Fun();">按钮2</button><!--相当于点击的时候执行函数btn2Fun()-->
+    <button id="btn3">按钮3</button><!--在script标签中给dom元素绑定事件处理函数-->
+</body>
+
+</html>
