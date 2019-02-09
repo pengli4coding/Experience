@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文档流介绍及行级元素和块级元素在文档流中的表现</title>
+</head>
+
+<body>
+    <!--
+        什么是文档流？
+            文档流处在网页的最底层，它代表的是页面中的位置，我们所创建的元素（如h1、ul、li、div、span等等html元素）默认都处在文档流中。
+        有什么方式脱离文档流？
+            一般我们有两种方式使得元素脱离文档流：
+                1、使浮动
+                2、使用定位
+    -->
+
+    <!--
+        行级元素与块级元素在文档流中的表现特点：
+            行级元素：
+                1、不会独占一行
+                2、指定宽高不会生效，即无法指定宽高
+                3、宽度是内容的宽度，高度也是内容的高度，即宽高都是被内容撑开的
+            块级元素：
+                1、独占一行
+                2、可以指定宽高
+                3、如果不设置宽高，元素中有内容，则默认宽度为父元素的100%，默认的高度是内容的高度（即被内容撑开）
+                4、如果不设置宽高，元素中没有内容，则不显示
+    -->
+    <!--行级元素不会独占一行，指定宽高不会生效，即无法指定宽高-->
+    <span style="width: 100px; height: 100px; background-color: #bfa;">第一个span</span>
+    <span style="width: 100px; height: 100px; background-color: #ff0;">第二个span</span>
+    <!--块级元素会独占一行，可以指定宽高-->
+    <div style="width: 100px; height: 100px; background-color: #bfa;"></div>
+    <div style="width: 100px; height: 100px; background-color: #ff0;"></div>
+
+    <br>
+    <br>
+    <br>
+
+    <!--块级元素如果不设置宽高，则默认宽度为父元素的100%，默认的高度是内容的高度（即被内容撑开）-->
+    <div style="background-color:pink;">如果不设置宽高，则默认宽度为父元素的100%，默认的高度是内容的高度（即被内容撑开）</div>
+
+    <br>
+    <br>
+    <br>
+
+    <!--外层的div没有设置宽高，则默认宽度为父元素的100%，高度是内容的高度，即被内层的div所撑开-->
+    <div style="background-color:pink;">
+        <div style="width:100px; height:100px; background-color:blue;"></div>
+    </div>
+
+
+</body>
+
+</html>
