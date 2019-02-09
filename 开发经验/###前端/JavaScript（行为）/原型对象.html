@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>原型对象</title>
+    <script>
+        console.log("===========================================================================================================================================");
+        
+        // 在创建函数（包含普通函数和构造函数），解析器会隐式给函数对象加上一个prototype原型对象，原型对象可以理解为对象的实例所共用的一段内存区域
+        function Person(name,address){
+            this.name = name;
+            this.address = address;
+        }
+
+        function fun1(){
+            console.log("hello prototype");
+        }
+
+        console.log(Person.prototype);// 打印构造函数的原型对象
+        console.log(fun1.prototype);// 打印普通函数的原型对象
+
+        console.log("===========================================================================================================================================");
+
+        // 给构造函数的原型对象加一个函数
+        Cat.prototype.say = function(){
+            console.log("我的名字是：" + this.name);
+        }
+
+        function Cat(name){
+            this.name = name;
+        }
+
+        var cat = new Cat("招财");
+        cat.say();// 这时候会先到对象里面找有没有say()函数，如果没有找到，则再到原型对象里面找say()函数
+        console.log(cat.__proto__);
+        console.log(cat.__proto__ == Cat.prototype);// 实例对象的__proto__属性指向的就是构造函数的prototype原型对象属性
+
+        console.log("===========================================================================================================================================");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

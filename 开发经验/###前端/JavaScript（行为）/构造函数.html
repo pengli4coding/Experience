@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+    <script>
+        console.log("===========================================================================================================================================");
+        // 构造函数执行的步骤如下：
+        //     1、立即创建一个对象
+        //     2、将this指向上一步创建的对象
+        //     3、执行构造函数中的语句
+        //     4、返回所创建的对象
+
+        // 构造函数与普通函数的区别
+        //     1、构造函数的函数名首字母一般约定是大写的，而普通函数则没有要求
+        //     2、构造函数在调用的时候需要配合new关键字来使用，而普通函数则是直接调用
+        console.log("===========================================================================================================================================");
+
+        function Person(name,address){
+            this.name = name;
+            this.address = address;
+            this.printName = function(){
+                console.log(this.name);
+            };
+
+        }
+
+        var person1 = new Person("刘备","蜀国");
+        var person2 = new Person("孙权","吴国");
+        var person3 = new Person("曹操","魏国");
+
+        console.log(person1);
+        console.log(person2);
+        console.log(person3);
+
+        person1.printName();
+        person2.printName();
+        person3.printName();
+
+        console.log("===========================================================================================================================================");
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
