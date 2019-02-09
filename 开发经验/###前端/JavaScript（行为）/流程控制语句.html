@@ -1,15 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        // 
+        console.log("===========================================================================================================================================");
+
+        // if语句
+        var a = 3;
+        if (a > 5) {
+            console.log("a大于5")
+        } else if (a >= 2 && a <= 5){
+            console.log("a大于2，并且小于5")
+        } else {
+            console.log("a小于2")
+        }
+
+        console.log("===========================================================================================================================================");
+
+        // for语句
+        for (var i = 0; i < 5; i++) {
+            console.log("循环打印第" + i + "次");
+        }
+
+        console.log("===========================================================================================================================================");
+
+        // break和continue
+
+        for(var i =0 ;1<100;i++){
+            console.log("i=" + i);
+            if(i == 5){
+                break;
+            }
+        }
+
+        for(var j =0 ;j < 5;j++){
+            if(j == 2){
+                continue;
+            }
+            console.log("j=" + j);
+        }
+
+
+        console.log("===========================================================================================================================================");
+
+        // 练习：打印99乘法表
+        for(var i = 1; i<=9 ;i++){
+            for(var j = 1; j <= i; j++){
+                document.write(j + "*" + i + "=" + i*j + "&nbsp;&nbsp;&nbsp;&nbsp;");
+            }
+            document.write("<br>");
+        }
+        
+
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
