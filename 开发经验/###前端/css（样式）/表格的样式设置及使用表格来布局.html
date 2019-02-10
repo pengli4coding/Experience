@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表格的样式设置及使用表格来布局</title>
+    <style>
+        .table1 {
+            width: 500px;/*设置表格宽度*/
+            margin: 0 auto;/*设置表格居中*/
+            /*border: 1px solid black;*//*设置表格边框，这个可以只设置单元格边框*/
+            /*border-spacing: 0px;*//*table和td边框之间默认有一个距离，也就是我们看到的双线边框，设置边框合并后，这个可以不用设置了*/
+            border-collapse: collapse;/*设置边框合并，因为只是设置border-spacing为0px的话，边框的宽度是两个边框之和，所以还需要设置两个边框合并*/
+        }
+        .table1 td,th {
+            border:1px solid black;/*设置单元格边框*/
+        }
+        .table1 th {
+            background-color: #77CDDE;/*给表头设置颜色*/
+        }
+        .table1 tr:nth-child(odd) {/*给奇数行设置背景颜色，ie6不支持，只能用js*/
+            background-color: #BBFFAA;
+        }
+        .table1 tr:nth-child(even) {/*给偶数行设置背景颜色，ie6不支持，只能用js*/
+            background-color: #EFE4B0;
+        }
+        .table1 tr:hover {/*鼠标移入到当前行的背景颜色*/
+            background-color: orange;
+        }
+
+    </style>
+</head>
+
+<body>
+            
+    <!--下面是一个最基本的表格，而且它的样式是通过属性来设置的，这样已经很少有这样设置了-->
+    <table border="1" width="500px" align="center">
+        <tr>
+            <td>A1</td>
+            <td>A2</td>
+            <td>A3</td>
+            <td>A4</td>
+        </tr>
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+            <td rowspan="2">B4</td><!--合并下方单元格-->
+        </tr>
+        <tr>
+            <td>C1</td>
+            <td>C2</td>
+            <td>C3</td>
+        </tr>
+        <tr>
+            <td>D1</td>
+            <td>D2</td>
+            <td colspan="2">D3</td><!--合并右方单元格-->
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+
+
+    <!--下面才是主流的设置表格样式的方法-->
+    <table class="table1">
+        <tr>
+            <th>表头1</th>
+            <th>表头2</th>
+            <th>表头3</th>
+            <th>表头4</th>
+        </tr>        
+        <tr>
+            <td>A1</td>
+            <td>A2</td>
+            <td>A3</td>
+            <td>A4</td>
+        </tr>
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+            <td>B4</td>
+        </tr>
+        <tr>
+            <td>C1</td>
+            <td>C2</td>
+            <td>C3</td>
+            <td>C4</td>
+        </tr>
+        <tr>
+            <td>D1</td>
+            <td>D2</td>
+            <td>D3</td>
+            <td>D4</td>
+        </tr>
+    </table>
+</body>
+
+</html>
