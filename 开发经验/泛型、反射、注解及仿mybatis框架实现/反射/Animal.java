@@ -56,7 +56,7 @@ public class Animal {
 		// 第二种：通过类.class的方式获取
 		Class<?> clazz2 = Animal.class;
 		System.out.println(clazz2);
-		// 第二种：通过Class.forName(全类名)的方式获取
+		// 第三种：通过Class.forName(全类名)的方式获取
 		Class<?> clazz3 = Class.forName("com.pl.test.Animal");
 		System.out.println(clazz3);
 		
