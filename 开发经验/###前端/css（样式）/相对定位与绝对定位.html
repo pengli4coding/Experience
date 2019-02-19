@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>相对定位与绝对定位</title>
+    <style>
+        .wrapper1 {
+            border: 1px solid black;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        /*
+        通过position属性来设置元素的定位，可选值为：
+            static：默认值，元素没有开启定位
+            relative：开启元素的相对定位
+            absolute：开启元素的绝对定位
+            fixed：开启元素的固定定位（固定定位也是绝对定位的一种）
+        需要注意的是：
+            1、相对定位和绝对定位都是在父元素的范围之内的，不可能超出父元素的范围
+            2、定位需要配合偏移量来使用，即left、right、top、bottom
+            
+        */
+
+        /*
+        相对定位是相对与“元素自身原来的位置”去经行定位，而且“元素原来的位置没有脱离文档流，还是在原来的位置”，相对定位元素的坐标原点是“元素原来位置”的最左上角
+        相对定位会使得元素提升一个层级（最底下的层级是文档流）
+        */
+        .wrapper2 {
+            border: 1px solid black;
+        }
+
+        .box4 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .box5 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: relative;
+            left: 200px;
+            /*通常偏移量只使用两个就可以对元素进行定位了*/
+            top: 200px;
+            /*通常偏移量只使用两个就可以对元素进行定位了*/
+        }
+
+        .box6 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        /*
+        绝对定位会使元素脱离文档流，绝对定位的偏移量是相对于“最近一个开启了定位（position不为static）的父元素”来偏移的，它的坐标原点是“最近一个开启了定位（position不为static）的父元素”最左上角
+        如果开启绝对定位的元素的所有父元素都没有开启定位，则该元素的坐标原点是浏览器窗口的最左上角
+        绝对定位会使得元素提升一个层级（最底下的层级是文档流）
+        */
+        .wrapper3 {
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .box7 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .box8 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        .box9 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        /*
+        大部分情况下，子元素开启绝对定位，父元素开启相对定位，这主要是用父元素来当“标尺”来规划子元素的位置，而父元素又不会脱离文档流，位置还是占着
+        */
+        .wrapper4 {
+            border: 1px solid black;
+            width: 600px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .box10 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            top: 100px;
+            left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--没有开启定位的三个正常在文档流中的盒子-->
+    <div class="wrapper1">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!--演示相对定位的三个盒子-->
+    <div class="wrapper2">
+        <div class="box4"></div>
+        <div class="box5"></div>
+        <div class="box6"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!--演示绝对定位的三个盒子-->
+    <div class="wrapper3">
+        <div class="box7"></div>
+        <div class="box8"></div>
+        <div class="box9"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!--这个例子演示-->
+    <div class="wrapper4">
+        <div class="box10"></div>
+    </div>
+
+</body>
+
+</html>
