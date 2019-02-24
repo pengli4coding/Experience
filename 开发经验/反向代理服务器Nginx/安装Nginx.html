@@ -34,7 +34,12 @@
     <h3>从Nginx官网上下载源码包（这里下载的是nginx-1.8.1.tar.gz），并上传到服务器的/opt目录下</h3>
     <img src="./img/QQ截图20190102212336.png" alt="">
     <br><br>
-    <h3>进入nginx解压目录，配置nginx编译参数如下：</h3>
+    <h3>第一种配置nginx编译参数的方式（最简单快捷的方式，就指定一下nginx的安装目录，然后配置文件、日志文件都会在该目录下面）：进入nginx解压目录，配置nginx编译参数如下：</h3>
+    <pre>
+./configure --prefix=/usr/local/nginx
+    </pre>
+    <br><br>
+    <h3>第二种配置nginx编译参数的方式（自定义的方式）：进入nginx解压目录，配置nginx编译参数如下：</h3>
     <pre>
 ./configure \
 --prefix=/opt/nginx \  安装目录位置
@@ -58,6 +63,13 @@
     <br>
     <h1>启动Nginx</h1>
     <img src="./img/QQ截图20190102214627.png" alt="">
+    <h3>在浏览器中输入ip地址，如果出现如下页面，则说明安装成功了</h3>
+    <img src="./img/QQ截图20190224130327.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>重启Nginx</h1>
+    <h3>强制停止Nginx的命令是：nginx -s reload</h3>
     <br>
     <br>
     <br>
