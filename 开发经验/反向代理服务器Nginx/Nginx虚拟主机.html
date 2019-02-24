@@ -14,6 +14,18 @@
     <br>
     <h1>如何在Nginx中配置虚拟主机？</h1>
     <h3>Nginx中的虚拟主机就是通过nginx.conf中的server节点指定的，想要设置多个虚拟主机，配置多个server节点即可</h3>
-
+    <h3>下面举个例子说明如何在Nginx中配置多个虚拟主机</h3>
+    <br>
+    <h3>假设A公司买了两个域名：www.apple.com和www.banana.com，可是A公司目前只有一台物理服务器，所以只能通过在Nginx中配置两个虚拟主机来实现不同的域名转发到不同的后台应用中</h3>
+    <br>
+    <h3>首先，在Nginx中创建两个虚拟机的根目录apple和banana并上传不同的index.html文件</h3>
+    <img src="./img/QQ截图20190224233940.png" alt="">
+    <br>
+    <h3>然后修改nginx.conf文件如下：</h3>
+    <img src="./img/QQ截图20190224234351.png" alt="">
+    <br>
+    <h3>最后访问不同的域名看效果：</h3>
+    <img src="./img/QQ截图20190224234818.png" alt="">
+    <img src="./img/QQ截图20190224234831.png" alt="">
 </body>
 </html>
