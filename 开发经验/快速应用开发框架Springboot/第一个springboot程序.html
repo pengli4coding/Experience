@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一个springboot程序</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../CodeMirror/theme/dracula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>创建一个maven工程，目录结构如下：</h1>
+    <img src="./img/QQ截图20190303153804.png" alt="">
+    <h1>pom文件如下：</h1>
+    <textarea id="code1">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.6.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.pl</groupId>
+	<artifactId>springboot-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+    </textarea>
+    <h1>application.properties文件如下</h1>
+    <textarea id="code2">
+server.port=8081
+    </textarea>
+    <h1>Book.java文件如下：</h1>
+    <textarea id="code3">
+package com.pl.model;
+
+public class Book {
+	
+	private String name;// 书名
+	private String author;// 作者
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	@Override
+	public String toString() {
+		return "Book [name=" + name + ", author=" + author + "]";
+	}
+	
+}
+    </textarea>
+    <h1>MyController.java文件如下：</h1>
+    <textarea id="code4">
+package com.pl.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.pl.model.Book;
+
+@Controller
+public class MyController {
+
+	@RequestMapping("/getBook")
+	@ResponseBody
+	public Book getBook() {
+		Book book = new Book();
+		book.setName("三国演义");
+		book.setAuthor("罗贯中");
+		return book;
+	}
+}
+    </textarea>
+    <h1>Application.java文件如下：</h1>
+    <textarea id="code5">
+package com.pl;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+
+    </textarea>
+    <h1>进入到Application.java文件中，右键==》Run As==》Java Application，看到如下控制台输出没有报错，说明启动成功</h1>
+    <img src="./img/QQ截图20190303154918.png" alt="">
+    <h1>在浏览器中输入：http://localhost:8081/getBook，会看到如下输出</h1>
+    <img src="./img/QQ截图20190303155012.png" alt="">
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+        })
+        code3.setSize('auto', 'auto')
+        var code4 = CodeMirror.fromTextArea(document.getElementById("code4"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+        })
+        code4.setSize('auto', 'auto')
+        var code5 = CodeMirror.fromTextArea(document.getElementById("code5"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+        })
+        code5.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
