@@ -10,7 +10,7 @@
     <script src="../CodeMirror/mode/clike/clike.js"></script>
     <script src="../CodeMirror/mode/xml/xml.js"></script>
     <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
-    <link rel="stylesheet" href="../CodeMirror/theme/dracula.css">
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -143,30 +143,36 @@ public class Application {
             lineNumbers: true,
             matchBrackets: true,
             mode: "text/xml",
+            theme:"darcula"
         })
         code1.setSize('auto', 'auto')
         var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
             lineNumbers: true,
             matchBrackets: true,
             mode: "text/xml",
+            theme:"darcula"
+
         })
         code2.setSize('auto', 'auto')
         var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
             lineNumbers: true,
             matchBrackets: true,
             mode: "text/x-java",
+            theme:"darcula"
         })
         code3.setSize('auto', 'auto')
         var code4 = CodeMirror.fromTextArea(document.getElementById("code4"), {
             lineNumbers: true,
             matchBrackets: true,
             mode: "text/x-java",
+            theme:"darcula"
         })
         code4.setSize('auto', 'auto')
         var code5 = CodeMirror.fromTextArea(document.getElementById("code5"), {
             lineNumbers: true,
             matchBrackets: true,
             mode: "text/x-java",
+            theme:"darcula"
         })
         code5.setSize('auto', 'auto')
     </script>
