@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用Executors工厂类创建线程池</title>
+    <script src="../../CodeMirror/lib/codemirror.js"></script>
+    <script src="../../CodeMirror/mode/clike/clike.js"></script>
+    <script src="../../CodeMirror/mode/xml/xml.js"></script>
+    <link rel="stylesheet" href="../../CodeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>使用Executors工厂类的newCachedThreadPool()方法创建无界线程池</h1>
+    <h3>所谓“无界线程池”就是池中存放线程的个数理论上最多是Integer.MAX_VALUE，具体创建的最大线程个数取决于物理内存的大小</h3>
+    <textarea id="code1">
+package com.pl.test;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadPoolDemo {
+
+	public static void main(String[] args) {
+		ExecutorService threadPool = Executors.newCachedThreadPool();
+		for (int i = 0; i < 10; i++) {
+			threadPool.execute(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						System.out.println("线程" + Thread.currentThread().getName() + "开始于： " + System.currentTimeMillis());
+						Thread.sleep(1000);
+						System.out.println("线程" + Thread.currentThread().getName() + "结束于： " + System.currentTimeMillis());
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+	}
+}
+    </textarea>
+    <h1>使用Executors工厂类的newFixedThreadPool(int)方法创建有界线程池</h1>
+    <h3>“有界”指的是线程池中的线程最大个数是指定的</h3>
+    <textarea id="code2">
+package com.pl.test;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadPoolDemo {
+
+	public static void main(String[] args) {
+		ExecutorService threadPool = Executors.newFixedThreadPool(5);
+		// 由于线程池中可创建最大线程数为5，而下面是创建10个线程，超出了5个线程的范围，所以到需要创建第六个线程的时候会出现等待的情况
+		for (int i = 0; i < 10; i++) {
+			threadPool.execute(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						System.out.println("线程" + Thread.currentThread().getName() + "开始于： " + System.currentTimeMillis());
+						Thread.sleep(5000);
+						System.out.println("线程" + Thread.currentThread().getName() + "结束于： " + System.currentTimeMillis());
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+	}
+}
+
+    </textarea>
+    <h1>使用Executors工厂类的newSingleThreadExecutor()方法创建单一线程池</h1>
+    <h3>别看创建单一线程池好像没什么用，其实单一线程池最大的用处是可以实现以队列的方式来执行任务</h3>
+    <textarea id="code3">
+package com.pl.test;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadPoolDemo {
+
+	public static void main(String[] args) {
+		ExecutorService threadPool = Executors.newSingleThreadExecutor();
+		// 放入五个线程（相当于五个任务），这五个任务依次执行
+		for (int i = 1; i <= 5; i++) {
+			threadPool.execute(new MyThread(i));
+		}
+	}
+}
+
+class MyThread implements Runnable {
+	
+	private int count;
+	
+	public MyThread(int count) {
+		this.count = count;
+	}
+
+	@Override
+	public void run() {
+		try {
+			System.out.println("任务" + count + "开始执行" + System.currentTimeMillis());
+			Thread.sleep(1000);
+			System.out.println("任务" + count + "结束执行" + System.currentTimeMillis());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+    </textarea>
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code3.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Future和Callable的使用</title>
+    <script src="../../CodeMirror/lib/codemirror.js"></script>
+    <script src="../../CodeMirror/mode/clike/clike.js"></script>
+    <script src="../../CodeMirror/mode/xml/xml.js"></script>
+    <link rel="stylesheet" href="../../CodeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>使用Future和Callable来使线程具有返回值</h1>
+    <textarea id="code1">
+package com.pl.test;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+
+public class ThreadPoolDemo {
+
+	public static void main(String[] args) {
+		ExecutorService threadPool = Executors.newSingleThreadExecutor();
+		try {
+			Future<String> future = threadPool.submit(new Callable<String>() {
+                // 不同于Runnable接口需要重写run()方法，Callable接口需要重写call()方法
+				@Override
+				public String call() throws Exception {
+					TimeUnit.SECONDS.sleep(2);
+					return "我是一个返回值";
+				}
+				
+			});
+			System.out.println(future.get());// Future的get()方法具有阻塞性
+			System.out.println("有这行打印输出的原因是为了证明Future的get()方法具有阻塞性");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+    </textarea>
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
