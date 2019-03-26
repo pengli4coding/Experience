@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>第一步：安装JDK</h1>
-    <h3>省略，看之前的教程</h3>
+    <h3>略。。。</h3>
     <br>
     <br>
     <br>
@@ -41,7 +41,7 @@
     <h1>第六步：修改zookeeper的配置文件（设置集群信息，即集群中所有主机的ip、leader与follower之间交互数据的端口、leader挂了之后重新投票选举leader的端口）</h1>
     <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
     <h3>那么三台zookeeper主机的配置文件都加上如下信息：</h3>
-    <img src="./img/QQ截图20180807113411.png" alt="">
+    <img src="./img/QQ截图20190327002813.png" alt="">
     <br>
     <br>
     <br>
@@ -55,7 +55,7 @@
     <br>
     <br>
     <br>
-    <h1>第八步：启动zookeeper</h1>
+    <h1>第八步：启动zookeeper（必须要有两台或两台以上的zookeeper机器在启动才能对外提供服务）</h1>
     <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
     <h3>三台主机都输入命令启动zookeeper：zkServer.sh start</h3>
     <h3>三台主机都输入命令查看zookeeper状态：zkServer.sh status</h3>
