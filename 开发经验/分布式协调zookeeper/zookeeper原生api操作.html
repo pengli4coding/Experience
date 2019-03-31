@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>zookeeper原生api操作</title>
+    <script src="./CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="./CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="./CodeMirror/mode/xml/xml.js"></script>
+    <link rel="stylesheet" href="./CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="./CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    
+    <h1>以下是示例代码：</h1>
+    <textarea id="code1">
+package com.pl.test;
+
+public class MyClass{
+    public void static main(String[] args){
+        System.out.println("hello world");
+    }
+}
+    </textarea>
+
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+    </script>
 </body>
+
 </html>
