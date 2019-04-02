@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <h1>以下是示例代码：</h1>
+    <h1>以下是java示例代码：</h1>
     <textarea id="code1">
 package com.pl.test;
 
@@ -29,6 +29,19 @@ public class MyClass{
 }
     </textarea>
 
+    <h1>以下是xml示例代码：</h1>
+    <textarea id="code2">
+<students>
+    <student>
+        <name>张三</name>
+        <age>27</age>
+    </student>
+    <student>
+        <name>李四</name>
+        <age>278/age>
+    </student>
+</students>
+    </textarea>
 
     <script>
         var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
@@ -38,6 +51,13 @@ public class MyClass{
             theme: "darcula"
         })
         code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
     </script>
 </body>
 

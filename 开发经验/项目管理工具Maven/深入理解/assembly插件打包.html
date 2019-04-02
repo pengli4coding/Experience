@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>assembly插件打包</title>
+    <script src="../../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../../CodeMirror/mode/xml/xml.js"></script>
+    <link rel="stylesheet" href="../../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <h1>打出可执行jar包的pom.xml文件示例（只关注有注释的）：</h1>
+    <textarea id="code1">
+<project>
+    [...]
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef><!--表示打出来的jia包是已经包含所有的依赖-->
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.pl.EchoServer</mainClass><!--这里写上main方法所在类的全类名-->
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- id随意 -->
+                        <phase>package</phase> <!-- 绑定到package生命周期阶段上，即可以用mvn package命令打包出来 -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+    </textarea>
+
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
