@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>zookeeper的安装</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>第一步：安装JDK</h1>
+    <h3>略。。。</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第二步：上传安装包并解压</h1>
+    <h3>上传zookeeper-3.4.12.tar.gz文件到服务器并解压到/usr/local下</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第三步：将zookeeper的安装路径加入到环境变量中</h1>
+    <img src="./img/QQ截图20180807105730.png" alt="">
+    <h3>输入source /etc/profile命令使配置生效</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第四步：重命名zookeeper的配置文件</h1>
+    <h3>进入到zookeeper安装路径下的conf目录下，命令为：cd /usr/local/zookeeper-3.4.12/conf</h3>
+    <h3>重命名目录下的zoo_sample.cfg为zoo.cfg，命令为：mv zoo_sample.cfg zoo.cfg</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第五步：修改zookeeper的配置文件（设置数据缓存路径）</h1>
+    <h3>先在zookeeper安装路径下创建数据缓存目录：mkdir /usr/local/zookeeper-3.4.12/data</h3>
+    <h3>将zoo.cfg文件中的“dataDir=/tmp/zookeeper”这一行修改为“dataDir=/usr/local/zookeeper-3.4.12/data”</h3>
+    <h3>修改完之后如下：</h3>
+    <img src="./img/QQ截图20180807111819.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第六步：修改zookeeper的配置文件（设置集群信息，即集群中所有主机的ip、leader与follower之间交互数据的端口、leader挂了之后重新投票选举leader的端口）</h1>
+    <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
+    <h3>那么三台zookeeper主机的配置文件都加上如下信息：</h3>
+    <img src="./img/QQ截图20190327002813.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>第七步：创建配置myid文件以提供应用唯一标识</h1>
+    <h3>myid文件创建在$dataDir目录下，即/usr/local/zookeeper-3.4.12/data路径下</h3>
+    <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
+    <h3>在192.168.3.100主机中创建myid文件并写入0</h3>
+    <h3>在192.168.3.101主机中创建myid文件并写入1</h3>
+    <h3>在192.168.3.102主机中创建myid文件并写入2</h3>
+    <h3>注意：写入的id都必须为自然数并且唯一</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第八步：启动zookeeper（必须要有两台或两台以上的zookeeper机器在启动才能对外提供服务）</h1>
+    <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
+    <h3>三台主机都输入命令启动zookeeper：zkServer.sh start</h3>
+    <h3>三台主机都输入命令查看zookeeper状态：zkServer.sh status</h3>
+    <br>
+    <br>
+    <br>
+    <h1>停止zookeeper</h1>
+    <h3>集群中的三台主机分别执行：zkServer.sh  stop</h3>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

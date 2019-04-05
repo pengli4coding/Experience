@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单机模式启动停止kafka</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>第一步：安装JDK</h1>
+    <h3>略。。。</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第二步：上传并解压kafka安装包</h1>
+    <h3>略。。。</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第三步：启动单机模式的zookeeper（这里的zookeeper使用kafka安装包自带的）</h1>
+    <h3>执行命令：nohup bin/zookeeper-server-start.sh config/zookeeper.properties &</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第四步：启动单机模式的kafka</h1>
+    <h3>执行命令：nohup bin/kafka-server-start.sh config/server.properties &</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第五步：停止kafka</h1>
+    <h3>执行命令：./kafka-server-stop.sh</h3>
+    <h3>然后执行命令jps查看是否还有kafka进程存在</h3>
+    <br>
+    <br>
+    <br>
+    <h1>第六步：停止zookeeper</h1>
+    <h3>执行命令：./zookeeper-server-stop.sh</h3>
+    <h3>然后执行命令jps查看是否还有zookeeper进程存在</h3>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

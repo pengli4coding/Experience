@@ -38,27 +38,13 @@
     <br>
     <br>
     <br>
-    <h1>第六步：修改zookeeper的配置文件（设置集群信息，即集群中所有主机的ip、leader与follower之间交互数据的端口、leader挂了之后重新投票选举leader的端口）</h1>
-    <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
-    <h3>那么三台zookeeper主机的配置文件都加上如下信息：</h3>
-    <img src="./img/QQ截图20190327002813.png" alt="">
+    <h1>第六步：启动zookeeper</h1>
+    <h3>执行命令启动zookeeper：zkServer.sh start</h3>
     <br>
     <br>
     <br>
-    <h1>第七步：创建配置myid文件以提供应用唯一标识</h1>
-    <h3>myid文件创建在$dataDir目录下，即/usr/local/zookeeper-3.4.12/data路径下</h3>
-    <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
-    <h3>在192.168.3.100主机中创建myid文件并写入0</h3>
-    <h3>在192.168.3.101主机中创建myid文件并写入1</h3>
-    <h3>在192.168.3.102主机中创建myid文件并写入2</h3>
-    <h3>注意：写入的id都必须为自然数并且唯一</h3>
-    <br>
-    <br>
-    <br>
-    <h1>第八步：启动zookeeper（必须要有两台或两台以上的zookeeper机器在启动才能对外提供服务）</h1>
-    <h3>假设集群中有三台zookeeper主机，分别为192.168.3.100、192.168.3.101、192.168.3.102</h3>
-    <h3>三台主机都输入命令启动zookeeper：zkServer.sh start</h3>
-    <h3>三台主机都输入命令查看zookeeper状态：zkServer.sh status</h3>
+    <h1>停止zookeeper</h1>
+    <h3>执行命令停止zookeeper：zkServer.sh  stop</h3>
     <br>
     <br>
     <br>
