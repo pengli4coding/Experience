@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>命令行创建topic、生产者、消费者</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>创建topic</h1>
+    <h3>执行命令创建名为mytopic的主题：bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic mytopic</h3>
+    <img src="./img/QQ截图20190405233045.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>创建生产者</h1>
+    <h3>执行命令创建生产者：bin/kafka-console-producer.sh --broker-list localhost:9092 --topic mytopic</h3>
+    <img src="./img/QQ截图20190405233230.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>创建消费者</h1>
+    <h3>执行命令创建消费者：bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic mytopic --from-beginning</h3>
+    <img src="./img/QQ截图20190405233306.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>发送消息</h1>
+    <img src="./img/QQ截图20190405233516.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+</html>
