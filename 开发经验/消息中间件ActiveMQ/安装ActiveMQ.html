@@ -24,7 +24,6 @@
     <br>
     <br>
     <h1>进入activemq的web界面控制台</h1>
-
     <h3>端口号默认为8161，可以通过activemq目录下的conf文件夹中的jetty.xml文件编辑端口号</h3>
     <img src="./img/QQ截图20181110214447.png" alt="">
     <h3>web界面控制台的账号默认为admin，密码默认为admin，可以通过activemq目录下的conf文件夹的jetty-realm.properties文件来编辑修改</h3>
@@ -32,6 +31,29 @@
     <h3>登录web界面控制台</h3>
     <img src="./img/QQ截图20181110215445.png" alt="">
     <img src="./img/QQ截图20181110215524.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>停止activemq服务</h1>
+    <h3>进入到activemq文件夹中的bin目录，运行./activemq stop 命令停止activemq服务</h3>
+    <br>
+    <br>
+    <br>
+    <h1>配置文件（activemq.xml）</h1>
+    <h3>同时也是spring配置文件. 其中配置的是ActiveMQ应用使用的默认对象组件</h3>
+    <h3>transportConnectors标签 - 配置链接端口信息的. 其中的端口号61616是ActiveMQ对外发布的tcp协议访问端口. 就是java代码访问ActiveMQ时使用的端口.</h3>
+    <br>
+    <br>
+    <br>
+    <h1>配置文件（jetty.xml）</h1>
+    <h3>同时也是spring配置文件, 用于配置jetty服务器的默认对象组件.</h3>
+    <h3>ActiveMQ默认支持一个网页版的服务查看站点. 可以实现ActiveMQ中消息相关数据的页面查看.</h3>
+    <h3>8161端口, 是ActiveMQ网页版管理站点的默认端口.在ActiveMQ网页版管理站点中,需要登录, 默认的用户名和密码都是admin.</h3>
+    <br>
+    <br>
+    <br>
+    <h1>配置文件（users.properties）</h1>
+    <h3>内容信息: 用户名=密码，是用于配置客户端通过协议访问ActiveMQ时,使用的用户名和密码.</h3>
     <br>
     <br>
     <br>

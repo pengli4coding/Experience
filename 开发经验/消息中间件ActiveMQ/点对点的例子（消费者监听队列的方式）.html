@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点对点的例子（消费者监听队列的方式）</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>导包：</h1>
+    <textarea id="code1">
+<dependencies>
+    <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-all</artifactId><!--用这个包含所有的JAR包-->
+        <version>5.15.9</version><!--这个要跟使用的activeMQ版本对应上-->
+    </dependency>
+</dependencies>
+    </textarea>
+
+    <h1>生产者代码：</h1>
+    <textarea id="code2">
+package com.pl.producer;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+
+
+
+public class ObjectProducer {
+
+    public void sendMessage(Object obj){
+        ConnectionFactory factory = null;
+        Connection connection = null;
+        Session session = null;
+        Destination destination = null;
+        MessageProducer producer = null;
+        Message message = null;
+
+        try{
+
+            factory = new ActiveMQConnectionFactory("admin", "admin",
+                    "tcp://127.0.0.1:61616");
+
+            connection = factory.createConnection();
+
+            session = connection.createSession(true, Session.CLIENT_ACKNOWLEDGE);// 第一个参数为true，说明启动事务，这时候需要手动提交事务
+
+            destination = session.createQueue("test-listener");
+
+            producer = session.createProducer(destination);
+
+            connection.start();
+
+            for(int i = 0; i < 100; i++){
+                Integer data = i;
+                // 创建对象消息. 消息中的数据载体是一个可序列化的对象.
+                message = session.createObjectMessage(data);
+                producer.send(message);
+            }
+            session.commit();// 手动提交事务
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(producer != null){
+                try {
+                    producer.close();
+                } catch (JMSException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(session != null){
+                try {
+                    session.close();
+                } catch (JMSException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(connection != null){
+                try {
+                    connection.close();
+                } catch (JMSException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        ObjectProducer producer = new ObjectProducer();
+        producer.sendMessage(null);
+
+    }
+
+}
+    </textarea>
+
+    <h1>消费者代码（由于是监听的方式，可以启动多个消费者去消费消息）：</h1>
+    <textarea id="code3">
+package com.pl.consumer;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageConsumer;
+import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
+import javax.jms.Session;
+
+/**
+ * 使用监听器的方式, 实现消息的处理[消费]
+ */
+public class ConsumerListener {
+
+    /**
+     * 处理消息.
+     */
+    public void consumMessage(){
+
+        ConnectionFactory factory = null;
+        Connection connection = null;
+        Session session = null;
+        Destination destination = null;
+        MessageConsumer consumer = null;
+        try{
+
+            factory = new ActiveMQConnectionFactory("admin", "admin",
+                    "tcp://127.0.0.1:61616");
+
+            connection = factory.createConnection();
+
+            connection.start();
+
+            session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+
+            destination = session.createQueue("test-listener");
+
+            consumer = session.createConsumer(destination);
+            // 超时，连接超时。不是确认超时，是等待多久后，没有消息可处理，超时。
+            // consumer.receive(timeout);
+            // 注册监听器。 注册成功后，队列中的消息变化会自动触发监听器代码。 接收消息并处理。
+            consumer.setMessageListener(new MessageListener(){
+
+                /*
+                 * 监听器一旦注册, 永久有效（consumer线程不关闭）.
+                 * 处理消息的方式: 只要有消息未处理,自动调用onMessage方法,处理消息.
+                 * 监听器可以注册若干. 注册多个监听器,相当于集群.
+                 * ActiveMQ自动的循环调用多个监听器, 处理队列中的消息.实现并行处理.
+                 *
+                 * 处理消息的方法. 就是监听方法.
+                 * 监听的事件是: 消息, 消息未处理.
+                 * 要处理的具体内容: 消息处理.
+                 * @param message - 未处理的消息.
+                 */
+                @Override
+                public void onMessage(Message message) {
+                    try{
+                        ObjectMessage om = (ObjectMessage) message;
+                        Object data = om.getObject();
+                        System.out.println(data);
+                        // acknowledge方法，就是确认方法。代表consumer已经收到消息。 确定后，MQ删除对应的消息。
+                        message.acknowledge();
+                    }catch(JMSException e){
+                        e.printStackTrace();
+                    }
+                }
+
+            });
+
+            // 阻塞当前代码。 保证listener代码未结束。 如果代码结束了，监听器自动关闭。
+            System.in.read();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(consumer != null){
+                try {
+                    consumer.close();
+                } catch (JMSException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(session != null){
+                try {
+                    session.close();
+                } catch (JMSException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+            if(connection != null){
+                try {
+                    connection.close();
+                } catch (JMSException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        ConsumerListener listener = new ConsumerListener();
+        listener.consumMessage();
+    }
+
+}
+    </textarea>
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code3.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
