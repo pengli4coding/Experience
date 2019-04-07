@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本增删改查操作</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <!--用于mysql风格代码显示-->
+    <script src="../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>第一步：导包（mysql数据库驱动包和mybatis的包）：</h1>
+    <textarea id="code1">
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.6</version>
+        </dependency>
+    </dependencies>
+
+    </textarea>
+
+    <h1>第二步：建表脚本：</h1>
+    <textarea id="code2">
+DROP TABLE IF EXISTS t_user;
+
+CREATE TABLE t_user (
+  ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  USERNAME VARCHAR(100) NOT NULL COMMENT '用户姓名',
+  SEX VARCHAR(10) NOT NULL COMMENT '用户性别',
+  AGE INT(10) NOT NULL COMMENT '用户年龄',
+  CREATE_TIME DATETIME NOT NULL COMMENT '记录创建时间',
+  PRIMARY KEY (`ID`)
+) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
+COMMENT='用户信息表';
+
+INSERT  INTO t_user (ID,USERNAME,SEX,AGE,CREATE_TIME) VALUES 
+(1,'熊大','男',37,'2019-02-17 13:00:24'),
+(2,'张小珊','女',29,'2019-02-17 13:00:39'),
+(3,'黄雅尔','男',28,'2019-02-17 17:36:30');
+    </textarea>
+
+    <h1>第三步：创建对应的实体类</h1>
+    <textarea id="code3">
+package com.pl.entity;
+
+import java.util.Date;
+
+public class User {
+    private Integer id;
+    private String username;
+    private String sex;
+    private Integer age;
+    private Date createTime;
+
+    // 省略getter、setter、toString方法
+}
+    </textarea>
+
+
+    <h1>第四步：创建数据库连接信息文件jdbc.properties（这个配置文件用来配置数据库连接信息等，本例子中放置在src/main/resources/properties下）</h1>
+    <textarea id="code4">
+MySQL.jdbc.driver=com.mysql.jdbc.Driver
+MySQL.jdbc.url=jdbc:mysql://127.0.0.1:3306/DBName?characterEncoding=utf-8
+MySQL.jdbc.username=root
+MySQL.jdbc.password=abc123
+    </textarea>
+
+    <h1>第五步：创建mybatis配置文件mybatis-config.xml（这个配置文件用来配置数据库连接信息等，本例子中放置在src/main/resources下）</h1>
+    <textarea id="code5">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="properties/jdbc.properties"></properties><!--properties标签用来引入外部的配置文件，如jdbc.properties-->
+
+    <!--settings标签是极其重要的标签，它用来改变mybaits的行为，如缓存-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/><!--开启自动驼峰命名规则映射，即数据库中的字段名A_COLUMN可以自动映射到java的属性名aColumn-->
+    </settings>
+
+    <!--起别名-->
+    <typeAliases>
+        <typeAlias alias="user" type="com.pl.entity.User"/>
+    </typeAliases>
+
+    <!--类型转换处理器-->
+    <!--<typeHandlers></typeHandlers>-->
+
+    <!--插件-->
+    <!--<plugins></plugins>-->
+
+    <!--配置数据库环境，如果开发、生产是不同的数据库环境，可以通过在这里配置并切换-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${MySQL.jdbc.driver}"/>
+                <property name="url" value="${MySQL.jdbc.url}"/>
+                <property name="username" value="${MySQL.jdbc.username}"/>
+                <property name="password" value="${MySQL.jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml" />
+    </mappers>
+
+</configuration>
+
+    </textarea>
+
+    <h1>第六步：创建dao接口</h1>
+    <textarea id="code6">
+package com.pl.dao;
+
+import com.pl.entity.User;
+
+public interface UserDao {
+
+    /**
+     * 增
+     * @param user
+     */
+    void addUser(User user);
+
+    /**
+     * 删
+     * @param id
+     */
+    void deleteUser(Integer id);
+
+    /**
+     * 改
+     * @param user
+     */
+    void updateUser(User user);
+
+    /**
+     * 查
+     * @param id
+     * @return
+     */
+    User getUser(Integer id);
+
+    /**
+     * 增加记录并返回主键
+     * @param user
+     */
+    void addUserAndReturnKey(User user);
+}
+
+
+    </textarea>
+
+
+    <h1>第七步：创建sql映射文件UserMapper.xml（这个映射文件一般与dao，实体类，数据表一一对应，本例子中放置在src/main/resources/mapper下）</h1>
+    <textarea id="code7">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pl.dao.UserDao"><!--这里的namespace要指定为dao接口的全类名-->
+
+    <insert id="addUser" parameterType="com.pl.entity.User"><!--id属性值对应dao接口中的方法名-->
+        insert into t_user (USERNAME,SEX,AGE,CREATE_TIME) values (#{username},#{sex},#{age},#{createTime})
+    </insert>
+
+    <delete id="deleteUser" parameterType="int"><!--id属性值对应dao接口中的方法名-->
+        delete from t_user where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="com.pl.entity.User"><!--id属性值对应dao接口中的方法名-->
+        update t_user set USERNAME = #{username},SEX = #{sex},AGE =#{age},CREATE_TIME = #{createTime} where id = #{id}
+    </update>
+
+    <select id="getUser" parameterType="int" resultType="com.pl.entity.User"><!--id属性值对应dao接口中的方法名-->
+        select ID,USERNAME,SEX,AGE,CREATE_TIME createTime from t_user where id = #{id}
+    </select>
+
+    <!--
+        useGeneratedKeys="true"告诉mybatis使用mysql中的自增主键策略获取主键
+        keyProperty属性是告诉mybatis获取到主键后，将这个主键值封装给javabean的哪个属性，这里的javabean就是parameterType="com.pl.entity.User"这里的
+    -->
+    <insert id="addUserAndReturnKey" parameterType="com.pl.entity.User" useGeneratedKeys="true" keyProperty="id"><!--id属性值对应dao接口中的方法名-->
+        insert into t_user (USERNAME,SEX,AGE,CREATE_TIME) values (#{username},#{sex},#{age},#{createTime})
+    </insert>
+
+</mapper>
+    </textarea>
+
+    <h1>测试类</h1>
+    <textarea id="code8">
+package com.pl.test;
+
+import com.pl.dao.UserDao;
+import com.pl.entity.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+
+public class UnitTest {
+
+    @Test
+    public void testAddUser() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            UserDao userDao = session.getMapper(UserDao.class);
+            User user = new User();
+            user.setUsername("刘兴富");
+            user.setSex("男");
+            user.setAge(30);
+            user.setCreateTime(new Date());
+            userDao.addUser(user);
+            session.commit();// 需要手动提交事务
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testDeleteUser() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            UserDao userDao = session.getMapper(UserDao.class);
+            userDao.deleteUser(1);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testUpdateUser() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            UserDao userDao = session.getMapper(UserDao.class);
+            User user = new User();
+            user.setId(2);
+            user.setUsername("张小珊");
+            user.setSex("女");
+            user.setAge(30);
+            user.setCreateTime(new Date());
+            userDao.updateUser(user);
+            session.commit();// 需要手动提交事务
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testGetUser() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            UserDao userDao = session.getMapper(UserDao.class);
+            User user = userDao.getUser(1);
+            System.out.println(user);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testAddUserAndReturnKey() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            UserDao userDao = session.getMapper(UserDao.class);
+            User user = new User();
+            user.setUsername("刘兴富");
+            user.setSex("男");
+            user.setAge(30);
+            user.setCreateTime(new Date());
+            userDao.addUserAndReturnKey(user);
+            System.out.println("插入数据后返回的主键值为：" + user.getId());// 打印插入数据后返回的主键值
+            session.commit();// 需要手动提交事务
+        } finally {
+            session.close();
+        }
+    }
+
+
+}
+
+    </textarea>
+
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-mysql",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code3.setSize('auto', 'auto')
+        var code4 = CodeMirror.fromTextArea(document.getElementById("code4"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code4.setSize('auto', 'auto')
+        var code5 = CodeMirror.fromTextArea(document.getElementById("code5"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code5.setSize('auto', 'auto')
+        var code6 = CodeMirror.fromTextArea(document.getElementById("code6"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code6.setSize('auto', 'auto')
+        var code7 = CodeMirror.fromTextArea(document.getElementById("code7"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code7.setSize('auto', 'auto')
+        var code8 = CodeMirror.fromTextArea(document.getElementById("code8"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code8.setSize('auto', 'auto')
+
+    </script>
+</body>
+
+</html>
