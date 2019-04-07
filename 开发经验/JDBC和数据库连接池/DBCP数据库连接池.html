@@ -123,7 +123,7 @@ public class Create {
                     pstmt.close();
                 }
                 if (null != conn) {
-                    conn.close();
+                    conn.close();// 将数据库连接还回到池中
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
