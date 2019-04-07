@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>C3P0数据库连接池</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>导jdbc驱动包和C3P0的包：</h1>
+    <textarea id="code1">
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.3</version>
+        </dependency>
+    </dependencies>
+    </textarea>
+
+    <h1>jdbc.properties文件：</h1>
+    <textarea id="code2">
+#MySQL
+MySQL.jdbc.driver=com.mysql.jdbc.Driver
+MySQL.jdbc.url=jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8
+MySQL.jdbc.username=root
+MySQL.jdbc.password=root
+
+#Oracle
+Oracle.jdbc.driver=oracle.jdbc.driver.OracleDriver
+Oracle.jdbc.url=jdbc:oracle:thin:@127.0.0.1:1521:DBName
+Oracle.jdbc.username=root
+Oracle.jdbc.password=root
+
+#SQLSERVER
+SQLSERVER.jdbc.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+SQLSERVER.jdbc.url=jdbc:sqlserver://127.0.0.1:1433;databaseName=DBName
+SQLSERVER.jdbc.username=sa
+SQLSERVER.jdbc.password=sa
+
+#DataSource
+#数据库连接池初始化连接数
+initialPoolSize=20
+#数据库连接池中要保持的最少连接数
+minPoolSize=20
+#数据库连接池中连接（空闲连接和非空闲连接）的最大数
+maxPoolSize=30
+    </textarea>
+
+    <h1>数据库建表脚本：</h1>
+    <textarea id="code3">
+DROP TABLE IF EXISTS t_pet;
+
+CREATE TABLE t_pet(  
+  PET_ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '宠物id号',
+  PET_NAME VARCHAR(30) COMMENT '宠物姓名',
+  BIRTHDAY DATETIME COMMENT '宠物生日',
+  FAVOURITE_FOOD VARCHAR(30) COMMENT '最喜欢的食物',
+  MASTER_NAME VARCHAR(30) COMMENT '主人姓名',
+  PRIMARY KEY (`PET_ID`)
+) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
+COMMENT='宠物信息表';
+    </textarea>
+
+    <h1>增：</h1>
+    <textarea id="code4">
+package com.pl;
+
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class Create {
+
+    private static ComboPooledDataSource dataSource;
+
+    public static void main(String[] args) {
+        // 准备SQL语句
+        String sql = "insert into t_pet (PET_NAME,BIRTHDAY,FAVOURITE_FOOD,MASTER_NAME) values (?,?,?,?)";
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            // 从数据库连接池中获得数据库连接
+            conn = getConn();
+            // 获得PreparedStatement
+            pstmt = conn.prepareStatement(sql);
+            // 设值
+            pstmt.setString(1, "大黄猫");
+            pstmt.setDate(2, new java.sql.Date(System.currentTimeMillis()));
+            pstmt.setString(3, "小鱼干");
+            pstmt.setString(4, "猫主人");
+            int row = pstmt.executeUpdate();
+            System.out.println("影响行数：" + row + "行");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != pstmt) {
+                    pstmt.close();
+                }
+                if (null != conn) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static Connection getConn() throws Exception {
+        if(null != dataSource){
+            return dataSource.getConnection();
+        }
+        String driverClass = "";
+        String url = "";
+        String username = "";
+        String password = "";
+        String initialPoolSize = "";
+        String minPoolSize = "";
+        String maxPoolSize = "";
+        InputStream in = Create.class.getClassLoader().getResourceAsStream("jdbc.properties");
+        Properties prop = new Properties();
+        // 获取连接参数
+        prop.load(in);
+        driverClass = prop.getProperty("MySQL.jdbc.driver");
+        url = prop.getProperty("MySQL.jdbc.url");
+        username = prop.getProperty("MySQL.jdbc.username");
+        password = prop.getProperty("MySQL.jdbc.password");
+
+        initialPoolSize = prop.getProperty("initialPoolSize");
+        minPoolSize = prop.getProperty("minPoolSize");
+        maxPoolSize = prop.getProperty("maxPoolSize");
+        // 连接池设值
+        dataSource = new ComboPooledDataSource();
+        dataSource.setDriverClass(driverClass);
+        dataSource.setJdbcUrl(url);
+        dataSource.setUser(username);
+        dataSource.setPassword(password);
+        dataSource.setInitialPoolSize(Integer.valueOf(initialPoolSize));
+        dataSource.setMinPoolSize(Integer.valueOf(minPoolSize));
+        dataSource.setMaxPoolSize(Integer.valueOf(maxPoolSize));
+        return dataSource.getConnection();
+    }
+
+}
+
+    </textarea>
+
+    <h1>删，略。。。</h1>
+    <h1>改，略。。。</h1>
+    <h1>查，略。。。</h1>
+
+    
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code3.setSize('auto', 'auto')
+
+        var code4 = CodeMirror.fromTextArea(document.getElementById("code4"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code4.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
