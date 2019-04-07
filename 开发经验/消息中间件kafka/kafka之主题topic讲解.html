@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>kafka之主题topic讲解</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>kafka的主题topic说明</h1>
+    <h3>1、kafka将消息以topic为单位进行归纳</h3>
+    <h3>2、topic特指kafka处理的消息源的不同分类</h3>
+    <h3>3、topic是一种分类或发布的一系列记录的名义上的名字。kafka的主题始终是支持多用户订阅的，也就是说一个主题可以被零个、一个或多个消费者订阅</h3>
+    <br>
+    <br>
+    <br>
+    <h1>常用主题相关命令</h1>
+    <h2>创建主题</h2>
+    <h3>bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic myTopic --partitions 3 --replication-factor 1</h3>
+    <h3>说明：上面这条命令意思是创建名为myTopic的主题，分区数为3，副本因子为1</h3>
+    <img src="./img/QQ截图20190407231706.png" alt="">
+    <br><br>
+    <h2>删除主题</h2>
+    <h3>bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic myTopic</h3>
+    <h3>说明：上面这条命令意思是删除名为myTopic的主题，<font style="color:red;">特别要注意一点的是，删除主题需要kafka目录下的config/server.properties文件中delete.topic.enable=true</font></h3>
+    <img src="./img/QQ截图20190407231628.png" alt="">
+    <br><br>
+    <h2>列出所有主题</h2>
+    <h3>bin/kafka-topics.sh --zookeeper localhost:2181 --list</h3>
+    <img src="./img/QQ截图20190407225421.png" alt="">
+    <br><br>
+    <h2>列出某个主题的详细信息</h2>
+    <h3>bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic myTopic</h3>
+    <h3>说明：上面这条命令的意思是列出myTopic这个主题的详细信息</h3>
+    <img src="./img/QQ截图20190407230451.png" alt="">
+    <br><br>
+    <h2>修改主题的分区数</h2>
+    <h3>bin/kafka-topics.sh --zookeeper localhost:2181 --alter --topic myTopic --partitions 6</h3>
+    <h3>说明：上面这条命令的意思是修改myTopic这个主题的分区数为6，<font style="color:red;">特别要注意一点的是，在kafka中，分区数只能增加不能减少</font></h3>
+    <img src="./img/QQ截图20190407232746.png" alt="">
+    <br><br>
+</body>
+</html>
