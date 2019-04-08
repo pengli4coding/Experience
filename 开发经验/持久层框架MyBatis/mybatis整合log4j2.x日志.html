@@ -36,20 +36,36 @@
     
         <h1>将以下的log4j2.xml文件加入到classpath下：</h1>
         <textarea id="code2">
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
 
+    <Properties>
+        <!--全局的日志输出格式-->
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"/>
+        </Console>
+
+    </Appenders>
+    <Loggers>
+        <!--给命名空间指定日志级别-->
+        <!--additivity为false表示如果匹配多个Logger，则只在当前Logger输出-->
+        <!--<Logger name="com.pl.Bar" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>-->
+
+        <!--根日志级别，如果没有给命名空间指定日志级别，默认使用根日志级别-->
+        <!--all《trace《debug《info《warn《error《fatal《off-->
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
         </textarea>
     
-    
-        <h1>以下是java示例代码：</h1>
-        <textarea id="code3">
-    package com.pl.test;
-    
-    public class MyClass{
-        public void static main(String[] args){
-            System.out.println("hello world");
-        }
-    }
-        </textarea>
     
     
         <script>
@@ -63,17 +79,10 @@
             var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
                 lineNumbers: true,
                 matchBrackets: true,
-                mode: "text/x-mysql",
+                mode: "text/xml",
                 theme: "darcula"
             })
             code2.setSize('auto', 'auto')
-            var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
-                lineNumbers: true,
-                matchBrackets: true,
-                mode: "text/x-java",
-                theme: "darcula"
-            })
-            code3.setSize('auto', 'auto')
         </script>
 </body>
 

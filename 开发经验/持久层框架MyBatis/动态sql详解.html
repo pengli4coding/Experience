@@ -20,71 +20,364 @@
 </head>
 
 <body>
-        <h1>以下是xml示例代码：</h1>
-        <textarea id="code1">
-    <students>
-        <student>
-            <name>张三</name>
-            <age>27</age>
-        </student>
-        <student>
-            <name>李四</name>
-            <age>28</age>
-        </student>
-    </students>
-        </textarea>
-    
-        <h1>以下是mysql示例代码：</h1>
-        <textarea id="code2">
-    DROP TABLE IF EXISTS t_user;
-    
-    CREATE TABLE t_user (
-      ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户id',
-      NAME VARCHAR(100) NOT NULL COMMENT '用户姓名',
-      sex VARCHAR(10) NOT NULL COMMENT '用户性别',
-      age VARCHAR(10) NOT NULL COMMENT '用户年龄',
-      create_date DATETIME NOT NULL COMMENT '记录创建时间',
-      PRIMARY KEY (`ID`)
-    ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
-    COMMENT='用户信息表';
-        </textarea>
-    
-    
-        <h1>以下是java示例代码：</h1>
-        <textarea id="code3">
-    package com.pl.test;
-    
-    public class MyClass{
-        public void static main(String[] args){
-            System.out.println("hello world");
+
+    <h1>数据库脚本：</h1>
+    <textarea id="code1">
+DROP TABLE IF EXISTS t_emp;
+
+CREATE TABLE t_emp(
+  EMP_ID INT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '员工编号',
+  EMP_NAME VARCHAR(50) COMMENT '员工姓名',
+  EMAIL VARCHAR(50) COMMENT '邮件',
+  TEL VARCHAR(30) COMMENT '手机号',
+  GENDER INT(1) COMMENT '性别',
+  ADDRESS VARCHAR(100) COMMENT '地址',
+  BIRTHDAY DATE COMMENT '生日',
+  PASSWORD VARCHAR(32) COMMENT '密码',
+  PRIMARY KEY (EMP_ID)
+) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
+COMMENT='雇员表';
+
+insert  into t_emp (EMP_ID,EMP_NAME,EMAIL,TEL,GENDER,ADDRESS,BIRTHDAY,PASSWORD) values
+(1,'范冰冰','123456789@qq.com','18623569651',0,'北京','1985-03-01','e10adc3949ba59abbe56e057f20f883e'),
+(2,'李晨','987654321@qq.com','18636926543',1,'北京','1983-06-01','e10adc3949ba59abbe56e057f20f883e'),
+(3,'杨幂','123654987@qq.com','18655362653',0,'北京','1987-07-01','e10adc3949ba59abbe56e057f20f883e'),
+(4,'胡歌','654321963@qq.com','18123653231',1,'杭州','1986-11-01','e10adc3949ba59abbe56e057f20f883e'),
+(5,'邓超','635953429@qq.com','17263591222',1,'上海','1985-08-08','e10adc3949ba59abbe56e057f20f883e'),
+(6,'孙俪','963596521@qq.com','17263596533',0,'上海','1986-08-01','e10adc3949ba59abbe56e057f20f883e'),
+(7,'佟大为','333333333@qq.com','18136363636',1,'杭州','1987-10-01','e10adc3949ba59abbe56e057f20f883e'),
+(8,'李冰冰','111111111@qq.com','17263635111',0,'上海','1983-12-01','e10adc3949ba59abbe56e057f20f883e'),
+(9,'鹿晗','222222222@qq.com','18178978986',1,'杭州','1991-03-01','e10adc3949ba59abbe56e057f20f883e');
+    </textarea>
+
+
+    <h1>数据实体类、查询参数实体类、dao：</h1>
+    <textarea id="code2">
+// 数据实体类
+public class Emp {
+    private Integer empId;
+    private String empName;
+    private String email;
+    private String tel;
+    private Integer gender;
+    private String address;
+    private Date birthday;
+    private String password;
+    // 省略setter、getter、toString方法
+}
+// 查询参数实体类
+public class EmployeeQuery {
+    private String empName;
+    private String email;
+    private String tel;
+    private Integer gender;
+    private String address;
+    private Date start;
+    private Date end;
+    // 省略setter、getter、toString方法
+}
+// dao
+public interface EmployeeDao {
+
+    // 使用if和where标签的示例，适用于哪个参数有值就在where后面加上条件
+    List<Emp> getEmployeesIfWhere(EmployeeQuery query);
+
+    // 使用choose和when标签的示例，适用于哪个参数有值单独用哪个参数查询
+    List<Emp> getEmployeesChooseWhen(EmployeeQuery query);
+
+    // 使用set标签的示例，适用于在更新数据库记录的时候，满足条件的时候才更新对应的字段
+    void updateEmployee(Emp emp);
+
+    // 使用foreach标签的示例，适用于in (值1,值2,值3..) 的情况
+    List<Emp> getEmployeesForeach(@Param("addressList") List<String> list);
+
+    // 使用foreach标签的示例，适用于批量插入的情况
+    void employeesBatchInsert(@Param("empList") List<Emp> empList);
+
+}
+
+
+    </textarea>
+
+    <h1>mapper：</h1>
+    <textarea id="code3">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pl.dao.EmployeeDao"><!--这里的namespace要指定为dao接口的全类名-->
+
+    <!--条件是多个一起拼装的-->
+    <select id="getEmployeesIfWhere" resultType="com.pl.entity.Emp">
+        select * from t_emp
+        <where>
+            <if test="null != empName and '' != empName">
+                and EMP_NAME like '%${empName}%'
+            </if>
+            <if test="null != email and '' != email">
+                and EMAIL = #{email}
+            </if>
+            <if test="null != tel and '' != tel">
+                and TEL = #{tel}
+            </if>
+            <if test="0 == gender or 1 == gender">
+                and GENDER = #{gender}
+            </if>
+            <if test="null != address and '' != address">
+                and ADDRESS like '%${address}%'
+            </if>
+            <if test="null != start">
+                and BIRTHDAY &gt;= #{start}
+            </if>
+            <if test="null != end">
+                and BIRTHDAY &lt;= #{end}
+            </if>
+        </where>
+    </select>
+
+    <!--条件只能从多个里面选择一个，如果多个条件都没有命中的话执行otherwise标签里面的条件-->
+    <select id="getEmployeesChooseWhen" resultType="com.pl.entity.Emp">
+        select * from t_emp
+        <where>
+            <choose>
+                <when test="null != empName and '' != empName">
+                    EMP_NAME like '%${empName}%'
+                </when>
+                <when test="null != email and '' != email">
+                    EMAIL = #{email}
+                </when>
+                <when test="null != tel and '' != tel">
+                    TEL = #{tel}
+                </when>
+                <when test="0 == gender or 1 == gender">
+                    GENDER = #{gender}
+                </when>
+                <when test="null != address and '' != address">
+                    ADDRESS like '%#{address}%'
+                </when>
+                <when test="null != start">
+                    BIRTHDAY &gt;= #{start}
+                </when>
+                <when test="null != end">
+                    BIRTHDAY &lt;= #{end}
+                </when>
+                <otherwise>
+                    1 = 1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <update id="updateEmployee">
+        update t_emp
+        <set>
+            <if test="null != empName and '' != empName">
+                EMP_NAME = #{empName},
+            </if>
+            <if test="null != email and '' != email">
+                EMAIL = #{email},
+            </if>
+            <if test="null != tel and '' != tel">
+                TEL = #{tel},
+            </if>
+            <if test="0 == gender or 1 == gender">
+                GENDER = #{gender},
+            </if>
+            <if test="null != address and '' != address">
+                ADDRESS = #{address},
+            </if>
+            <if test="null != birthday">
+                BIRTHDAY = #{birthday},
+            </if>
+            <if test="null != password">
+                PASSWORD = #{password},
+            </if>
+        </set>
+        where EMP_ID = #{empId}
+    </update>
+
+    <select id="getEmployeesForeach" resultType="com.pl.entity.Emp">
+        select * from t_emp
+        <foreach collection="addressList" item="address" open="where ADDRESS in (" close=")" separator=",">
+            #{address}
+        </foreach>
+    </select>
+
+    <insert id="employeesBatchInsert">
+        insert into t_emp
+        <foreach collection="empList" item="emp" open="(EMP_NAME,EMAIL,TEL,GENDER,ADDRESS,BIRTHDAY,PASSWORD) values " close=";" separator=",">
+            (#{emp.empName},#{emp.email},#{emp.tel},#{emp.gender},#{emp.address},#{emp.birthday},#{emp.password})
+        </foreach>
+    </insert>
+
+</mapper>
+    </textarea>
+
+    <h1>测试类：</h1>
+    <textarea id="code4">
+public class UnitTestEmployee {
+
+    @Test
+    public void testIfWhere() throws IOException, ParseException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmployeeDao dao = session.getMapper(EmployeeDao.class);
+            EmployeeQuery query = new EmployeeQuery();
+            //query.setEmpName("李");
+            //query.setGender(1);
+            //query.setEmail("963596521@qq.com");
+            query.setAddress("北京");
+
+            String start = "1983-06-01";
+            String end = "1983-12-31";
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+            Date startDate = sf.parse(start);
+            Date endDate = sf.parse(end);
+            query.setStart(startDate);
+            query.setEnd(endDate);
+
+            List<Emp> list = dao.getEmployeesIfWhere(query);
+            System.out.println("==================================================");
+            for(Emp emp : list){
+                System.out.println(emp);
+            }
+            System.out.println("==================================================");
+        } finally {
+            session.close();
         }
     }
-        </textarea>
-    
-    
-        <script>
-            var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
-                lineNumbers: true,
-                matchBrackets: true,
-                mode: "text/xml",
-                theme: "darcula"
-            })
-            code1.setSize('auto', 'auto')
-            var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
-                lineNumbers: true,
-                matchBrackets: true,
-                mode: "text/x-mysql",
-                theme: "darcula"
-            })
-            code2.setSize('auto', 'auto')
-            var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
-                lineNumbers: true,
-                matchBrackets: true,
-                mode: "text/x-java",
-                theme: "darcula"
-            })
-            code3.setSize('auto', 'auto')
-        </script>
+
+    @Test
+    public void testChooseWhen() throws IOException, ParseException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmployeeDao dao = session.getMapper(EmployeeDao.class);
+            EmployeeQuery query = new EmployeeQuery();
+            query.setEmpName("李");
+            query.setGender(1);
+            query.setEmail("963596521@qq.com");
+            query.setAddress("");
+
+            String start = "1983-06-01";
+            String end = "1983-12-31";
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+            Date startDate = sf.parse(start);
+            Date endDate = sf.parse(end);
+            query.setStart(startDate);
+            query.setEnd(endDate);
+
+            List<Emp> list = dao.getEmployeesChooseWhen(query);
+            System.out.println("==================================================");
+            for(Emp emp : list){
+                System.out.println(emp);
+            }
+            System.out.println("==================================================");
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testSet() throws IOException, ParseException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmployeeDao dao = session.getMapper(EmployeeDao.class);
+            Emp emp = new Emp();
+            emp.setEmpId(9);
+            emp.setAddress("杭州");
+            emp.setEmail("666666666@qq.com");
+            emp.setPassword("e10adc3949ba59abbe56e057f20f883e");
+            dao.updateEmployee(emp);
+            session.commit();// 手动提交事务
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testForeach() throws IOException, ParseException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmployeeDao dao = session.getMapper(EmployeeDao.class);
+            List<String> queryList = new ArrayList<String>();
+            queryList.add("北京");
+            queryList.add("上海");
+            List<Emp> list = dao.getEmployeesForeach(queryList);
+            System.out.println("==================================================");
+            for(Emp emp : list){
+                System.out.println(emp);
+            }
+            System.out.println("==================================================");
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testBatchInsert() throws IOException, ParseException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmployeeDao dao = session.getMapper(EmployeeDao.class);
+            List<Emp> empList = new ArrayList<Emp>();
+            Emp emp1 = new Emp("陈钰琪", "999999999@qq.com", "15989502107", 0, "深圳", new SimpleDateFormat("yyyy-MM-dd").parse("1992-01-01"),"e10adc3949ba59abbe56e057f20f883e");
+            Emp emp2 = new Emp("祝绪丹", "888888888@qq.com", "15989502108", 0, "深圳", new SimpleDateFormat("yyyy-MM-dd").parse("1992-02-01"),"e10adc3949ba59abbe56e057f20f883e");
+            empList.add(emp1);
+            empList.add(emp2);
+            dao.employeesBatchInsert(empList);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+}
+
+    </textarea>
+
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-mysql",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code3.setSize('auto', 'auto')
+        var code4 = CodeMirror.fromTextArea(document.getElementById("code4"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code4.setSize('auto', 'auto')
+    </script>
 </body>
 
 </html>
