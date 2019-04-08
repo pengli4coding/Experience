@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mybatis整合log4j2.x日志</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <!--用于mysql风格代码显示-->
+    <script src="../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+        <h1>在pom.xml文件中额外加上log4j2.x的依赖：</h1>
+        <textarea id="code1">
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        </textarea>
+    
+        <h1>将以下的log4j2.xml文件加入到classpath下：</h1>
+        <textarea id="code2">
+
+        </textarea>
+    
+    
+        <h1>以下是java示例代码：</h1>
+        <textarea id="code3">
+    package com.pl.test;
+    
+    public class MyClass{
+        public void static main(String[] args){
+            System.out.println("hello world");
+        }
+    }
+        </textarea>
+    
+    
+        <script>
+            var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/xml",
+                theme: "darcula"
+            })
+            code1.setSize('auto', 'auto')
+            var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/x-mysql",
+                theme: "darcula"
+            })
+            code2.setSize('auto', 'auto')
+            var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/x-java",
+                theme: "darcula"
+            })
+            code3.setSize('auto', 'auto')
+        </script>
+</body>
+
+</html>

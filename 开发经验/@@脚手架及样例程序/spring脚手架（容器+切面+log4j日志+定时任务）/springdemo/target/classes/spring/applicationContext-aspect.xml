@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+    <!-- 切面类加入Ioc容器管理 -->
+    <bean id="validateAspect" class="com.pl.aspect.ValidateAspect"></bean>
+
+    <!-- 配置切面 -->
+    <aop:config>
+        <aop:pointcut id="validatePointCut" expression="execution(* com.pl.service.OrderService.*(..))"/>
+        <aop:aspect ref="validateAspect" order="1">
+            <aop:before method="before" pointcut-ref="validatePointCut"/>
+            <aop:after method="after" pointcut-ref="validatePointCut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关联查询详解</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <!--用于mysql风格代码显示-->
+    <script src="../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+        <h1>以下是xml示例代码：</h1>
+        <textarea id="code1">
+    <students>
+        <student>
+            <name>张三</name>
+            <age>27</age>
+        </student>
+        <student>
+            <name>李四</name>
+            <age>28</age>
+        </student>
+    </students>
+        </textarea>
+    
+        <h1>以下是mysql示例代码：</h1>
+        <textarea id="code2">
+    DROP TABLE IF EXISTS t_user;
+    
+    CREATE TABLE t_user (
+      ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户id',
+      NAME VARCHAR(100) NOT NULL COMMENT '用户姓名',
+      sex VARCHAR(10) NOT NULL COMMENT '用户性别',
+      age VARCHAR(10) NOT NULL COMMENT '用户年龄',
+      create_date DATETIME NOT NULL COMMENT '记录创建时间',
+      PRIMARY KEY (`ID`)
+    ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
+    COMMENT='用户信息表';
+        </textarea>
+    
+    
+        <h1>以下是java示例代码：</h1>
+        <textarea id="code3">
+    package com.pl.test;
+    
+    public class MyClass{
+        public void static main(String[] args){
+            System.out.println("hello world");
+        }
+    }
+        </textarea>
+    
+    
+        <script>
+            var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/xml",
+                theme: "darcula"
+            })
+            code1.setSize('auto', 'auto')
+            var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/x-mysql",
+                theme: "darcula"
+            })
+            code2.setSize('auto', 'auto')
+            var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/x-java",
+                theme: "darcula"
+            })
+            code3.setSize('auto', 'auto')
+        </script>
+</body>
+
+</html>
