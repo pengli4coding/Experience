@@ -6,59 +6,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>mybatis中传参详解</title>
-    <script src="./CodeMirror/lib/codemirror.js"></script>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
     <!--用于java风格代码显示-->
-    <script src="./CodeMirror/mode/clike/clike.js"></script>
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
     <!--用于xml风格代码显示-->
-    <script src="./CodeMirror/mode/xml/xml.js"></script>
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
     <!--用于mysql风格代码显示-->
-    <script src="./CodeMirror/mode/sql/sql.js"></script>
-    <link rel="stylesheet" href="./CodeMirror/lib/codemirror.css">
+    <script src="../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
     <!--黑色主题-->
-    <link rel="stylesheet" href="./CodeMirror/theme/darcula.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <h1>以下是xml示例代码：</h1>
+
+    <h1>以下是Dao代码：</h1>
     <textarea id="code1">
-<students>
-    <student>
-        <name>张三</name>
-        <age>27</age>
-    </student>
-    <student>
-        <name>李四</name>
-        <age>278/age>
-    </student>
-</students>
-    </textarea>
-
-    <h1>以下是mysql示例代码：</h1>
-    <textarea id="code2">
-DROP TABLE IF EXISTS t_user;
-
-CREATE TABLE t_user (
-  ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  NAME VARCHAR(100) NOT NULL COMMENT '用户姓名',
-  sex VARCHAR(10) NOT NULL COMMENT '用户性别',
-  age VARCHAR(10) NOT NULL COMMENT '用户年龄',
-  create_date DATETIME NOT NULL COMMENT '记录创建时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
-COMMENT='用户信息表';
-    </textarea>
-
-
-    <h1>以下是java示例代码：</h1>
-    <textarea id="code3">
 package com.pl.test;
 
-public class MyClass{
-    public void static main(String[] args){
-        System.out.println("hello world");
+import com.pl.dao.EmpDao;
+import com.pl.entity.Emp;
+import com.pl.query.EmpQuery;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UnitTestEmp {
+
+    @Test
+    public void testGetEmp1() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmpDao empDao = session.getMapper(EmpDao.class);
+            EmpQuery query = new EmpQuery();
+            query.setEmpName("李晨");
+            query.setGender(1);
+            Emp emp = empDao.getEmp1(query);
+            System.out.println(emp);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testGetEmp2() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmpDao empDao = session.getMapper(EmpDao.class);
+            Emp emp = empDao.getEmp2("李晨",1);
+            System.out.println(emp);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testGetEmp3() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmpDao empDao = session.getMapper(EmpDao.class);
+            Emp emp = empDao.getEmp3("李晨",1);
+            System.out.println(emp);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Test
+    public void testGetEmp4() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession session = sqlSessionFactory.openSession();// 这种方式获取的session需要手动提交事务
+        try {
+            EmpDao empDao = session.getMapper(EmpDao.class);
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("na", "李晨");
+            map.put("ge", 1);
+            Emp emp = empDao.getEmp4(map);
+            System.out.println(emp);
+        } finally {
+            session.close();
+        }
     }
 }
+
+    </textarea>
+
+
+    <h1>以下是mapper，<font style="color:red;">特别注意的是三种方法都是可以省略parameterType的</font>：</h1>
+    <textarea id="code2">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pl.dao.EmpDao"><!--这里的namespace要指定为dao接口的全类名-->
+
+    <!--由于dao的方法中只是传了一个参数，所以#{}中的变量名可以用传参的成员属性名表示-->
+    <select id="getEmp1" resultType="com.pl.entity.Emp">
+        select * from t_emp where EMP_NAME =#{empName} and GENDER = #{gender}
+    </select>
+
+    <!--由于dao的方法中传了多个参数，这些参数是被mybatis封装成一个map，map的key是param1、param2。。。所以#{}中的变量名用param1、param2。。表示-->
+    <select id="getEmp2" resultType="com.pl.entity.Emp">
+        select * from t_emp where EMP_NAME =#{param1} and GENDER = #{param2}
+    </select>
+
+    <!--由于dao的方法中传了多个参数，而且这些参数用@Param注解修饰，所以#{}中的变量名用@Param注解中的value值表示-->
+    <select id="getEmp3" resultType="com.pl.entity.Emp">
+        select * from t_emp where EMP_NAME =#{name} and GENDER = #{gender}
+    </select>
+
+    <!--由于dao的方法中直接传了一个Map{"na":"张三","ge":1}，所以#{}中的变量名用Map中的key值表示-->
+    <select id="getEmp4" resultType="com.pl.entity.Emp">
+        select * from t_emp where EMP_NAME =#{na} and GENDER = #{ge}
+    </select>
+
+</mapper>
     </textarea>
 
 
@@ -66,24 +146,18 @@ public class MyClass{
         var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
             lineNumbers: true,
             matchBrackets: true,
-            mode: "text/xml",
+            mode: "text/x-java",
             theme: "darcula"
         })
         code1.setSize('auto', 'auto')
         var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
             lineNumbers: true,
             matchBrackets: true,
-            mode: "text/x-mysql",
+            mode: "text/xml",
             theme: "darcula"
         })
         code2.setSize('auto', 'auto')
-        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
-            lineNumbers: true,
-            matchBrackets: true,
-            mode: "text/x-java",
-            theme: "darcula"
-        })
-        code3.setSize('auto', 'auto')
+        
     </script>
 </body>
 
