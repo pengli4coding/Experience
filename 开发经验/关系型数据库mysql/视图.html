@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>视图</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <!--用于mysql风格代码显示-->
+    <script src="../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>什么是视图：</h1>
+    <h2>视图就是一种虚拟存在的表，行和列的数据来源于自定义视图的查询中使用的表，并且是在使用视图时动态生成的，只是保存了sql逻辑，不保存查询结果</h2>
+    <br>
+    <br>
+    <br>
+
+    <h1>先创建两张表：</h1>
+    <textarea id="code1">
+DROP TABLE IF EXISTS t_emp;
+
+CREATE TABLE t_emp(
+  EMP_ID INT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '员工编号',
+  EMP_NAME VARCHAR(50) COMMENT '员工姓名',
+  EMAIL VARCHAR(50) COMMENT '邮件',
+  TEL VARCHAR(30) COMMENT '手机号',
+  GENDER INT(1) COMMENT '性别',
+  ADDRESS VARCHAR(100) COMMENT '地址',
+  BIRTHDAY DATE COMMENT '生日',
+  PASSWORD VARCHAR(32) COMMENT '密码',
+  PRIMARY KEY (EMP_ID)
+) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
+COMMENT='雇员表';
+
+insert  into t_emp (EMP_ID,EMP_NAME,EMAIL,TEL,GENDER,ADDRESS,BIRTHDAY,PASSWORD) values
+(1,'范冰冰','123456789@qq.com','18623569651',0,'北京','1985-03-01','e10adc3949ba59abbe56e057f20f883e'),
+(2,'李晨','987654321@qq.com','18636926543',1,'北京','1983-06-01','e10adc3949ba59abbe56e057f20f883e'),
+(3,'杨幂','123654987@qq.com','18655362653',0,'北京','1987-07-01','e10adc3949ba59abbe56e057f20f883e'),
+(4,'胡歌','654321963@qq.com','18123653231',1,'杭州','1986-11-01','e10adc3949ba59abbe56e057f20f883e'),
+(5,'邓超','635953429@qq.com','17263591222',1,'上海','1985-08-08','e10adc3949ba59abbe56e057f20f883e'),
+(6,'孙俪','963596521@qq.com','17263596533',0,'上海','1986-08-01','e10adc3949ba59abbe56e057f20f883e');
+
+DROP TABLE IF EXISTS t_card;
+
+CREATE TABLE t_card(
+  EMP_ID INT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '员工编号',
+  CARD_NO VARCHAR(50) COMMENT '卡号',
+  PRIMARY KEY (EMP_ID)
+) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
+COMMENT='卡号信息表';
+
+insert into t_card (EMP_ID,CARD_NO) values
+(1,'001'),
+(2,'002'),
+(3,'003'),
+(4,'004'),
+(5,'005'),
+(6,'006');
+    </textarea>
+
+    <h1>然后再去创建我们的视图：</h1>
+    <textarea id="code2">
+CREATE VIEW view_1 AS
+SELECT a.* , b.CARD_NO FROM t_emp a INNER JOIN t_card b ON a.EMP_ID=b.EMP_ID
+    </textarea>
+    <h2>由此可见，视图特别简单，就是将<font style="color:red;">常用的相对复杂的</font>sql查询给封装起来，方便下次调用而已</h2>
+    <br>
+    <br>
+    <br>
+    <h1>1、总结一下视图的好处有以下几点：</h1>
+    <h2>2、重用sql语句</h2>
+    <h2>3、简化复杂的sql操作，不必知道它的查询细节</h2>
+    <h2>4、保护数据，提高安全性（比如说原表有一些不能对外暴露信息的字段，这时就可以通过提供剔除了这些字段的视图给第三方使用）</h2>
+    <br>
+    <br>
+    <br>
+    
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-mysql",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-mysql",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
