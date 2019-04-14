@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>线程的停止</title>
+    <script src="../../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../../CodeMirror/mode/xml/xml.js"></script>
+    <!--用于mysql风格代码显示-->
+    <script src="../../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <h1>打断标记判断法（非常不推荐使用）：</h1>
+    <textarea id="code1">
+class Scratch {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Thread myThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 500000; i++) {
+                    if (Thread.currentThread().isInterrupted()) {// 判断如果当前线程为打断状态，则使用break退出for循环
+                        break;
+                        // return;如果是使用return的话，则会直接退出线程
+                    }
+                    // 一定要注意的是：使用打断标记判断法就一定不能够使用Thread.sleep()了
+                    // 这是因为当外部传入打断状态的时候异常会被Thread.sleep()的catch语句捕获到，这时会无法打断线程
+                    /*try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        break;
+                    }*/
+                    System.out.println("当前计数为：" + i);
+                }
+                System.out.println("退出for循环后执行的语句");
+            }
+        });
+        myThread.start();
+
+        Thread.sleep(2000);// 休眠2秒之后标记线程为打断状态
+
+        myThread.interrupt();// 注意这里并不是直接停止线程，只是标记线程为打断状态
+
+    }
+}
+    </textarea>
+
+    <h1>抛出异常法（推荐使用）：</h1>
+    <textarea id="code2">
+class Scratch {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Thread myThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int i = 0;
+                while(true){
+                    try {
+                        // 这里的sleep是关键
+                        // 因为当外部传入打断标记的时候，如果当前线程正处于wait(),join(),sleep()三种等待阻塞状态的时候，会抛出InterruptedException异常
+                        Thread.sleep(1000);
+                        System.out.println("当前计数为：" + i++);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        System.out.println("这时候线程要中断退出了，要做一些收尾的工作");
+                        break;// 抛出异常的时候，终端退出线程
+                    }
+                }
+                System.out.println("退出循环后执行的语句，一般可以是一些收尾的工作");
+            }
+        });
+        myThread.start();
+
+        Thread.sleep(5000);// 休眠5秒之后标记线程为打断状态
+
+        myThread.interrupt();// 注意这里并不是直接停止线程，只是标记线程为打断状态
+
+    }
+}
+    </textarea>
+
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
