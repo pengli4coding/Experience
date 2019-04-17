@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>codemirror代码显示模板</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <!--用于mysql风格代码显示-->
+    <script src="../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>导包：</h1>
+    <textarea id="code1">
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId><!--这里要跟所安装的kafka版本一致-->
+            <version>2.0.0</version>
+        </dependency>
+    </dependencies>
+    </textarea>
+
+    <h1>生产者代码：</h1>
+    <textarea id="code2">
+package com.pl.producer;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+public class TopicProducer {
+
+    private static final String brokerList = "localhost:9092";
+
+    private static final String topic = "mytopic";
+
+    private static Properties initConfig(){
+        Properties prop = new Properties();
+        prop.put("bootstrap.servers",brokerList);
+        prop.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+        prop.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+        return prop;
+    }
+
+
+    public static void main(String[] args) {
+        Properties prop = initConfig();
+        Producer<String, String> producer = new KafkaProducer<String, String>(prop);
+        for(int i = 0; i < 100; i++){
+            try {
+                TimeUnit.SECONDS.sleep(1);
+                producer.send(new ProducerRecord<String, String>(topic, "消息" + Integer.toString(i)));
+                System.out.println("发送成功：" + i);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        producer.close();
+    }
+}
+
+    </textarea>
+
+    <h1>消费者代码：</h1>
+    <textarea id="code3">
+package com.pl.consumer;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+
+import java.time.Duration;
+import java.util.Collections;
+import java.util.Properties;
+
+public class TopicConsumer {
+
+    private static final String brokerList = "localhost:9092";
+
+    private static final String topic = "mytopic";
+
+    private static final String groupId = "group1";
+
+    private static Properties initConfig(){
+        Properties prop = new Properties();
+        prop.put("bootstrap.servers",brokerList);
+        prop.put("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+        prop.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+        prop.put("group.id",groupId);
+        return prop;
+    }
+
+
+    public static void main(String[] args) {
+        Properties prop = initConfig();
+        KafkaConsumer<String,String> consumer = new KafkaConsumer<String,String>(prop);
+        consumer.subscribe(Collections.singletonList(topic));
+        while(true){
+            ConsumerRecords<String,String> records = consumer.poll(Duration.ofMillis(1000));
+            for(ConsumerRecord<String,String> record : records){
+                System.out.println(record.value());
+            }
+        }
+    }
+}
+
+    </textarea>
+
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code3.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
