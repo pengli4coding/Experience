@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中文乱码问题</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>设置编码：Settings->Editor->File Encodings</h1>
+    <h2>第一步：在idea的安装目录下的bin文件夹中找到idea64.exe.vmoptions文件添加-Dfile.encoding=UTF-8</h2>
+    <img src="./img/QQ截图20190415030233.png" alt="">
+    <h2>第二步：修改idea的配置如下：</h2>
+    <img src="./img/QQ截图20190323114751.png" alt="">
+    <br>
+    <br>
+    <br>
+    <h1>部署到tomcat后控制台打印中文乱码</h1>
+    <h2>在tomcat配置中加上：<font style="color:red;">-Dfile.encoding=UTF-8</font></h2>
+    <img src="./img/QQ截图20190501174929.png" alt="">
+    <h3>没加之前是中文乱码的：</h3>
+    <img src="./img/QQ截图20190501175109.png" alt="">
+    <h3>加上之后就解决了：</h3>
+    <img src="./img/QQ截图20190501175202.png" alt="">
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>
