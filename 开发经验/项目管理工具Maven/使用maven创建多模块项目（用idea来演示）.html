@@ -57,80 +57,13 @@
     <img src="./img/QQ截图20190504000123.png" alt="">
     <img src="./img/QQ截图20190504000152.png" alt="">
     <img src="./img/QQ截图20190504000225.png" alt="">
-
+    <br><br>
+    <h2>第七步：添加模块之间的依赖关系</h2>
+    <img src="./img/QQ截图20190504002704.png" alt="">
+    <img src="./img/QQ截图20190504002849.png" alt="">
+    <img src="./img/QQ截图20190504002932.png" alt="">
     <br><br>
 
-
-
-
-
-
-
-    <h1>以下是xml示例代码：</h1>
-    <textarea id="code1">
-<students>
-    <student>
-        <name>张三</name>
-        <age>27</age>
-    </student>
-    <student>
-        <name>李四</name>
-        <age>28</age>
-    </student>
-</students>
-    </textarea>
-
-    <h1>以下是mysql示例代码：</h1>
-    <textarea id="code2">
-DROP TABLE IF EXISTS t_user;
-
-CREATE TABLE t_user (
-  ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  NAME VARCHAR(100) NOT NULL COMMENT '用户姓名',
-  sex VARCHAR(10) NOT NULL COMMENT '用户性别',
-  age VARCHAR(10) NOT NULL COMMENT '用户年龄',
-  create_date DATETIME NOT NULL COMMENT '记录创建时间',
-  PRIMARY KEY (`ID`)
-) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
-COMMENT='用户信息表';
-    </textarea>
-
-
-    <h1>以下是java示例代码：</h1>
-    <textarea id="code3">
-package com.pl.test;
-
-public class MyClass{
-    public void static main(String[] args){
-        System.out.println("hello world");
-    }
-}
-    </textarea>
-
-
-    <script>
-        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
-            lineNumbers: true,
-            matchBrackets: true,
-            mode: "text/xml",
-            theme: "darcula"
-        })
-        code1.setSize('auto', 'auto')
-        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
-            lineNumbers: true,
-            matchBrackets: true,
-            mode: "text/x-mysql",
-            theme: "darcula"
-        })
-        code2.setSize('auto', 'auto')
-        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
-            lineNumbers: true,
-            matchBrackets: true,
-            mode: "text/x-java",
-            theme: "darcula"
-        })
-        code3.setSize('auto', 'auto')
-    </script>
 </body>
 
 </html>
