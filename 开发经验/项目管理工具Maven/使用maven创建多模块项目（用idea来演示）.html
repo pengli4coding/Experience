@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用maven创建多模块项目（用idea来演示）</title>
+    <script src="../CodeMirror/lib/codemirror.js"></script>
+    <!--用于java风格代码显示-->
+    <script src="../CodeMirror/mode/clike/clike.js"></script>
+    <!--用于xml风格代码显示-->
+    <script src="../CodeMirror/mode/xml/xml.js"></script>
+    <!--用于mysql风格代码显示-->
+    <script src="../CodeMirror/mode/sql/sql.js"></script>
+    <link rel="stylesheet" href="../CodeMirror/lib/codemirror.css">
+    <!--黑色主题-->
+    <link rel="stylesheet" href="../CodeMirror/theme/darcula.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+
+    <h1>如何用idea来创建maven多模块项目</h1>
+    <h2>第一步：创建父工程，这是一个pom工程</h2>
+    <img src="./img/QQ截图20190503231834.png" alt="">
+    <img src="./img/QQ截图20190503233922.png" alt="">
+    <img src="./img/QQ截图20190503234008.png" alt="">
+    <img src="./img/QQ截图20190503234120.png" alt="">
+    <br><br>
+    <h2>第二步：将父工程中的src文件删除，并修改pom.xml文件</h2>
+    <img src="./img/QQ截图20190503234341.png" alt="">
+    <img src="./img/QQ截图20190503234546.png" alt="">
+    <br><br>
+    <h2>第三步：在父工程下创建子模块（公共common模块），这是一个jar工程</h2>
+    <img src="./img/QQ截图20190503234804.png" alt="">
+    <img src="./img/QQ截图20190503234911.png" alt="">
+    <img src="./img/QQ截图20190503235022.png" alt="">
+    <img src="./img/QQ截图20190503235106.png" alt="">
+    <br><br>
+    <h2>第四步：在父工程下创建子模块（后台管理admin模块），这是一个jar工程</h2>
+    <img src="./img/QQ截图20190503234804.png" alt="">
+    <img src="./img/QQ截图20190503234911.png" alt="">
+    <img src="./img/QQ截图20190503235519.png" alt="">
+    <img src="./img/QQ截图20190503235543.png" alt="">
+    <br><br>
+    <h2>第五步：在父工程下创建子模块（前台portal模块），这是一个jar工程</h2>
+    <img src="./img/QQ截图20190503234804.png" alt="">
+    <img src="./img/QQ截图20190503234911.png" alt="">
+    <img src="./img/QQ截图20190503235721.png" alt="">
+    <img src="./img/QQ截图20190503235808.png" alt="">
+    <br><br>
+    <h2>第六步：在父工程下创建子模块（显示view模块），这是一个war工程</h2>
+    <img src="./img/QQ截图20190503234804.png" alt="">
+    <img src="./img/QQ截图20190504000034.png" alt="">
+    <img src="./img/QQ截图20190504000123.png" alt="">
+    <img src="./img/QQ截图20190504000152.png" alt="">
+    <img src="./img/QQ截图20190504000225.png" alt="">
+
+    <br><br>
+
+
+
+
+
+
+
+    <h1>以下是xml示例代码：</h1>
+    <textarea id="code1">
+<students>
+    <student>
+        <name>张三</name>
+        <age>27</age>
+    </student>
+    <student>
+        <name>李四</name>
+        <age>28</age>
+    </student>
+</students>
+    </textarea>
+
+    <h1>以下是mysql示例代码：</h1>
+    <textarea id="code2">
+DROP TABLE IF EXISTS t_user;
+
+CREATE TABLE t_user (
+  ID INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  NAME VARCHAR(100) NOT NULL COMMENT '用户姓名',
+  sex VARCHAR(10) NOT NULL COMMENT '用户性别',
+  age VARCHAR(10) NOT NULL COMMENT '用户年龄',
+  create_date DATETIME NOT NULL COMMENT '记录创建时间',
+  PRIMARY KEY (`ID`)
+) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci
+COMMENT='用户信息表';
+    </textarea>
+
+
+    <h1>以下是java示例代码：</h1>
+    <textarea id="code3">
+package com.pl.test;
+
+public class MyClass{
+    public void static main(String[] args){
+        System.out.println("hello world");
+    }
+}
+    </textarea>
+
+
+    <script>
+        var code1 = CodeMirror.fromTextArea(document.getElementById("code1"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/xml",
+            theme: "darcula"
+        })
+        code1.setSize('auto', 'auto')
+        var code2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-mysql",
+            theme: "darcula"
+        })
+        code2.setSize('auto', 'auto')
+        var code3 = CodeMirror.fromTextArea(document.getElementById("code3"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "darcula"
+        })
+        code3.setSize('auto', 'auto')
+    </script>
+</body>
+
+</html>
